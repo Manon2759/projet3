@@ -18,6 +18,18 @@ class UserModel {
             throw error
         }
     }
+    async addUser(pseudonyme, email, password, picture, id_train) {
+
+        try {
+            const result = await this.connection.promise().query
+                ('INSERT INTO user(pseudonyme, email, password, picture, id_train) VALUES (?, ?, ?, ?, ?)',
+                    [pseudonyme, email, password, picture, id_train])
+            return result[0]
+        }
+        catch (error) {
+            throw error
+        }
+    }
 }
 
 module.exports = new UserModel()

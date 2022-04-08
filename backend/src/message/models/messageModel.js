@@ -18,6 +18,19 @@ class MessageModel {
             throw error
         }
     }
+
+    async postMessages(date, content, id_chat) {
+        try {
+            const result = await this.connection.promise().query
+                ('INSERT INTO message (date, content, id_chat) VALUES (?, ?, ?)'
+                    , [date, content, id_chat])
+
+            return result[0]
+        }
+        catch (error) {
+            throw error
+        }
+    }
 }
 
 module.exports = new MessageModel()

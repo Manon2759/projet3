@@ -1,7 +1,7 @@
 const trainModel = require('../models/trainModel')
 
 class TrainController {
-    async listtrain(req, res) {
+    async listTrain(req, res) {
         try {
             const trains = await trainModel.getTrain()
             res.status(200).send(trains)

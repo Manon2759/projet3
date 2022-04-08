@@ -9,7 +9,7 @@ class TrainModel {
         database: process.env.DB_NAME
     })
 
-    async getTrains() {
+    async getTrain() {
         try {
             const result = await this.connection.promise().query('SELECT * FROM train')
             return result[0]

@@ -1,33 +1,19 @@
-const connection = require('./db-config');
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
-connection.connect((err) => {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-    } else {
-        console.log('connected to database with threadId :  ' + connection.threadId);
-    }
-});
+require('dotenv').config()
+const express = require('express')
+const messageRoute = require('./src/message/messageRoute')
+const chatRoute = require('./src/chat/chatRoute')
+const trainRoute = require('./src/train/trainRoute')
+const userRoute = require('./src/user/userRoute')
 
-app.use(express.json());
+const port = process.env.PORT || 3000
 
-app.get("", (req, res) => {
+const app = express()
 
-    connection.query()
-})
+app.use(express.json())
 
-app.post("", (req, res) => {
+app.use('/messages', messageRoute)
+app.use('/chats', chatRoute)
+app.use('/trains', trainRoute)
+app.use('/users', userRoute)
 
-    connection.query()
-})
-
-app.put("", (req, res) => {
-
-    connection.query()
-})
-
-app.delete("", (req, res) => {
-
-    connection.query()
-})
+app.listen(port, () => { console.log(`Server listening on port ${port}`); });
