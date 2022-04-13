@@ -1,9 +1,11 @@
 const Joi = require('joi');
+const userModel = require('../models/userModels')
 const { joiPassword } = require('joi-password');
 
 
 class UserMiddleware {
 
+    //Controle le password
     checkIdentity(req, res, next) {
         const { pseudonyme, email, password, picture } = req.body
 
@@ -27,6 +29,15 @@ class UserMiddleware {
         }
     }
 
+    async checkEmail(req, res, next) {
+        const { email } = req.body
+        const result = await userModel.getUserByEmail(email)
+        if (result.length === 0) {
+            next()
+        } else {
+            res.status(409).send({ error: 'Email already exist' })
+        }
+    }
 }
 
 module.exports = new UserMiddleware()
