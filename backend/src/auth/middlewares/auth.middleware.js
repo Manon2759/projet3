@@ -3,7 +3,9 @@ const argon2 = require('argon2')
 
 
 class AuthMiddleware {
-    async checkPassword(req, res, next) {
+
+    //Controle que le password est correct et que l'email n'existe pas déjà.
+    async checkLogin(req, res, next) {
         try {
             const user = await authModel.getUserHash(req.body.email)
             if (user) {
@@ -25,6 +27,7 @@ class AuthMiddleware {
             res.status(500).send({ error: error.message })
         }
     }
+    //Controle que le password est correct et que l'email n'existe pas déjà.
 }
 
 module.exports = new AuthMiddleware()

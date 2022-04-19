@@ -1,6 +1,7 @@
 const userModel = require('../../user/models/userModels')
 
 class AuthModel {
+
     async getUserHash(email) {
         try {
             const result = await userModel.connection.promise().query('SELECT * FROM user WHERE email = ?', [email])

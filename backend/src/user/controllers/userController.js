@@ -32,6 +32,37 @@ class UserController {
         }
     }
     //Permet d'ajouter un utilisateur et sécuriser son password via Argon2
+
+    //Permet de mettre à jour un utilisateur
+    async updateUser(req, res) {
+
+        const { email, picture, id } = req.body
+
+        try {
+            const hashedPassword = await argon2.hash(req.body.password)
+            const user = await userModel.updateUser(email, hashedPassword, picture, id)
+
+            res.status(200).send(user)
+        }
+        catch (error) {
+            res.status(500).send({ error: error.message })
+        }
+    }
+    //Permet de mettre à jour un utilisateur
+
+    //Permet de supprimer un utilisateur
+    async deleteUser(req, res) {
+
+        try {
+            const deleteUser = await userModel.deleteUser(req.params.id)
+
+            res.status(200).send(deleteUser)
+        }
+        catch (error) {
+            res.status(500).send({ error: error.message })
+        }
+    }
+    //Permet de supprimer un utilisateur
 }
 
 module.exports = new UserController()

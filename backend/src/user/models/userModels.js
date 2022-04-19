@@ -49,6 +49,45 @@ class UserModel {
             throw error
         }
     }
+    async getUserByPseudonyme(pseudonyme) {
+        try {
+            const result = await this.connection.promise().query(
+                'SELECT pseudonyme FROM user WHERE pseudonyme = ?',
+                [pseudonyme]
+            )
+            return result[0]
+
+        }
+        catch (error) {
+            throw error
+        }
+    }
+
+
+    async updateUser(email, password, picture, id) {
+
+        try {
+            const result = await this.connection.promise().query
+                ('UPDATE user SET email = ?, password = ?, picture = ? WHERE id = ?',
+                    [email, password, picture, id])
+            return result[0]
+        }
+        catch (error) {
+            throw error
+        }
+    }
+
+    async deleteUser(id) {
+        try {
+            const result = await this.connection.promise().query
+                ('DELETE FROM user WHERE id = ?',
+                    [id])
+            return result[0]
+        }
+        catch (error) {
+            throw error
+        }
+    }
 }
 
 module.exports = new UserModel()

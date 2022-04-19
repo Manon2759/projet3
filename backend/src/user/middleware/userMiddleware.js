@@ -38,6 +38,18 @@ class UserMiddleware {
             res.status(409).send({ error: 'Email already exist' })
         }
     }
+
+    async checkPseudonyme(req, res, next) {
+        const { pseudonyme } = req.body
+        const result = await userModel.getUserByPseudonyme(pseudonyme)
+        console.log(result);
+        if (result.length === 0) {
+
+            next()
+        } else {
+            res.status(409).send({ error: 'Pseudonyme already exist' })
+        }
+    }
 }
 
 module.exports = new UserMiddleware()
