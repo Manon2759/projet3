@@ -2,8 +2,10 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, { cors: "*" })
 const socketMVC = require('socket.mvc');
+const cors = require('cors')
+
 
 const messageRoute = require('./src/message/messageRoute')
 const chatRoute = require('./src/chat/chatRoute')
@@ -20,13 +22,10 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
 const port = process.env.PORT ?? 5000
 
 app.use(express.json())
+app.use(cors())
 
 //Les routes de nos differentes tables
 app.use('/messages', messageRoute)
