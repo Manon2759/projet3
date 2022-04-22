@@ -1,5 +1,7 @@
-import { io } from "socket.io-client";
-import React, { useEffect } from "react";
+import { io } from 'socket.io-client';
+import React, { useEffect } from 'react';
+import Footer from './components/Footer';
+
 
 function App() {
   useEffect(() => {
@@ -7,12 +9,12 @@ function App() {
     socket.on("connect", () => {
       console.log("connected");
     })
-
   }, [])
+
   return (
     <div className="App">
+        <Footer />
 
-      <p>test</p>
     </div>
   );
 }
