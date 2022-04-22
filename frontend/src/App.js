@@ -1,7 +1,9 @@
 import { io } from "socket.io-client";
 import React, { useEffect } from "react";
+import Header from "./components/Header";
 
-function App() {
+
+const App = () => {
   useEffect(() => {
     const socket = io('http://localhost:5000')
     socket.on("connect", () => {
@@ -12,7 +14,7 @@ function App() {
   return (
     <div className="App">
 
-      <p>test</p>
+      <Header />
     </div>
   );
 }
