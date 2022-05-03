@@ -1,7 +1,11 @@
 @font-face {
     font-family: Avenir;
-    src: url(../police/AvenirLTStd-Black.otf);
+    src: url("./police/AvenirLTStd-Black.otf");
 }
 $blue_sayan: #8de8fe;
 $blue_bg: #0c131f;
 $police_avenir: Avenir;
+
+body {
+    background-color: $blue_bg;
+}
