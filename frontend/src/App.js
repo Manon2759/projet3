@@ -1,6 +1,8 @@
-import { io } from "socket.io-client";
-import React, { useEffect } from "react";
-import Header from "./components/Header";
+import { io } from 'socket.io-client';
+import React, { useEffect } from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+
 
 
 const App = () => {
@@ -9,12 +11,12 @@ const App = () => {
     socket.on("connect", () => {
       console.log("connected");
     })
-
   }, [])
+
   return (
     <div className="App">
-
       <Header />
+      <Footer />
     </div>
   );
 }
