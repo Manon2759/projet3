@@ -1,0 +1,46 @@
+CREATE DATABASE projet3;
+USE projet3;
+CREATE TABLE user (
+id INT PRIMARY KEY AUTO_INCREMENT,
+id_train INT NOT NULL,
+pseudonyme VARCHAR(100) NOT NULL,
+email VARCHAR(200) NOT NULL,
+password VARCHAR(250) NOT NULL,
+picture VARCHAR(250) 
+);
+
+ALTER TABLE user
+ADD id_train INT NOT NULL,
+FOREING KEY (id_train) REFERENCES train(id);
+( ne pas écrire si ajouté id_train dans user ALTER TABLE user ADD id_train INT NOT NULL;
+ALTER TABLE user ADD FOREIGN KEY (id_train) REFERENCES train(id);)
+
+CREATE TABLE chat (
+id INT PRIMARY KEY AUTO_INCREMENT,
+id_train INT NOT NULL,
+name VARCHAR(200) NOT NULL,
+picture VARCHAR(250) 
+);
+
+
+CREATE TABLE message (
+  id INT PRIMARY KEY AUTO_iNCREMENT,
+  date DATETIME,
+  content TEXT,
+  id_chat INT NOT NULL,
+  FOREIGN KEY (id_chat) REFERENCES chat(id)
+);
+
+CREATE TABLE user_chat (
+  id_user INT NOT NULL,
+  id_chat INT NOT NULL,
+  FOREIGN KEY (id_user) REFERENCES user(id),
+  FOREIGN KEY (id_chat) REFERENCES chat(id),
+  PRIMARY KEY (id_user, id_chat)
+);
+CREATE TABLE train (
+  id INT PRIMARY KEY AUTO_iNCREMENT,
+  number_train INT NOT NULL,
+  date DATE
+);
+
