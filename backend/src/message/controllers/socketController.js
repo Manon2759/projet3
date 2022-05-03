@@ -1,4 +1,4 @@
 const socketMVC = require('socket.mvc');
 
-/*Login logic*/
+/* Login logic */
 socketMVC.emit('logged in');
