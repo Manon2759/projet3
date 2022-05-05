@@ -53,9 +53,24 @@ body {
         z-index: 3;
         padding: 1rem;
         text-align: center;
-        
+
+     
       
     }
+    .list{
+        color: #fff;
+        font-size: 15px;
+        margin-top: 5px;
+        z-index: 3;
+        padding: 1rem;
+        text-align: center;
+        
+        
+        ul{
+            list-style-type: none;
+        }
+        
+     }  
 }
 
     .card-image {
@@ -87,7 +102,9 @@ body {
     transform: translate(-50%, -50%);
     z-index: 3;
     display: flex;
-
+    margin-top: 20px;
+    margin-right: 10px;
+    
     li {
         list-style: none;
 
