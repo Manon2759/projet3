@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactPlayer from 'react-video-js-player'
-import backgroundVideo from '../video/background_video.mp4'
+import backgroundVideo from '../video/background_video.mp4';
+import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
+
 
 const Inscription = () => {
     return (
@@ -13,7 +14,7 @@ const Inscription = () => {
             <div className="inscription">
 
                 <div className="inscription_titre">
-                    <h1>TRAINDER</h1>
+                    <h1><LogoTrainder height='4rem' /></h1>
                 </div>
                 <div className="inscription_main">
                     <div className="inscription_pseudo">
@@ -33,7 +34,7 @@ const Inscription = () => {
 
                     </div>
 
-                    <div className="inscription_button"><button>Validez</button></div>
+
                 </div>
             </div >
 
