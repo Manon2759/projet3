@@ -3,9 +3,6 @@
     src: url(../police/AvenirLTStd-Black.otf);
 }
 
-body {
-    background-color: $blue_bg;
-}
 
 .footer {
     display: flex;
@@ -13,11 +10,12 @@ body {
     justify-content: space-around;
     margin: 0;
     padding: 0;
+    background-color: $blue_bg;
 
 
     img {
         width: 349px;
-        height: 268px;
+        height: 160px;
     }
     p {
         font-size: 20px;

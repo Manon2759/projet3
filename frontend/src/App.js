@@ -2,6 +2,7 @@ import { io } from 'socket.io-client';
 import React, { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Passport from './components/Passport';
 
 
 
@@ -16,7 +17,9 @@ const App = () => {
   return (
     <div className="App">
       <Header />
+      <Passport />
       <Footer />
+
     </div>
   );
 }
