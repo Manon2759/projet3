@@ -3,9 +3,7 @@ import React, { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import CardProfile from './components/CardProfile';
-
-
-
+import Passport from './components/Passport';
 
 
 const App = () => {
@@ -20,7 +18,9 @@ const App = () => {
     <div className="App">
       <Header />
       <CardProfile />
+      <Passport />
       <Footer />
+
     </div>
   );
 }
