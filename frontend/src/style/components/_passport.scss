@@ -6,7 +6,7 @@
 
 body {
     font-family: "Avenir", "sans-serif";
-    background: #333;
+    
 }
 
 .container {
@@ -14,6 +14,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     margin: 0 auto;
+    background: #333;
 }
 
 .card-wrapper {
