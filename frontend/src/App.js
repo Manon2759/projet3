@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Search from './components/Search';
+import Inscritpion from "./components/Inscription";
 import Passport from './components/Passport';
 
 
@@ -18,8 +19,8 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Search />
       <Passport />
+      <Inscritpion />
       <Footer />
 
     </div>
