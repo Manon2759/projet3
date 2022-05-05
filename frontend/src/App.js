@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Search from './components/Search';
+import Passport from './components/Passport';
 
 
 
@@ -18,7 +19,9 @@ const App = () => {
     <div className="App">
       <Header />
       <Search />
+
       <Footer />
+
     </div>
   );
 }
