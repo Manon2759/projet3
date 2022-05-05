@@ -19,7 +19,7 @@ const App = () => {
     <div className="App">
       <Header />
       <Search />
-
+      <Passport />
       <Footer />
 
     </div>
