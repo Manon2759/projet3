@@ -1,10 +1,11 @@
 import { io } from 'socket.io-client';
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
 import React, { useEffect } from 'react';
-import Formulaire from './components/pages/Formulaire';
-import Inscription from './components/pages/Inscription';
+import Formulaire from './pages/Formulaire';
+import Inscription from './pages/Inscription';
+import ProfilClient from './pages/ProfilClient';
 
-
+;
 
 
 const App = () => {
@@ -21,9 +22,11 @@ const App = () => {
         <Routes>
           <Route path="/inscription" element={<Inscription />} />
           <Route path ="/formulaire" element = {<Formulaire />} />
+          <Route path ="/profil" element = {<ProfilClient />} />
         </Routes>
       </Router>
-
+      
+     
 
     </div>
   );
