@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import Inscription from '../components/Inscription';
 import Header from '../components/Header';
 
-const Accueil = () => {
+const AccueilClient = () => {
     return (
         <div>
             <Header />
@@ -13,4 +13,4 @@ const Accueil = () => {
     );
 };
 
-export default Accueil;
+export default AccueilClient;
