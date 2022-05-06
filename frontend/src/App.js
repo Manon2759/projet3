@@ -2,10 +2,9 @@ import { io } from 'socket.io-client';
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
 import React, { useEffect } from 'react';
 import Formulaire from './pages/Formulaire';
-import Inscription from './pages/Inscription';
+import Inscription from './pages/Accueil';
 import ProfilClient from './pages/ProfilClient';
 
-;
 
 
 const App = () => {
@@ -26,8 +25,6 @@ const App = () => {
         </Routes>
       </Router>
       
-     
-
     </div>
   );
 }
