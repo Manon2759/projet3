@@ -1,9 +1,11 @@
 import { io } from 'socket.io-client';
+import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
 import React, { useEffect } from 'react';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import CardProfile from './components/CardProfile';
-import Passport from './components/Passport';
+import Formulaire from './pages/Formulaire';
+import AccueilClient from './pages/AccueilClient';
+import ProfilClient from './pages/ProfilClient';
+
+
 
 
 const App = () => {
@@ -16,11 +18,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
-      <CardProfile />
-      <Passport />
-      <Footer />
-
+      <Router>
+        <Routes>
+          <Route path="/AccueilClient" element={<AccueilClient />} />
+          <Route path ="/formulaire" element = {<Formulaire />} />
+          <Route path ="/profil" element = {<ProfilClient />} />
+        </Routes>
+      </Router>
+      
     </div>
   );
 }
