@@ -10,6 +10,8 @@ import Recherche from './pages/Recherche';
 
 
 
+
+
 const App = () => {
   useEffect(() => {
     const socket = io('http://localhost:5000')
@@ -20,6 +22,7 @@ const App = () => {
 
   return (
     <div className="App">
+
       <Router>
         <Routes>
           <Route path="/accueilClient" element={<AccueilClient />} />
@@ -29,7 +32,7 @@ const App = () => {
           <Route path ="/recherche" element = {<Recherche/>} />
         </Routes>
       </Router>
-      
+
     </div>
   );
 }

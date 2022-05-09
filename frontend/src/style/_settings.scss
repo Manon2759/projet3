@@ -6,9 +6,13 @@ $blue_sayan: #8de8fe;
 $blue_bg: #0c131f;
 $police_avenir: Avenir;
 
+body {
+    background-color:$blue_bg;
+}
 * {
     font-family: $police_avenir;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }

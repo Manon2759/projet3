@@ -1,7 +1,8 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import CardProfil from '../components/CardProfile'
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 
 const ProfilClient = () => {
     return (
