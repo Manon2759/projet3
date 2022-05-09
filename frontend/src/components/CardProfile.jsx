@@ -6,7 +6,7 @@ const CardProfile = () => {
         <div className='container_cards'>
             <div className='cards'>
                 <div className='cardProfile'>
-                    <img src='./assets/img-gare.jpg' alt='gare' />
+                    {/* <img src='./assets/img-gare.jpg' alt='gare' width="100vh" height="450px" /> */}
                     <div className='pseudo_cardProfile'>
                         <h1>PSEUDONYME</h1>
                     </div>
