@@ -1,14 +1,12 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import Inscription from '../components/Inscription';
-import Header from '../components/Header';
+import HeaderConnection from '../components/HeaderConnection';
 
 const AccueilClient = () => {
     return (
         <div>
-            <Header />
+            <HeaderConnection />
             <Inscription />
-            <Footer />
         </div>
     );
 };

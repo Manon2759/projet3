@@ -1,15 +1,27 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
-import Connection from './Connection';
-
 
 const Header = () => {
     return (
-        <div className='header'>
-            <div> <LogoTrainder height='3rem' /></div>
-            <Connection className="header_connection" />
+        <header>
 
-        </div>
+            <div className='header2'>
+
+                <div className='logo_connection'> <LogoTrainder height='3rem' /> </div>
+                <div className='links'>
+                    <div>
+                        <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>
+                    </div>
+                    <div>
+                        <NavLink to='/search' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Ma recherche </NavLink>
+                    </div>
+                    <div>
+                        <NavLink to='/AccueilClient' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')}> Deconnexion</NavLink>
+                    </div>
+                </div>
+            </div>
+        </header>
     );
 };
 

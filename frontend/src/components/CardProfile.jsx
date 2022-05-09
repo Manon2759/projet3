@@ -5,9 +5,9 @@ const CardProfile = () => {
 
     return (
         <div className='container_cards'>
-            <div>
+           
                 <img className='img_cardProfile' src='./assets/train.jpg' alt='gare' />
-                </div>
+              
                 <div className='cards'>
                     <div className='cardProfile'>
                         <div className='pseudo_cardProfile'>

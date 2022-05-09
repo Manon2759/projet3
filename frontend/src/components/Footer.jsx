@@ -5,7 +5,7 @@ import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3
 
 const Footer = () => {
     return (
-        <div>
+        <footer>
             <div className='footer'>
 
                <div> <LogoTrainder height='3rem' /> </div>
@@ -20,7 +20,7 @@ const Footer = () => {
                 <a href='https://www.instagram.com/sncf/'><FaInstagram /></a>
 
             </div>
-        </div>
+        </footer>
     );
 };
 

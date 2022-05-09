@@ -1,12 +1,43 @@
-.header {
+.header2 {
     display: flex;
     justify-content: space-between;
-    padding: 20px 20px;
-    background: $blue_bg;
+    height: 90px;
 
-    .header_logo {
-        height: 50px;
-        width: 70px;
+    .logo_connection {
+        display: flex;
+        align-items: center;
+        margin-left: 3%;
+    }
+
+    .links {
+        display: flex;
+        margin-right: 2%;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        a {
+            margin: 10px;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    .nav-link {
+        &--active {
+            border-bottom: 6px solid #8de8fe;
+
+        }
+    }
+
+    .buttonDeconnexion {
+        border: none;
+        background-color: $blue_bg;
+        color: #fff;
 
     }
+
 }
