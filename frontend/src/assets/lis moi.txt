@@ -1,0 +1,1 @@
+Supprimer la classe xmlns dans les svg

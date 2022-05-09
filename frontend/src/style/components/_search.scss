@@ -1,77 +1,133 @@
 .search{
-    width: 70%;
-    height: 70vh;
-    margin: 45px auto;
-    padding: 5% 5%;
+    border: 1px black solid;
+    width: 50%;
+    margin: 3% auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: 0px 0px 5px 1px #000000;
     border-radius: 16px;
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.65);
-    h3{
-        text-align: center;
-        font-size: 2rem;
-    }
-   .search-gender, .search-age, .search-interest, .train-number{
-       margin-bottom: 4%;
-       #gender-select{
-           margin-left: 25%;
-           width: 30%;
-           height: 30px;
-           font-size:1.2rem;
-           text-align: center;
-       }
-       #numberTrain{
-           margin-left: 13%;
-           width: 30%;
-           height: 30px;
-           
-       }
-       input{
-        /* Firefox */
-        -moz-appearance: textfield;
-     
-        /* Chrome */
-        &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin:0;
-        }
-     
-        /* Opéra*/
-        &::-o-inner-spin-button {
-            -o-appearance: none;
-            margin: 0; 
-        }
-    }
+    background-color: $blue_bg;
+   
+    .search_preference{
        
-   }
-   .search-age{
-    p{
-        display: inline-block;
+         .label_preference{
+           color: $blue_sayan;
+            font-size: 20px;
+            width: 70%;
+            margin: auto;
+            margin-bottom: 2%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            #preference{
+                background-color: whitesmokex;
+                margin: auto;
+                width: 33%;
+                text-align: center;
+            }
+        }
     }
-    #search-age-left{
-        margin: 0% 5% 0% 34%;
-        width: 5%;
-        height: 30px;
-        text-align: center;
+    .search_age{
+        
+        .label_age{
+            color: $blue_sayan;
+            font-size: 20px;
+            width: 70%;
+            margin: auto;
+            margin-bottom: 2%;
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            input{
+                background-color: whitesmoke;
+                /* Firefox */
+                -moz-appearance: textfield;
+             
+                /* Chrome */
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin:0;
+                }
+             
+                /* Opéra*/
+                &::-o-inner-spin-button {
+                    -o-appearance: none;
+                    margin: 0; 
+                }
+            }
+            .input_ageLeft{
+                width: 9%;
+                text-align: center;
+                margin: auto;                
+            }
+            .input_ageRight{
+                width: 9%;
+                text-align: center;
+               margin: auto;
+            }
+        }
     }
-    #search-age-right{
-        margin: 0% 0% 0% 5%;
-        width: 5%;
-        height: 30px;
-        text-align: center;
+    .search_interests{
+        width: 70%;
+        margin: auto;
+        padding: 1%;
+        border: 1px black solid;
+        box-shadow:inset 0px 0px 5px 1px #000000;
+       border-radius: 16px;
+       label{
+           color: $blue_sayan; 
+       }
+       p{
+           color: $blue_sayan;
+       }
+        .interests{
+            margin-bottom: 0%;
+        }
+        
     }
-   }
-   .search-interest{
-       #cinema, #voyage, #musique, #culture, #sport, #nouvelle{
-           margin-right: 1.5%;
-       }
-       #interest{
-           margin-right: 2%;
-       }
-   }
-   .submit{
-       text-align: center;
-       #button{
-           width: 10rem;
-           height: 2.5rem;
-       }
-   }
+    // .search_train{
+        
+    //     font-size: 20px;
+    //     .label_train{
+        
+    //     width: 70%;
+    //     margin: auto;
+    //     margin-top: 2%;
+    //     display:flex;
+    //     justify-content: space-between;
+    //     }
+    //     input{
+    //         width: 40%;
+    //         margin: auto;
+    //          /* Firefox */
+    //          -moz-appearance: textfield;
+             
+    //          /* Chrome */
+    //          &::-webkit-inner-spin-button {
+    //              -webkit-appearance: none;
+    //              margin:0;
+    //          }
+          
+    //          /* Opéra*/
+    //          &::-o-inner-spin-button {
+    //              -o-appearance: none;
+    //              margin: 0; 
+    //          }
+    //     }
+    // }
+    .submit{
+        
+        .label_submit{
+            
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #input_submit{
+            width: 33%;
+            margin: auto;
+            margin-top: 2%;
+        }
+    }
+   
 }

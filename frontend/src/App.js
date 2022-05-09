@@ -2,10 +2,10 @@ import { io } from 'socket.io-client';
 import React, { useEffect } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Search from './components/Search';
-import Inscritpion from "./components/Inscription";
+import CardProfile from './components/CardProfile';
 import Passport from './components/Passport';
-
+import Inscritpion from './components/Inscription';
+import Search from './components/Search';
 
 
 const App = () => {
@@ -19,8 +19,10 @@ const App = () => {
   return (
     <div className="App">
       <Header />
+      <CardProfile />
       <Passport />
       <Inscritpion />
+      <Search />
       <Footer />
 
     </div>

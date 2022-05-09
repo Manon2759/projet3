@@ -1,11 +1,12 @@
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     padding: 20px 20px;
-   background: $blue_bg;
-    .header_logo{
+    background: $blue_bg;
+
+    .header_logo {
         height: 50px;
         width: 70px;
-        
+
     }
-    }
+}

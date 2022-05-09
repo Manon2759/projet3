@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
-
+import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
 
 const Footer = () => {
     return (
         <div>
             <div className='footer'>
 
-                <img src='/assets/logo-trainder.png' alt='logo-trainder' />
+               <div> <LogoTrainder height='3rem' /> </div>
 
                 <div className='links_footer'>
                     <NavLink className='link' to='/'> Contact <span>|</span> </NavLink>

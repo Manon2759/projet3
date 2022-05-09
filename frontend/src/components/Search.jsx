@@ -1,89 +1,50 @@
-import React, { useReducer } from 'react';
+import React, { useState } from 'react';
 import Interests from './Interests';
-
-
-/*const initialState = {
-    min: 18,
-    max: 100
-}
-
-const reducer = (state, action) => {
-    switch (action.type) {
-        case "increaseMin":
-            return {
-                min: state.min + 1,
-                max: state.max
-            }
-        case "increaseMax":
-            return {
-                min: state.min,
-                max: state.max + 1
-            }
-        case "decreaseMin":
-            return {
-                min: state.min - 1,
-                max: state.max
-            }
-        case "decreaseMax":
-            return {
-                min: state.min,
-                max: state.max - 1
-            }
-        default:
-            return state
-    }
-}
-*/
-
-
-
 
 const Search = () => {
 
-    /*   const [ageState, dispatch] = useReducer(reducer, initialState)
-   
-       const handleMin = (event) => {
-           if (ageState.min < event.target.value) {
-               dispatch({ type: "decreaseMin" })
-           }
-           else if (ageState.min > event.target.value) {
-               dispatch({ type: "increaseMin" })
-           }
-       }
-   */
+    const [min, setMin] = useState(18)
+    const [max, setMax] = useState(100)
+
+
     return (
         <div className='search'>
-            <h3>Recherche</h3>
-            <div className='search_card'>
-                <form>
-                    <div className="search_gender">
-                        <label for="gender_select" id="preference">Preference :</label>
-                        <select name="gender" id="gender_select">
-                            <option value="indifferent">Indifférent</option>
-                            <option value="femme">Femme</option>
-                            <option value="homme">Homme</option>
-                        </select>
-                    </div>
 
-                    <div className="search_age">
-                        <label for="age_select">Age :</label>
-                        <input type="number" min="18" id="search_age_left" placeholder='Age' />
-                        <p>à</p>
-                        <input type="number" step="1" max="100" id="search_age_right" placeholder='Age' />
-                    </div>
-
-                    <div className="train_number">
-                        <label for="age_select" id="number">N° de train :</label>
-                        <input type="number" id='numberTrain' />
-                    </div>
-
-                    <div className="submit">
-                        <input type="submit" id='button' />
-                    </div>
-
-
-                </form>
+            <div className="search_preference">
+                <label for="preference" className='label_preference'>Préférence :
+                    <select name="gender" id="preference">
+                        <option value="indifférent">Indifférent</option>
+                        <option value="femme">Femme</option>
+                        <option value="homme">Homme</option>
+                    </select>
+                </label>
             </div>
+
+            <div className="search_age">
+                <label for="age" className="label_age">Age :
+                    <input type="number" className='input_ageLeft' min="18" max={max} onChange={(e) => { setMin(e.target.value) }} />
+                    à
+                    <input type="number" className='input_ageRight' min={min} max="100" onChange={(e) => { setMax(e.target.value) }} />
+                </label>
+            </div>
+
+            <div className="search_interests">
+                <Interests />
+            </div>
+
+            {/* <div className="search_train">
+                <label for="train" className="label_train">N° de train :
+                    <input type="number" className="input_train" />
+                </label>
+            </div> */}
+
+            <div className="submit">
+                <label for="envoyer" className="label_submit">
+                    <input type="submit" name="envoyer" id="input_submit" />
+                </label>
+            </div>
+
+
         </div>
     );
 };
