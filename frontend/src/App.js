@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Formulaire from './pages/Formulaire';
 import AccueilClient from './pages/AccueilClient';
 import ProfilClient from './pages/ProfilClient';
+import Resultat from './pages/Resultat';
 
 
 
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/AccueilClient" element={<AccueilClient />} />
           <Route path ="/formulaire" element = {<Formulaire />} />
           <Route path ="/profil" element = {<ProfilClient />} />
+          <Route path ="/resultat" element = {<Resultat />} />
         </Routes>
       </Router>
       

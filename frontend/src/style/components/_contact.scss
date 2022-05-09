@@ -1,6 +1,120 @@
 .box_principal {
-    background-image: url(/projet3/frontend/public/assets/connexion.png);
-    background-attachment: fixed;
-    background-size: cover;
-    margin: 0;
+    display: flex;
+    justify-content: center;
+
+    .maps {
+        width: 100%;
+        max-height: 100%;
+        position: relative;
+
+
+    }
+
+
+    .container {
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        background-color: $blue_bg;
+
+        border-radius: 3px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        padding: 30px 50px;
+        z-index: 1;
+        position: absolute;
+        margin-top: 50px;
+
+        .title-1 {
+            background-image: linear-gradient(to bottom,
+                    transparent 0%,
+                    transparent 68%,
+                     #8de8fe 68%,
+                     #8de8fe 95%,
+                    transparent 95%);
+            font-size: 50px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+    }
+
+    .form__group {
+        width: 100%;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .form__label {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .form__input {
+        font-size: 16px;
+        font-family: inherit;
+        padding: 3px 10px;
+        border-radius: 3px;
+        border: none;
+        border-bottom: 4px solid transparent;
+        width: 100%;
+        transition: all 0.3s;
+    }
+
+    .form__message-label {
+        color: #fff;
+    }
+
+    .form__input::-webkit-input-placeholder {
+        color: #000;
+        transform: translateY(4px);
+    }
+
+    .form__input:focus::-webkit-input-placeholder {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .form__input:focus {
+        outline: none;
+        border-bottom: 4px solid #a5ee6e;
+        width: 66.6666%;
+        transition: all 0.3s;
+    }
+
+    .form__input:focus:invalid {
+        border-bottom: 4px solid #e94a2f;
+    }
+
+    .form__message,
+    .form__message .message__input {
+        width: 100%;
+    }
+
+    .submitBtn {
+        display: block;
+        padding: 5px 30px;
+        border: none;
+        outline: none;
+        background-color: $blue_sayan;
+        border-radius: 30px;
+        margin: 20px auto;
+        font-size: 25px;
+        font-family: inherit;
+        color: #fff;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 1);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .submitBtn:hover {
+        transform: scale(1.02) translateY(-2px);
+    }
+
+    .submitBtn:active {
+        transform: scale(0.98) translateY(1px);
+    }
 }
