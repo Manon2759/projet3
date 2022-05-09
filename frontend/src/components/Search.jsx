@@ -11,17 +11,17 @@ const Search = () => {
         <div className='search'>
 
             <div className="search_preference">
-                <label for="preference" className='label_preference'>Préférence :
-                    <select name="gender" id="preference">
-                        <option value="indifférent">Indifférent</option>
-                        <option value="femme">Femme</option>
-                        <option value="homme">Homme</option>
-                    </select>
-                </label>
+                <div className='label_preference'>
+                    <h2>Préférence: </h2>
+                    <img src='./assets/avatar_femme.png' alt='avatar' />
+                    <img src='./assets/avatar_homme.png' alt='avatar' />
+
+
+                </div>
             </div>
 
             <div className="search_age">
-                <label for="age" className="label_age">Age :
+                <label for="age" className="label_age">Âge :
                     <input type="number" className='input_ageLeft' min="18" max={max} onChange={(e) => { setMin(e.target.value) }} />
                     à
                     <input type="number" className='input_ageRight' min={min} max="100" onChange={(e) => { setMax(e.target.value) }} />
@@ -32,16 +32,14 @@ const Search = () => {
                 <Interests />
             </div>
 
-            {/* <div className="search_train">
+            <div className="search_train">
                 <label for="train" className="label_train">N° de train :
                     <input type="number" className="input_train" />
                 </label>
-            </div> */}
+            </div> 
 
             <div className="submit">
-                <label for="envoyer" className="label_submit">
-                    <input type="submit" name="envoyer" id="input_submit" />
-                </label>
+               <p>✔ </p>
             </div>
 
 
