@@ -1,12 +1,15 @@
 import React, { useState, useReducer } from 'react';
 import backgroundVideo from '../video/background_video.mp4';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
+import { IoIosEye } from 'react-icons/io';
 import axios from 'axios';
 
 
 
 const Inscription = () => {
 
+    const [user, setUser] = useState("")
+    const [visibility, setVisibility] = useState(false)
     const initalUser = {
         id: "",
         pseudonyme: "",
@@ -14,8 +17,19 @@ const Inscription = () => {
         email: "",
         password: "",
         id_train: "1"
-
     }
+    const [newUser, dispatch] = useReducer(handleUserReducer, initalUser)
+    const postCreateUser = () => {
+        axios.post(`http://localhost:5000/users`, newUser)
+            .then(res => {
+                // setUser(res.data)
+                console.log(res.data);
+            })
+            .catch(error => console.error(error))
+    }
+
+
+
     // Action.payload permet l'action de transfert d'informations, utilisation du déstructuring
     function handleUserReducer(userState, action) {
         switch (action.type) {
@@ -31,18 +45,8 @@ const Inscription = () => {
                 return userState
         }
     }
-    const [user, setUser] = useState("")
 
-    const postCreateUser = () => {
-        axios.post(`http://localhost:5000/users`, newUser)
-            .then(res => {
-                // setUser(res.data)
-                console.log(res.data);
-            })
-            .catch(error => console.error(error))
-    }
 
-    const [newUser, dispatch] = useReducer(handleUserReducer, initalUser)
 
     return (
         <div className="body">
@@ -76,11 +80,14 @@ const Inscription = () => {
 
                     <div className="inscription_password">
                         <label for="password" id="label_password">Mot de passe  </label>
-                        <input type="password" id="password" name="Password" onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} />
-                        <button onClick={postCreateUser} ><img className="fleche" src="./assets/fleche.png" alt="fleche" /></button>
 
+                        <input type={visibility ? "text" : "password"} id="password" name="Password" onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} />
+
+                        <button onClick={() => setVisibility(!visibility)} href="https://react-icons.github.io/react-icons/search?q=eyes" > <IoIosEye /> </button>
                     </div>
-
+                    <div>
+                        <button className="fleche" onClick={postCreateUser} >✔</button>
+                    </div>
 
                 </div>
             </div >
