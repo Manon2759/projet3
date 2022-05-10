@@ -8,7 +8,7 @@ const Header = () => {
 
             <div className='header2'>
 
-                <div className='logo_connection'> <LogoTrainder height='3rem' /> </div>
+                <div className='logo_after_connection'> <LogoTrainder height='3rem' /> </div>
                 <div className='links'>
                     <div>
                         <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>
