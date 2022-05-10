@@ -11,7 +11,7 @@ const Footer = () => {
                <div> <LogoTrainder height='3rem' /> </div>
 
                 <div className='links_footer'>
-                    <NavLink className='link' to='/'> Contact <span>|</span> </NavLink>
+                <NavLink to='/formulaire' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Contact <span>|</span></NavLink>
                     <NavLink className='link' to='' > Réglementation  <span>|</span></NavLink >
                 </div>
                 
