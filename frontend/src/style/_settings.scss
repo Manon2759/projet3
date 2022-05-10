@@ -2,6 +2,7 @@
     font-family: Avenir;
     src: url("./police/AvenirLTStd-Black.otf");
 }
+<<<<<<< HEAD
 $blue_sayan: #8DE8FE;
 $blue_bg: #0C131F;
 $police_avenir: Avenir;
@@ -11,4 +12,12 @@ $police_avenir: Avenir;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+=======
+$blue_sayan: #8de8fe;
+$blue_bg: #0c131f;
+$police_avenir: Avenir;
+
+* {
+    font-family: $police_avenir;
+>>>>>>> 536f1d51ea1da1bb8bda4263d4c8b5643c43653f
 }

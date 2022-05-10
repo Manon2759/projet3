@@ -1,15 +1,18 @@
 .body{
     height: 100vh;
     width: 100vw;
+    
 }
 .bg_video{
     position: absolute;
     height: 80vh;
     width: 100vw;
+    
 }
 #video{
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
 }
 
 .inscription {
@@ -32,10 +35,10 @@
 
     .inscription_titre{
         text-align: center;
-        color: blanchedalmond;
+        
     }
     
-    .inscription_pseudo,.inscription_mail,.inscription_password{
+    .inscription_pseudo,.inscription_date,.inscription_mail,.inscription_password{
         display: flex;
         justify-content: center;
         margin-bottom: 5%;
@@ -44,9 +47,14 @@
         width: 34%;
      
     }
+    .inscription_date{
+        justify-content: left;
+        
+    }
    .fleche {
        height: 15px;
        width: 15px;
+       
    }
     .inscription_button{
             text-align: center;
@@ -57,7 +65,7 @@
    
    
    
-    #pseudo,#mail,#password {
+    #pseudo,#date,#mail,#password {
         border-style :none;
         background-color: rgba(255, 235, 205, 0);
         color: blanchedalmond;
@@ -74,9 +82,17 @@
     }
     label{
         margin-top: 4px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         text-align: left;
         width: 170px;
     }
-    
+    .inscription_password button{
+        background-color: rgba(255, 235, 205, 0);
+        border-style :none;
+
+    }
+    input ,#pseudo,#date,#mail,#password{
+        text-align: center;
+        margin: auto;
+    }
     }
