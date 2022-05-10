@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Avenir";
+    font-family: Avenir;
     src: url("./police/AvenirLTStd-Black.otf");
 }
 $blue_sayan: #8de8fe;
@@ -11,5 +11,8 @@ body {
 }
 * {
     font-family: $police_avenir;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     
 }

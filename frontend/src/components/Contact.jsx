@@ -1,37 +1,35 @@
 import React from 'react';
 
-
 const Contact = () => {
     return (
-        <body className='box_principal'>
-            <div className='box_secondaire'>
-                <div className='maps'>
-                    <img src='/assets/connexion.png' alt='' />
-                    <div className='formulaire'>
-                        <div className='titre'>
-                            <img src='' alt='' />
-                            <h1>Formulaire de contact</h1>
-                            <h3>N'hésitez pas à nous envoyer un note ci-dessous! </h3>
-                            <div className='contact'>
-                                <form>
-                                    <div className='formulaire_1'>
-                                        <input required type='text' className='formulaire_name' placeholder='Nom' />
-                                        <input required type='text' className='formulaire_firstname' placeholder='Prénom' />
-                                    </div>
-                                    <input required type='text' className='formulaire_email' placeholder='Email' />
-                                    <textarea required className='formulaire_text' placeholder='Message' />
-                                    <button type='submit' className='envoyer'>Envoyer</button>
-                                </form>
+        <div className='box_principal'>
 
-                            </div>
+            <img className='maps' src='/assets/connexion.png' alt='' />
+            <div className="container">
+                <h1 className="title title-1">Contact</h1>
 
-                        </div>
-
+                <form className="form">
+                    <div className="form__group">
+                        <input type="text" className="form__input" id="nom" placeholder="Votre Nom" required />
+                        <label for="nom" className="form__label">Votre Nom</label>
+                    </div>
+                    <div className="form__group">
+                        <input type="email" className="form__input" id="email" placeholder="Votre Email" required />
+                        <label for="email" className="form__label">Votre Email</label>
+                    </div>
+                    <div className="form__message">
+                        <label for="message" className="form__message-label">
+                            Message :
+                        </label>
+                        <textarea name="" id="message" cols="30" rows="10" className="form__input message__input" required></textarea>
                     </div>
 
-                </div>
+                    <div className="submit">
+                        <button class="submitBtn">Envoyer </button>
+                    </div>
+                </form>
             </div>
-        </body>
+        </div>
     );
 };
 

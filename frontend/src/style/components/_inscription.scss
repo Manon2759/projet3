@@ -38,18 +38,25 @@
         
     }
     
-    .inscription_pseudo,.inscription_mail,.inscription_password{
+    .inscription_pseudo,.inscription_date,.inscription_mail,.inscription_password{
         display: flex;
         justify-content: center;
         margin-bottom: 5%;
-        border-bottom: 1px solid blanchedalmond;
-        color: blanchedalmond;
+        border-bottom: 1px solid #fff;
+        color: #fff;
         width: 34%;
      
     }
+    .inscription_date{
+        justify-content: left;
+    }
    .fleche {
-       height: 15px;
-       width: 15px;
+      background: none;
+      color: white;
+       font-size: 2rem;
+       border-style: none;
+       margin-top: -50px;
+       cursor: pointer;
    }
     .inscription_button{
             text-align: center;
@@ -60,7 +67,7 @@
    
    
    
-    #pseudo,#mail,#password {
+    #pseudo,#date,#mail,#password {
         border-style :none;
         background-color: rgba(255, 235, 205, 0);
         color: blanchedalmond;
@@ -77,9 +84,20 @@
     }
     label{
         margin-top: 4px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         text-align: left;
         width: 170px;
     }
-    
+    .inscription_password button{
+        background-color: rgba(255, 235, 205, 0);
+        border-style :none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    input ,#pseudo,#date,#mail,#password{
+        text-align: center;
+        margin: auto;
+        width: 80%;
+    }
     }

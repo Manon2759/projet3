@@ -14,7 +14,7 @@ const Header = () => {
                         <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>
                     </div>
                     <div>
-                        <NavLink to='/search' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Ma recherche </NavLink>
+                        <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Ma recherche </NavLink>
                     </div>
                     <div>
                         <NavLink to='/AccueilClient' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')}> Deconnexion</NavLink>
