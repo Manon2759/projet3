@@ -3,6 +3,7 @@ import backgroundVideo from '../video/background_video.mp4';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
 import { IoIosEye } from 'react-icons/io';
 import axios from 'axios';
+import controlPassword from '../utils/ControlPassword';
 
 
 
@@ -10,7 +11,7 @@ const Inscription = () => {
 
     const [user, setUser] = useState("")
     const [visibility, setVisibility] = useState(false)
-    const initalUser = {
+    const initialUser = {
         id: "",
         pseudonyme: "",
         date: "",
@@ -18,14 +19,16 @@ const Inscription = () => {
         password: "",
         id_train: "1"
     }
-    const [newUser, dispatch] = useReducer(handleUserReducer, initalUser)
+    const [newUser, dispatch] = useReducer(handleUserReducer, initialUser)
     const postCreateUser = () => {
-        axios.post(`http://localhost:5000/users`, newUser)
-            .then(res => {
-                // setUser(res.data)
-                console.log(res.data);
-            })
-            .catch(error => console.error(error))
+        if (controlPassword(newUser.password)) {
+            axios.post(`http://localhost:5000/users`, newUser)
+                .then(res => {
+                    // setUser(res.data)
+                    console.log(res.data);
+                })
+                .catch(error => console.error(error))
+        }
     }
 
 
@@ -51,7 +54,7 @@ const Inscription = () => {
     return (
         <div className="body">
             <div className="bg_video">
-                <video autoPlay loop muted className="video">
+                <video autoPlay loop muted>
                     <source src={backgroundVideo} type="video/mp4" />
                 </video>
             </div>
