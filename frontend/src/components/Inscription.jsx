@@ -3,6 +3,7 @@ import backgroundVideo from '../video/background_video.mp4';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
 import { IoIosEye } from 'react-icons/io';
 import axios from 'axios';
+import controlPassword from '../utils/ControlPassword';
 
 
 
@@ -10,7 +11,7 @@ const Inscription = () => {
 
     const [user, setUser] = useState("")
     const [visibility, setVisibility] = useState(false)
-    const initalUser = {
+    const initialUser = {
         id: "",
         pseudonyme: "",
         date: "",
@@ -18,14 +19,16 @@ const Inscription = () => {
         password: "",
         id_train: "1"
     }
-    const [newUser, dispatch] = useReducer(handleUserReducer, initalUser)
+    const [newUser, dispatch] = useReducer(handleUserReducer, initialUser)
     const postCreateUser = () => {
-        axios.post(`http://localhost:5000/users`, newUser)
-            .then(res => {
-                // setUser(res.data)
-                console.log(res.data);
-            })
-            .catch(error => console.error(error))
+        if (controlPassword(newUser.password)) {
+            axios.post(`http://localhost:5000/users`, newUser)
+                .then(res => {
+                    // setUser(res.data)
+                    console.log(res.data);
+                })
+                .catch(error => console.error(error))
+        }
     }
 
 
@@ -63,25 +66,25 @@ const Inscription = () => {
                 <div className="inscription_main">
                     <div className="inscription_pseudo">
                         <label for="pseudo" id="label_pseudo">Pseudo  </label>
-                        <input type="text" id="pseudo" name="Pseudo" onChange={(event) => dispatch({ type: "postPseudo", payload: event.target.value })} required/>
+                        <input type="text" id="pseudo" name="Pseudo" onChange={(event) => dispatch({ type: "postPseudo", payload: event.target.value })} required />
                     </div>
 
 
                     <div className="inscription_date">
                         <label for="date" id="label_date">Date de naissance  </label>
-                        <input type="date" id="date" name="date" onChange={(event) => dispatch({ type: "postDate", payload: event.target.value })} required/>
+                        <input type="date" id="date" name="date" onChange={(event) => dispatch({ type: "postDate", payload: event.target.value })} required />
                     </div>
 
 
                     <div className="inscription_mail">
                         <label for="mail" id="label_mail">Mail  </label>
-                        <input type="email" id="mail" name="Mail" onChange={(event) => dispatch({ type: "postMail", payload: event.target.value })} required/>
+                        <input type="email" id="mail" name="Mail" onChange={(event) => dispatch({ type: "postMail", payload: event.target.value })} required />
                     </div>
 
                     <div className="inscription_password">
                         <label for="password" id="label_password" >Mot de passe  </label>
 
-                        <input type={visibility ? "text" : "password"} id="password" name="Password" onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} required/>
+                        <input type={visibility ? "text" : "password"} id="password" name="Password" onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} required />
 
                         <button onClick={() => setVisibility(!visibility)} href="https://react-icons.github.io/react-icons/search?q=eyes" > <IoIosEye /> </button>
                     </div>
