@@ -35,7 +35,7 @@ const CardProfile = () => {
 
                         </form>
                         <div className='button_validation'>
-                            <button> Validez</button>
+                            <button> ✔</button>
                         </div>
                     </div>
 

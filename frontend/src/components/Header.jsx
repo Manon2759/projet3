@@ -17,7 +17,7 @@ const Header = () => {
                         <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Ma recherche </NavLink>
                     </div>
                     <div>
-                        <NavLink to='/AccueilClient' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')}> Deconnexion</NavLink>
+                        <NavLink to='/' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')}> Deconnexion</NavLink>
                     </div>
                 </div>
             </div>
