@@ -25,10 +25,10 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<AccueilClient />} />
-          <Route path ="/formulaire" element = {<Formulaire />} />
-          <Route path ="/profil" element = {<ProfilClient />} />
-          <Route path ="/resultat" element = {<Resultat />} />
-          <Route path ="/recherche" element = {<Recherche/>} />
+          <Route path="/formulaire" element={<Formulaire />} />
+          <Route path="/profil" element={<ProfilClient />} />
+          <Route path="/resultat" element={<Resultat />} />
+          <Route path="/recherche" element={<Recherche />} />
         </Routes>
         <Footer />
       </Router>
