@@ -1,9 +1,59 @@
-.connection_button {
-    height: 50px;
-    width: 15rem;
-    border-radius: 1.2rem;
-    background-color: $blue_sayan;
-    color:$blue_bg;
-    font-family: $police_avenir;
-
+.connection{
+   .connection_button {
+        height: 50px;
+        width: 15rem;
+        border-radius: 1.2rem;
+        background-color: $blue_sayan;
+        color:$blue_bg;
+    }
+    .connection_pseudo{
+        border-bottom: white 1px solid;
+       text-align: center;
+       margin-bottom: 1%;
+       input{
+           border-top: none;
+           border-right: none;
+           border-left: none;
+           border-bottom: none;
+           color: white;
+           background-color: $blue_bg;
+           width: 90%;
+           text-align: center;
+           &::placeholder{
+               color: white;
+               text-align: center;
+           }
+           &:focus{
+            outline: none;
+            border: none;
+        }
+       }
+    }
+    .connection_password{
+        text-align: center;
+        border-bottom: white 1px solid;
+        input{
+            width: 90%;
+            text-align: center;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            border-bottom: none;
+            color: white;
+            background-color: $blue_bg;
+            &::placeholder{
+                color: white;
+                text-align: center;
+            }
+            &:focus{
+                outline: none;
+                border: none;
+            }
+        }
+    }
+    p{
+        color: red;
+        font-size: 15px;
+        margin-top: 5px;
+    }
 }
