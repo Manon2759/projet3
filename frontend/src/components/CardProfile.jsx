@@ -19,14 +19,14 @@ const CardProfile = () => {
                             </button>
                         </div>
                     </div>
-                    <form >
+                    {/* <form >
                         <div className='date_cardProfile'>
                             <label for="date_naissance">Date de naissance :</label>
                             <input type="date" id="date_naissance" name="date_naissance"
                                 value="2022-05-04"
                                 min="2004-01-01" max="2018-12-31" />
                         </div>
-                    </form>
+                    </form> */}
                 </div>
                 <div className='cardProfile2'>
                     {/* Chexbox des centres d'interêts */}

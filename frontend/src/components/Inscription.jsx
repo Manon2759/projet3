@@ -51,7 +51,7 @@ const Inscription = () => {
     return (
         <div className="body">
             <div className="bg_video">
-                <video autoPlay loop muted id="video">
+                <video autoPlay loop muted className="video">
                     <source src={backgroundVideo} type="video/mp4" />
                 </video>
             </div>
@@ -63,25 +63,29 @@ const Inscription = () => {
                 <div className="inscription_main">
                     <div className="inscription_pseudo">
                         <label for="pseudo" id="label_pseudo">Pseudo  </label>
-                        <input type="text" id="pseudo" name="Pseudo" onChange={(event) => dispatch({ type: "postPseudo", payload: event.target.value })} required/>
+                        <input type="text" id="pseudo" name="Pseudo"
+                            onChange={(event) => dispatch({ type: "postPseudo", payload: event.target.value })} />
                     </div>
 
 
                     <div className="inscription_date">
                         <label for="date" id="label_date">Date de naissance  </label>
-                        <input type="date" id="date" name="date" onChange={(event) => dispatch({ type: "postDate", payload: event.target.value })} required/>
+                        <input type="date" id="date" name="date"
+                            onChange={(event) => dispatch({ type: "postDate", payload: event.target.value })} />
                     </div>
 
 
                     <div className="inscription_mail">
                         <label for="mail" id="label_mail">Mail  </label>
-                        <input type="email" id="mail" name="Mail" onChange={(event) => dispatch({ type: "postMail", payload: event.target.value })} required/>
+                        <input type="email" id="mail" name="Mail"
+                            onChange={(event) => dispatch({ type: "postMail", payload: event.target.value })} />
                     </div>
 
                     <div className="inscription_password">
                         <label for="password" id="label_password" >Mot de passe  </label>
 
-                        <input type={visibility ? "text" : "password"} id="password" name="Password" onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} required/>
+                        <input type={visibility ? "text" : "password"} id="password" name="Password"
+                            onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} />
 
                         <button onClick={() => setVisibility(!visibility)} href="https://react-icons.github.io/react-icons/search?q=eyes" > <IoIosEye /> </button>
                     </div>
