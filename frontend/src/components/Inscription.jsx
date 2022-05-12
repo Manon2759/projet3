@@ -51,7 +51,7 @@ const Inscription = () => {
     return (
         <div className="body">
             <div className="bg_video">
-                <video autoPlay loop muted id="video">
+                <video autoPlay loop muted className="video">
                     <source src={backgroundVideo} type="video/mp4" />
                 </video>
             </div>

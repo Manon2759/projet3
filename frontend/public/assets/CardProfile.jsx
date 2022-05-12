@@ -16,7 +16,7 @@ const CardProfile = () => {
                         <div className='img_pseudo_cardProfile'>
                             <div className='img_pseudo'>
                                 <img src="../assets/profil.png" alt="Avatar profil" />
-                                <button className='button__img'>
+                                <button>
                                     Ajouter votre photo ici
                                 </button>
                             </div>
