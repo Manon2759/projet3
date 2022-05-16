@@ -11,6 +11,7 @@
 
         .cards {
             display: flex;
+            flex-wrap: wrap;
             width: 970px;
             height: 550px;
             border-radius: 15px;
@@ -18,8 +19,17 @@
             background-color: #040911a6;
             color: #fff;
 
+            @media screen and (max-width: 705px) {
+                height: 850px;
+            }
+
             .cardProfile {
                 margin: auto;
+
+                @media screen and (min-width: 616px) and (max-width: 725px) {
+                    margin: auto;
+                    padding-right: 2rem;
+                }
             }
 
             .img_cardProfile {
@@ -40,6 +50,7 @@
                     border: none;
                     color: $blue_bg;
                 }
+
                 .img_pseudo {
                     display: flex;
                     flex-direction: column;
@@ -52,28 +63,27 @@
                         margin: auto;
                         margin-bottom: 15px;
                         margin-top: 20px;
-
-                   
                     }
-
                 }
             }
 
             .card__interests {
                 margin: auto;
-
             }
 
             .description_cardProfile {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-              
+
                 label {
                     font-size: 18px;
                     margin: auto;
-                }
 
+                    @media screen and (max-width: 400px) {
+                        text-align: center;
+                    }
+                }
             }
         }
 
@@ -84,6 +94,11 @@
             border-radius: 5px;
             padding: 1%;
 
+            @media screen and (max-width: 400px) {
+                width: 80%;
+                height: 110px;
+                margin: 13px auto;
+            }
         }
 
         .button_validation {
@@ -99,5 +114,4 @@
             }
         }
     }
-
 }

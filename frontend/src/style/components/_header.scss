@@ -1,20 +1,64 @@
+
+
 .header2 {
     display: flex;
     justify-content: space-between;
     height: 90px;
     background-color: $blue-bg;
 
-    .logo_after_connection {
+    .button__burger {
         display: flex;
-        align-items: center;
-        margin-left: 3%;
+        justify-content: center;
+     
+    
+        .button {
+            background: none;
+            color: white;
+            border: none;
+        }
+    
+        @media screen and (min-width: 704px) {
+            display: none;
+        }
     }
 
-    .links {
+    &__logo {
+        order: 1;
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+    }
+
+    &__links__burger {
+        display: flex;
+        flex-direction: column;
+        order: 3;
+        text-align: center;
+
+
+        a {
+            text-decoration: none;
+            margin-right: 15px;
+
+
+        }
+    }
+
+    &__links {
         display: flex;
         margin-right: 2%;
         justify-content: space-between;
         margin-top: 20px;
+        order: 2;
+
+        &__logo__connection {
+            display: flex;
+            margin-left: 3%;
+        }
+
+        @media screen and (max-width: 705px) {
+            display: none;
+        }
 
         a {
             margin: 10px;
@@ -33,12 +77,4 @@
 
         }
     }
-
-    .buttonDeconnexion {
-        border: none;
-        background-color: $blue_bg;
-        color: #fff;
-
-    }
-
 }

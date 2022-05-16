@@ -15,6 +15,7 @@
         margin-bottom: 10px;
         margin-top: 10px;
        }
+
     .title_interets {
         display: flex;
         justify-content: center;
@@ -28,6 +29,10 @@
     label {
         padding: 1rem;
         font-size: 18px;
+
+        @media screen and (max-width: 550px) {
+            font-size: 15px;
+        }
     }
 
 }
