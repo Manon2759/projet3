@@ -16,7 +16,7 @@ const Interests = () => {
         nouvelle_technologie: false
     }
     const [updateUser, dispatch] = useReducer(handleUserUpdateReducer, completeUser)
-    const postUpdateUser = () => {
+    const putUser = () => {
         axios.post(`http://localhost:5000/users`, updateUser)
             .then(res => {
                 // setUser(res.data)
