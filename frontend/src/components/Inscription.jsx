@@ -14,8 +14,8 @@ const Inscription = () => {
     const initialUser = {
         id: "",
         pseudonyme: "",
-        date: "",
         email: "",
+        date: "",
         password: "",
         id_train: "1"
     }
