@@ -14,8 +14,8 @@ const Inscription = () => {
     const initialUser = {
         id: "",
         pseudonyme: "",
-        date: "",
         email: "",
+        date: "",
         password: "",
         id_train: "1"
     }
@@ -54,7 +54,7 @@ const Inscription = () => {
     return (
         <div className="body">
             <div className="bg_video">
-                <video autoPlay loop muted id="video">
+                <video autoPlay loop muted>
                     <source src={backgroundVideo} type="video/mp4" />
                 </video>
             </div>
