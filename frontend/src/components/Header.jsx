@@ -21,7 +21,7 @@ const Header = () => {
 
                 {/* LOGO TRAINDER  */}
                 <div className='header2__logo'>
-                    <div className='header2__logo__connection'> <LogoTrainder height='3rem' />
+                    <div className='header2__logo__connection'> <LogoTrainder height='2rem' />
                     </div>
                 </div>
 

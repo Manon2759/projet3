@@ -39,10 +39,11 @@
         a {
             color: #fff;
             font-size: 30px;
-            padding: 7px;
+            padding: 10px;
 
             @media screen and (max-width: 705px) {
-                font-size: 18px;
+                font-size: 19px;
+                padding: 7px;
             }
         }
     }
