@@ -1,8 +1,10 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {} from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
 
+
 const Header = () => {
+    const logout = useNavigate()
     return (
         <header>
 
@@ -10,15 +12,17 @@ const Header = () => {
 
                 <div className='logo_connection'> <LogoTrainder height='3rem' /> </div>
                 <div className='links'>
-                    <div>
-                        <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>
-                    </div>
-                    <div>
-                        <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Ma recherche </NavLink>
-                    </div>
-                    <div>
-                        <NavLink to='/AccueilClient' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')}> Deconnexion</NavLink>
-                    </div>
+                    <ul>
+                        <li>
+                            <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Ma recherche </NavLink>
+                        </li>
+                        <li>
+                            <button onClick={() =>{ logout("/" )}} >Deconnexion</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </header>
