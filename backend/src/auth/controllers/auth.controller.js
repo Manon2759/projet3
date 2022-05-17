@@ -7,7 +7,7 @@ class AuthController {
       email: req.body.email,
     }, process.env.JWT_SECRET, { expiresIn: '6h' });
     res.cookie('jwt-token', token, { httpOnly: true }); // Pour que le token soit utiliser seulement côter serveur on ne peut pas le modifier  //
-    res.status(200).send();
+    res.status(200).send(token);
   }
   // Création du jeton token lors de la connection
 }

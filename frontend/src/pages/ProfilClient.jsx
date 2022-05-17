@@ -6,8 +6,9 @@ import Header from '../components/Header';
 const ProfilClient = () => {
     return (
         <div>
-           <Header />
-           <CardProfil />
+                <Header />
+                <CardProfil />
+        
         </div>
     );
 };

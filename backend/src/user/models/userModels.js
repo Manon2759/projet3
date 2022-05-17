@@ -1,5 +1,4 @@
 const mysql = require('mysql2');
-
 class UserModel {
   connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -8,7 +7,6 @@ class UserModel {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   });
-
   // Permet d'afficher la liste d'utilisateur
   async getUser() {
     try {
@@ -19,7 +17,6 @@ class UserModel {
     }
   }
   // Permet d'afficher la liste d'utilisateur
-
   // Ajout d'un utilisateur
   async addUser(pseudonyme, date, email, hashedPassword, picture, id_train) {
     try {
@@ -33,7 +30,6 @@ class UserModel {
     }
   }
   // Ajout d'un utilisateur
-
   async getUserByEmail(email) {
     try {
       const result = await this.connection.promise().query(
@@ -45,7 +41,6 @@ class UserModel {
       throw error;
     }
   }
-
   async getUserByPseudonyme(pseudonyme) {
     try {
       const result = await this.connection.promise().query(
@@ -57,7 +52,6 @@ class UserModel {
       throw error;
     }
   }
-
   async updateUser(email, password, picture, id) {
     try {
       const result = await this.connection.promise().query(
@@ -69,7 +63,6 @@ class UserModel {
       throw error;
     }
   }
-
   async deleteUser(id) {
     try {
       const result = await this.connection.promise().query(

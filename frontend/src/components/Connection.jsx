@@ -1,12 +1,22 @@
 import axios from 'axios';
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useContext } from 'react';
 import controlPassword from '../utils/ControlPassword';
+import { NavLink } from 'react-router-dom';
+import { isExpired, decodeToken } from 'react-jwt';
+import UserContext from '../context/UserContext';
+
+
 
 const Connection = () => {
+    const { user, setUser, completeUser, updateUser, putUser, handleUserUpdateReducer, token, setToken } = useContext(UserContext)
     const [showId, setShowId] = useState(false);
-    const [identity, setIdentity] = useState("");
+
     const [errorMailPassword, setErrorMailPassword] = useState("")
     const [visibility, setVisibility] = useState(false);
+
+    const myDecodedToken = decodeToken(token)
+    const isMyTokenExpired = isExpired(token)
+
 
     const handleCLick = () => {
         setShowId(!showId)
@@ -20,13 +30,17 @@ const Connection = () => {
     }
     const [connectUser, dispatch] = useReducer(handleUserReducer, userId)
 
+    // const authorizationConnect = () => {
+    //     if (connectUser.email && connectUser.password === identity.res)
+    // } 
 
 
     const postConnectUser = () => {
         if (controlPassword(connectUser.password)) {
             axios.post(`http://localhost:5000/auth`, connectUser, { withCredentials: true })
                 .then(res => {
-                    setIdentity(res.data)
+                    setToken(decodeToken(res.data))
+                    console.log(token);
                 })
                 .catch(error => setErrorMailPassword(error.response.data.error))
         }
@@ -45,6 +59,7 @@ const Connection = () => {
     }
 
 
+
     return (
         <div className='connection'>
 
@@ -59,7 +74,7 @@ const Connection = () => {
                     </div>
                     <p>{errorMailPassword}</p>
                     <div>
-                        <button className="fleche" onClick={postConnectUser} >✔</button>
+                        <button className="fleche" onClick={postConnectUser} > <NavLink to="/recherche">✔</NavLink></button>
                     </div>
 
                 </div>}

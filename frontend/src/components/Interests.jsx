@@ -1,51 +1,11 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useContext } from 'react';
 import axios from 'axios';
+import UserContext from '../context/UserContext';
 
 
 const Interests = () => {
+    const { user, setUser, completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer } = useContext(UserContext)
 
-    const [user, setUser] = useState("")
-    const completeUser = {
-        id: "",
-        text: "",
-        cinema: false,
-        voyage: false,
-        musique: false,
-        culture: false,
-        sport: false,
-        nouvelle_technologie: false
-    }
-    const [updateUser, dispatch] = useReducer(handleUserUpdateReducer, completeUser)
-    const putUser = () => {
-        axios.post(`http://localhost:5000/users`, updateUser)
-            .then(res => {
-                // setUser(res.data)
-                console.log(res.data);
-            })
-            .catch(error => console.error(error))
-    }
-
-    function handleUserUpdateReducer(userUpdateState, action) {
-        switch (action.type) {
-            case "postText":
-                return { ...userUpdateState, text: action.payload }
-            case "postCinema":
-                return { ...userUpdateState, cinema: !userUpdateState.cinema }
-            case "postVoyage":
-                return { ...userUpdateState, voyage: !userUpdateState.voyage }
-            case "postMusique":
-                return { ...userUpdateState, musique: !userUpdateState.musique }
-            case "postCulture":
-                return { ...userUpdateState, culture: !userUpdateState.culture }
-            case "postSport":
-                return { ...userUpdateState, sport: !userUpdateState.sport }
-            case "postNouvelle_technologie":
-                return { ...userUpdateState, nouvelle_technologie: !userUpdateState.nouvelle_technologie }
-
-            default:
-                return userUpdateState
-        }
-    }
 
     return (
         <div>
