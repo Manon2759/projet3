@@ -79,6 +79,12 @@
             display: none;
         }
 
+        ul{
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+        
+
         a {
             margin: 10px;
             padding: 20px;
@@ -88,9 +94,18 @@
             color: #fff;
             cursor: pointer;
         }
+        button{
+            border: none;
+            background: none;
+            color: #fff;
+            font-size: 16px;
+            cursor:pointer;
+            ;
+        }
+    }
     }
 
-    .nav-link {
+    .nav-link  {
         &--active {
             border-bottom: 6px solid #8de8fe;
 

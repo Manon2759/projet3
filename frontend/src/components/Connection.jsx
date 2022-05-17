@@ -8,6 +8,9 @@ const Connection = () => {
     const [identity, setIdentity] = useState("");
     const [errorMailPassword, setErrorMailPassword] = useState("")
     const [visibility, setVisibility] = useState(false);
+    const [showEmail, setShowEmail] = useState(true);
+    const [showPassword, setShowPassword] = useState(true);
+
 
     const handleCLick = () => {
         setShowId(!showId)
@@ -51,15 +54,16 @@ const Connection = () => {
 
     return (
         <div className='connection'>
-
+            <div className='test'>
             <button className='connection_button' onClick={handleCLick}>CONNEXION</button>
+            </div>
             {showId &&
                 <div className="burger">
                     <div className="connection_pseudo">
-                        <input type="text" placeholder='Email' onChange={(event) => dispatch({ type: "postEmail", payload: event.target.value })} />
+                        <input type="text"placeholder= {showEmail ? 'Email':"" } onClick ={() => setShowEmail(!showEmail)} onChange={(event) => dispatch({ type: "postEmail", payload: event.target.value })} />
                     </div>
                     <div className="connection_password">
-                        <input type="password" placeholder='Password' onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} />
+                        <input type="password" placeholder={showPassword ? 'Password' :""} onClick ={() => setShowPassword(!showPassword)} onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} />
                     </div>
                     <p>{errorMailPassword}</p>
                     <div>

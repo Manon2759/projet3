@@ -19,7 +19,7 @@ class UserController {
   // Permet d'ajouter un utilisateur et sécuriser son password via Argon2
   async addUser(req, res) {
     const {
-      pseudonyme, date, email, picture, id_train,
+      pseudonyme, email, date, picture, id_train,
     } = req.body;
 
     try {
