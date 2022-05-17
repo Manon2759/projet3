@@ -19,7 +19,7 @@
             background-color: #040911a6;
             color: #fff;
 
-            @media screen and (max-width: 705px) {
+            @media screen and (max-width: 706px) {
                 height: 850px;
             }
 
@@ -69,6 +69,10 @@
 
             .card__interests {
                 margin: auto;
+                @media screen and (max-width: 550px) {
+                     margin-top: -15%;
+                }
+               
             }
 
             .description_cardProfile {

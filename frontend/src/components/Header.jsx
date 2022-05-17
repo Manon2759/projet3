@@ -14,8 +14,17 @@ const Header = () => {
 
     return (
         <header>
-        
+
             <div className='header2'>
+
+                <div className='header2__logo'>
+                    <div className='header2__logo__connection'> <LogoTrainder height='3rem' />
+                    </div>
+                </div>
+
+                <div className='button__burger'>
+                    <button onClick={handleClick} > <GiHamburgerMenu /></button>
+                </div>
                 {menuBurger &&
                     <div className='header2__links__burger'>
                         <div>
@@ -29,15 +38,6 @@ const Header = () => {
                         </div>
                     </div>
                 }
-                    <div className='button__burger'>
-                <button onClick={handleClick} > <GiHamburgerMenu /></button>                                                  
-            </div>
-
-                <div className='header2__logo'>
-                    <div className='header2__logo__after__connection'> <LogoTrainder height='3rem' /> </div>
-                </div>
-            
-
                 <div className='header2__links'>
                     <div>
                         <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>
@@ -48,6 +48,7 @@ const Header = () => {
                     <div>
                         <NavLink to='/' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')}> Deconnexion</NavLink>
                     </div>
+
 
 
                 </div>
