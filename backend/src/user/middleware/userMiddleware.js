@@ -30,7 +30,7 @@ class UserMiddleware {
       next();
     }
   }
-
+  //Fait la verification que l'email user n'existe pas. Si il existe erreur.
   async checkEmail(req, res, next) {
     const { email } = req.body;
     const result = await userModel.getUserByEmail(email);
@@ -44,7 +44,6 @@ class UserMiddleware {
   async checkPseudonyme(req, res, next) {
     const { pseudonyme } = req.body;
     const result = await userModel.getUserByPseudonyme(pseudonyme);
-    console.log(result);
     if (result.length === 0) {
       next();
     } else {

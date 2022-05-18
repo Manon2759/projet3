@@ -3,7 +3,9 @@ import UserContext from '../context/UserContext';
 import Interests from './Interests';
 
 const CardProfile = () => {
-    const { user, setUser, completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer } = useContext(UserContext)
+    const { user, setUser, completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer } = useContext(UserContext);
+
+
 
 
 

@@ -8,7 +8,7 @@ import UserContext from '../context/UserContext';
 
 
 const Connection = () => {
-    const { user, setUser, completeUser, updateUser, putUser, handleUserUpdateReducer, token, setToken } = useContext(UserContext)
+    const { token, setToken } = useContext(UserContext)
     const [showId, setShowId] = useState(false);
 
     const [errorMailPassword, setErrorMailPassword] = useState("")
@@ -22,13 +22,12 @@ const Connection = () => {
         setShowId(!showId)
     }
 
-    const userId = {
-        id: "",
+    const userInfo = {
         email: "",
         password: "",
         id_train: "1"
     }
-    const [connectUser, dispatch] = useReducer(handleUserReducer, userId)
+    const [connectUser, dispatch] = useReducer(handleUserReducer, userInfo)
 
     // const authorizationConnect = () => {
     //     if (connectUser.email && connectUser.password === identity.res)
@@ -36,12 +35,15 @@ const Connection = () => {
 
 
     const postConnectUser = () => {
+        console.log("PostConnect&&&&&&")
         if (controlPassword(connectUser.password)) {
-            axios.post(`http://localhost:5000/auth`, connectUser, { withCredentials: true })
+            axios.post(`http://localhost:5000/auth/login`, connectUser, { withCredentials: true })
                 .then(res => {
                     setToken(decodeToken(res.data))
-                    console.log(token);
-                })
+                    console.log(decodeToken(res.data), "drtdt");
+                }
+
+                )
                 .catch(error => setErrorMailPassword(error.response.data.error))
         }
     }
@@ -62,7 +64,7 @@ const Connection = () => {
 
     return (
         <div className='connection'>
-
+            {console.log(token, "1223")}
             <button className='connection_button' onClick={handleCLick}>CONNEXION</button>
             {showId &&
                 <div className="burger">

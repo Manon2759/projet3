@@ -8,7 +8,7 @@ class UserModel {
     database: process.env.DB_NAME,
   });
   // Permet d'afficher la liste d'utilisateur
-  async getUser() {
+  async getUsers() {
     try {
       const result = await this.connection.promise().query('SELECT * FROM user');
       return result[0];
@@ -18,11 +18,11 @@ class UserModel {
   }
   // Permet d'afficher la liste d'utilisateur
   // Ajout d'un utilisateur
-  async addUser(pseudonyme, date, email, hashedPassword, picture, id_train) {
+  async addUser(pseudonyme, date, email, hashedPassword, id_train) {
     try {
       const result = await this.connection.promise().query(
-        'INSERT INTO user(pseudonyme, email, date, password, picture, id_train) VALUES (?, ?, ?, ?, ?, ?)',
-        [pseudonyme, email, date, hashedPassword, picture, id_train],
+        'INSERT INTO user(pseudonyme, email, date, password, id_train) VALUES (?, ?, ?, ?, ?)',
+        [pseudonyme, email, date, hashedPassword, id_train],
       );
       return result[0];
     } catch (error) {
@@ -33,7 +33,7 @@ class UserModel {
   async getUserByEmail(email) {
     try {
       const result = await this.connection.promise().query(
-        'SELECT email FROM user WHERE email = ?',
+        'SELECT email, id FROM user WHERE email = ?',
         [email],
       );
       return result[0];
@@ -52,11 +52,11 @@ class UserModel {
       throw error;
     }
   }
-  async updateUser(email, password, picture, id) {
+  async updateUser(email, password, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie) {
     try {
       const result = await this.connection.promise().query(
-        'UPDATE user SET email = ?, password = ?, picture = ? WHERE id = ?',
-        [email, password, picture, id],
+        'UPDATE user SET email = ?, password = ?, picture = ?, content = ?, cinema = ?, voyage = ?, musique = ?, culture = ?, sport = ?, nouvelle_technologie = ? WHERE id = ?',
+        [email, password, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie],
       );
       return result[0];
     } catch (error) {

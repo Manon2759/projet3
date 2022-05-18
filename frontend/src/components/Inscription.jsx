@@ -12,7 +12,6 @@ const Inscription = () => {
     const [user, setUser] = useState("")
     const [visibility, setVisibility] = useState(false)
     const initialUser = {
-        id: "",
         pseudonyme: "",
         email: "",
         date: "",

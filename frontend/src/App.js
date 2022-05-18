@@ -24,7 +24,7 @@ const App = () => {
 
   const [user, setUser] = useState("")
   const completeUser = {
-    id: "",
+    id: token.id,
     text: "",
     picture: "",
     cinema: false,
@@ -35,6 +35,7 @@ const App = () => {
     nouvelle_technologie: false
   }
   const [updateUser, dispatch] = useReducer(handleUserUpdateReducer, completeUser)
+
   const putUser = () => {
     axios.put(`http://localhost:5000/users`, updateUser)
       .then(res => {
@@ -46,6 +47,8 @@ const App = () => {
 
   function handleUserUpdateReducer(userUpdateState, action) {
     switch (action.type) {
+      // case "updateId":
+      //   return { ...userUpdateState, id: action.token.email }
       case "postPicture":
         return { ...userUpdateState, picture: action.payload }
       case "postText":
@@ -71,7 +74,7 @@ const App = () => {
   return (
     <UserContext.Provider value={{ user, setUser, completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer, token, setToken }}>
       <div className="App">
-
+        {console.log(token, "zzz")}
         <Router>
           <Routes>
             <Route path="/" element={<AccueilClient />} />

@@ -7,6 +7,8 @@ const Interests = () => {
     const { user, setUser, completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer } = useContext(UserContext)
 
 
+
+
     return (
         <div>
             <div className="interests">

@@ -1,11 +1,18 @@
 .connection{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 3%;
+    
    .connection_button {
-        height: 50px;
-        width: 15rem;
-        border-radius: 1.2rem;
-        background-color: $blue_sayan;
-        color:$blue_bg;
+       border: none;
+       border-bottom: 2px solid #fff;
+       font-size: 15px;
+        color:#fff;
+        background: none;
+       
     }
+
     .connection_pseudo{
         border-bottom: white 1px solid;
        text-align: center;
@@ -55,5 +62,14 @@
         color: red;
         font-size: 15px;
         margin-top: 5px;
+    }
+    .connection__button{
+        margin-left: 50%;
+        margin-bottom: 10%;
+        border: none;
+        background: none;
+        color: #fff;
+        font-size: 15px;
+       
     }
 }

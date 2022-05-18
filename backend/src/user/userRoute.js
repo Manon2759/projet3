@@ -4,7 +4,7 @@ const userMiddleware = require('./middleware/userMiddleware');
 
 const router = express.Router();
 
-router.get('/', userController.listUser);
+router.get('/', userController.listUser, userController.getUserByEmail);
 
 router.post(
   '/',

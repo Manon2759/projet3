@@ -10,7 +10,7 @@ const Search = () => {
 
     return (
         <div className='search'>
-
+            {console.log(token, "toek")}
             <div className="search_preference">
                 <div className='label_preference'>
                     <h2>Préférence: {token.email}</h2>
