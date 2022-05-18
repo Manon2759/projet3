@@ -11,8 +11,8 @@ const Footer = () => {
                <div> <LogoTrainder height='3rem' /> </div>
 
                 <div className='links_footer'>
-                <NavLink to='/formulaire' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Contact <span>|</span></NavLink>
-                    <NavLink className='link' to='' > Réglementation  <span>|</span></NavLink >
+                <NavLink to='/formulaire' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Contact <span>|</span> </NavLink>
+                <NavLink to='/reglementation' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} >Réglementation <span>|</span> </NavLink >
                 </div>
                 
                 <a href='https://www.facebook.com/search/top?q=spotted%20sncf'><FaFacebook /></a>

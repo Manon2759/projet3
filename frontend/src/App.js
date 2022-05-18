@@ -7,6 +7,7 @@ import ProfilClient from './pages/ProfilClient';
 import Resultat from './pages/Resultat';
 import Recherche from './pages/Recherche';
 import Footer from './components/Footer';
+import Reglementation from './pages/Reglementation';
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
           <Route path ="/profil" element = {<ProfilClient />} />
           <Route path ="/resultat" element = {<Resultat />} />
           <Route path ="/recherche" element = {<Recherche/>} />
+          <Route path ="/reglementation" element = {<Reglementation/>} />
         </Routes>
         <Footer />
       </Router>
