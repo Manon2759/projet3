@@ -26,9 +26,11 @@ const Header = () => {
                 </div>
 
                 {/* ICON BOUTON BURGER */}
-                <div className='button__burger'>
-                    <button onClick={handleClick} > <GiHamburgerMenu /></button>
-                </div>
+                {!menuBurger &&
+                    <div className='button__burger'>
+                        <button onClick={handleClick} > <GiHamburgerMenu /></button>
+                    </div>
+                }
 
                 {/* LINKS GRAND ECRAN */}
                 <div className='header2__links'>
