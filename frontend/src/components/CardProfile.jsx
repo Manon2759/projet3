@@ -3,8 +3,8 @@ import UserContext from '../context/UserContext';
 import Interests from './Interests';
 
 const CardProfile = () => {
-    const { user, setUser, completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer } = useContext(UserContext);
 
+    const { putUser, token, dispatch, completeUser } = useContext(UserContext);
 
 
 
@@ -17,7 +17,7 @@ const CardProfile = () => {
 
                     <div className='cardProfile'>
                         <div className='pseudo_cardProfile'>
-                            <h1>Pseudonyme</h1>
+                            <h1>{token.pseudonyme}</h1>
                         </div>
                         <div className='img_pseudo_cardProfile'>
                             <div className='img_pseudo'>

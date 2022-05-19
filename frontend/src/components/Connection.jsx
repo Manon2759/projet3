@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useReducer, useState, useContext } from 'react';
 import controlPassword from '../utils/ControlPassword';
 import { NavLink } from 'react-router-dom';
-import { isExpired, decodeToken } from 'react-jwt';
+import { decodeToken } from 'react-jwt';
 import UserContext from '../context/UserContext';
 
 
@@ -10,45 +10,34 @@ import UserContext from '../context/UserContext';
 const Connection = () => {
     const { token, setToken } = useContext(UserContext)
     const [showId, setShowId] = useState(false);
-
     const [errorMailPassword, setErrorMailPassword] = useState("")
-    const [visibility, setVisibility] = useState(false);
-
-    const myDecodedToken = decodeToken(token)
-    const isMyTokenExpired = isExpired(token)
-
 
     const handleCLick = () => {
         setShowId(!showId)
     }
 
+    // utilisation d'un reducer pour saisir les données puis les envoyer dans le back via axios.post
     const userInfo = {
         email: "",
         password: "",
         id_train: "1"
     }
+
     const [connectUser, dispatch] = useReducer(handleUserReducer, userInfo)
-
-    // const authorizationConnect = () => {
-    //     if (connectUser.email && connectUser.password === identity.res)
-    // } 
-
-
     const postConnectUser = () => {
-        console.log("PostConnect&&&&&&")
+        // Utilisation de ControlPassword une regex qui permet de bloquer les mdp qui ne remplisse pas les critères
         if (controlPassword(connectUser.password)) {
             axios.post(`http://localhost:5000/auth/login`, connectUser, { withCredentials: true })
                 .then(res => {
-                    setToken(decodeToken(res.data))
+                    const decodingToken = decodeToken(res.data);
+                    setToken(decodingToken)
+                    dispatch({ type: "changePseudonyme", payload: decodingToken.pseudonyme })
                     console.log(decodeToken(res.data), "drtdt");
-                }
-
-                )
+                })
                 .catch(error => setErrorMailPassword(error.response.data.error))
         }
     }
-
-
+    // handleUserReducer permet la saisie des infos email/password via les dispatch dans la page connection.
     function handleUserReducer(userState, action) {
         switch (action.type) {
             case "postEmail":
@@ -60,23 +49,30 @@ const Connection = () => {
         }
     }
 
-
-
     return (
         <div className='connection'>
-            {console.log(token, "1223")}
+
             <button className='connection_button' onClick={handleCLick}>CONNEXION</button>
+
             {showId &&
                 <div className="burger">
+
                     <div className="connection_pseudo">
-                        <input type="text" placeholder='Email' onChange={(event) => dispatch({ type: "postEmail", payload: event.target.value })} />
+                        <input type="text" placeholder='Email' onChange={(event) =>
+                            dispatch({ type: "postEmail", payload: event.target.value })} />
                     </div>
+
                     <div className="connection_password">
-                        <input type="password" placeholder='Password' onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} />
+                        <input type="password" placeholder='Password' onChange={(event) =>
+                            dispatch({ type: "postPassword", payload: event.target.value })} />
                     </div>
+
                     <p>{errorMailPassword}</p>
+
                     <div>
-                        <button className="fleche" onClick={postConnectUser} > <NavLink to="/recherche">✔</NavLink></button>
+                        <button className="fleche" onClick={postConnectUser}>
+                            <NavLink to="/recherche">✔</NavLink>
+                        </button>
                     </div>
 
                 </div>}

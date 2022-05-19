@@ -1,10 +1,9 @@
-import React, { useState, useReducer, useContext } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import UserContext from '../context/UserContext';
 
 
 const Interests = () => {
-    const { user, setUser, completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer } = useContext(UserContext)
+    const { dispatch } = useContext(UserContext)
 
 
 

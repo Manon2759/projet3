@@ -10,10 +10,9 @@ const Search = () => {
 
     return (
         <div className='search'>
-            {console.log(token, "toek")}
             <div className="search_preference">
                 <div className='label_preference'>
-                    <h2>Préférence: {token.email}</h2>
+                    <h2>Préférence: {token.id}</h2>
                     <img src='./assets/avatar_femme.png' alt='avatar' />
                     <img src='./assets/avatar_homme.png' alt='avatar' />
 
