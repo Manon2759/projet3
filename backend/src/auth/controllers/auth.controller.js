@@ -9,10 +9,10 @@ class AuthController {
     let user;
     try {
       user = await userModels.getUserByEmail(req.body.email);
-      console.log(user, "hduehdeu");
       const token = jwt.sign({
         email: req.body.email,
-
+        id: user[0].id,
+        pseudonyme: user[0].pseudonyme
       }, process.env.JWT_SECRET, { expiresIn: '6h' });
       res.cookie('jwt-token', token, { httpOnly: true }); // Pour que le token soit utiliser seulement côter serveur on ne peut pas le modifier  //
       res.status(200).send(token);

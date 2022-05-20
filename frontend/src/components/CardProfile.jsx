@@ -4,7 +4,7 @@ import Interests from './Interests';
 
 const CardProfile = () => {
 
-    const { putUser, token, dispatch, completeUser } = useContext(UserContext);
+    const { putUser, token, userDispatch, completeUser } = useContext(UserContext);
 
 
 
@@ -35,8 +35,8 @@ const CardProfile = () => {
                         <form>
                             <div className='description_cardProfile'>
                                 <label for="description">Décrivez-vous en quelques mots:</label>
-                                <textarea id="description" name="description" >
-                                </textarea>
+                                <input type="Text" onChange={(event) => userDispatch({ type: "postContent", payload: event.target.value })} id="description" name="description" />
+
                             </div>
 
                         </form>

@@ -15,11 +15,6 @@ class UserController {
       res.status(500).send(error.message);
     }
   }
-<<<<<<< HEAD
-  // Permet de lister la liste d'utilisateurs.
-
-  // Permet d'ajouter un utilisateur et sécuriser son password via Argon2
-=======
   // Permet de lister les utilisateurs.
 
 
@@ -35,7 +30,6 @@ class UserController {
   //Permet la selection d'un user via son Email
 
   // Permet d'ajouter un utilisateur et sécuriser son password via Argon2.
->>>>>>> b0dec46f4acdc2da9d38f2d51a2d6d2e57226dc6
   async addUser(req, res) {
     const {
       pseudonyme, email, date, id_train,
@@ -43,40 +37,21 @@ class UserController {
 
     try {
       const hashedPassword = await argon2.hash(req.body.password);
-<<<<<<< HEAD
-      const user = await userModel.addUser(pseudonyme, date, email, hashedPassword, picture, id_train);
-
-=======
       const user = await userModel.addUser(pseudonyme, date, email, hashedPassword, id_train);
->>>>>>> b0dec46f4acdc2da9d38f2d51a2d6d2e57226dc6
       res.status(200).send(user);
     } catch (error) {
       res.status(500).send(error.message);
     }
   }
-<<<<<<< HEAD
-  // Permet d'ajouter un utilisateur et sécuriser son password via Argon2
-
-  // Permet de mettre à jour un utilisateur
-  async updateUser(req, res) {
-    const { email, picture, id } = req.body;
-
-    try {
-      const hashedPassword = await argon2.hash(req.body.password);
-      const user = await userModel.updateUser(email, hashedPassword, picture, id);
-
-=======
   // Permet d'ajouter un utilisateur et sécuriser son password via Argon2.
 
   // Permet de mettre à jour un utilisateur
   async updateUser(req, res) {
-    const { email, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie } = req.body;
     try {
-      const hashedPassword = await argon2.hash(req.body.password);
+      if (req.body.password) { req.body.password = await argon2.hash(req.body.password) };
       const user = await userModel.updateUser(
-        email, hashedPassword, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie
+        req.body, req.body.id
       );
->>>>>>> b0dec46f4acdc2da9d38f2d51a2d6d2e57226dc6
       res.status(200).send(user);
     } catch (error) {
       res.status(500).send({ error: error.message });
