@@ -1,45 +1,43 @@
 import axios from 'axios';
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useContext } from 'react';
 import controlPassword from '../utils/ControlPassword';
 import { NavLink } from 'react-router-dom';
+import { decodeToken } from 'react-jwt';
+import UserContext from '../context/UserContext';
+
+
 
 const Connection = () => {
+    const { token, setToken } = useContext(UserContext)
     const [showId, setShowId] = useState(false);
-    const [identity, setIdentity] = useState("");
     const [errorMailPassword, setErrorMailPassword] = useState("")
-    const [visibility, setVisibility] = useState(false);
-    const [showEmail, setShowEmail] = useState(true);
-    const [showPassword, setShowPassword] = useState(true);
-
 
     const handleCLick = () => {
         setShowId(!showId)
     }
 
-    const userId = {
-        id: "",
+    // utilisation d'un reducer pour saisir les données puis les envoyer dans le back via axios.post
+    const userInfo = {
         email: "",
         password: "",
         id_train: "1"
     }
-    const [connectUser, dispatch] = useReducer(handleUserReducer, userId)
 
-    // const authorizationConnect = () => {
-    //     if (connectUser.email && connectUser.password === identity.res)
-    // } 
-
-
+    const [connectUser, dispatch] = useReducer(handleUserReducer, userInfo)
     const postConnectUser = () => {
+        // Utilisation de ControlPassword une regex qui permet de bloquer les mdp qui ne remplisse pas les critères
         if (controlPassword(connectUser.password)) {
-            axios.post(`http://localhost:5000/auth`, connectUser, { withCredentials: true })
+            axios.post(`http://localhost:5000/auth/login`, connectUser, { withCredentials: true })
                 .then(res => {
-                    console.log(res.data)
+                    const decodingToken = decodeToken(res.data);
+                    setToken(decodingToken)
+                    dispatch({ type: "changePseudonyme", payload: decodingToken.pseudonyme })
+                    console.log(decodeToken(res.data), "drtdt");
                 })
                 .catch(error => setErrorMailPassword(error.response.data.error))
         }
     }
-
-
+    // handleUserReducer permet la saisie des infos email/password via les dispatch dans la page connection.
     function handleUserReducer(userState, action) {
         switch (action.type) {
             case "postEmail":
@@ -51,23 +49,34 @@ const Connection = () => {
         }
     }
 
-
     return (
         <div className='connection'>
-            <div className='test'>
+
             <button className='connection_button' onClick={handleCLick}>CONNEXION</button>
-            </div>
+
             {showId &&
                 <div className="burger">
+
                     <div className="connection_pseudo">
-                        <input type="text"placeholder= {showEmail ? 'Email':"" } onClick ={() => setShowEmail(!showEmail)} onChange={(event) => dispatch({ type: "postEmail", payload: event.target.value })} />
+                        <input type="text" placeholder='Email' onChange={(event) =>
+                            dispatch({ type: "postEmail", payload: event.target.value })} />
                     </div>
+
                     <div className="connection_password">
-                        <input type="password" placeholder={showPassword ? 'Password' :""} onClick ={() => setShowPassword(!showPassword)} onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} />
+                        <input type="password" placeholder='Password' onChange={(event) =>
+                            dispatch({ type: "postPassword", payload: event.target.value })} />
                     </div>
+
                     <p>{errorMailPassword}</p>
+
                     <div>
+<<<<<<< HEAD
                         <button className="fleche" onClick={postConnectUser} > <NavLink to="/recherche">✔</NavLink></button>
+=======
+                        <button className="fleche" onClick={postConnectUser}>
+                            <NavLink to="/recherche">✔</NavLink>
+                        </button>
+>>>>>>> b0dec46f4acdc2da9d38f2d51a2d6d2e57226dc6
                     </div>
 
                 </div>}

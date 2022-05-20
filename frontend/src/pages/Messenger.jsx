@@ -1,5 +1,6 @@
 import React from 'react';
 import Chat from '../components/Chat';
+import ChatContact from '../components/ChatContact';
 import Header from '../components/Header'
 
 const Messenger = () => {
@@ -7,6 +8,7 @@ const Messenger = () => {
         <div>
             <Header />
             <Chat />
+            <ChatContact />
         </div>
     );
 };

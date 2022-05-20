@@ -12,7 +12,6 @@ const Inscription = () => {
     const [user, setUser] = useState("")
     const [visibility, setVisibility] = useState(false)
     const initialUser = {
-        id: "",
         pseudonyme: "",
         email: "",
         date: "",
@@ -24,7 +23,7 @@ const Inscription = () => {
         if (controlPassword(newUser.password)) {
             axios.post(`http://localhost:5000/users`, newUser)
                 .then(res => {
-                    // setUser(res.data)
+
                     console.log(res.data);
                 })
                 .catch(error => console.error(error))

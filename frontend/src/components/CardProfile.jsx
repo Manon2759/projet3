@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../context/UserContext';
 import Interests from './Interests';
 
 const CardProfile = () => {
+
+    const { putUser, token, dispatch, completeUser } = useContext(UserContext);
+
+
+
 
     return (
         <div className='container_bg'>
@@ -11,7 +17,7 @@ const CardProfile = () => {
 
                     <div className='cardProfile'>
                         <div className='pseudo_cardProfile'>
-                            <h1>Pseudonyme</h1>
+                            <h1>{token.pseudonyme}</h1>
                         </div>
                         <div className='img_pseudo_cardProfile'>
                             <div className='img_pseudo'>
@@ -35,7 +41,7 @@ const CardProfile = () => {
 
                         </form>
                         <div className='button_validation'>
-                            <button> ✔</button>
+                            <button onClick={putUser}> ✔</button>
                         </div>
                     </div>
 

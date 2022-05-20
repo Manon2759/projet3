@@ -18,20 +18,31 @@ const Header = () => {
         <header>
 
             <div className='header2'>
+                {menuBurger &&
+                    <div className='header2__links__burger'>
+                        <div>
+                            <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')} > Mon profil </NavLink>
+                        </div>
+                        <div>
+                            <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')} > Ma recherche </NavLink>
+                        </div>
+                        <div>
+                            <NavLink to='/' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')}> Deconnexion</NavLink>
+                        </div>
+                    </div>
+                }
+                <div className='button__burger'>
+                    <button onClick={handleClick} > <GiHamburgerMenu /></button>
+                </div>
 
-                {/* LOGO TRAINDER  */}
                 <div className='header2__logo'>
                     <div className='header2__logo__connection'> <LogoTrainder height='2rem' />
                     </div>
                 </div>
 
-                {/* ICON BOUTON BURGER */}
-                <div className='button__burger'>
-                    <button onClick={handleClick} > <GiHamburgerMenu /></button>
-                </div>
 
-                {/* LINKS GRAND ECRAN */}
-                <div className='header2__links'>
+                <div className='logo_connection'> <LogoTrainder height='3rem' /> </div>
+                <div className='links'>
                     <ul>
                         <li>
                             <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>

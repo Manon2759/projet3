@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import UserContext from '../context/UserContext';
 import Interests from './Interests';
 
 const Search = () => {
-
+    const { token } = useContext(UserContext)
     const [min, setMin] = useState(18)
     const [max, setMax] = useState(100)
 
 
     return (
         <div className='search'>
-
             <div className="search_preference">
                 <div className='label_preference'>
-                    <h2>Préférence: </h2>
+                    <h2>Préférence: {token.id}</h2>
                     <img src='./assets/avatar_femme.png' alt='avatar' />
                     <img src='./assets/avatar_homme.png' alt='avatar' />
 
@@ -36,10 +36,10 @@ const Search = () => {
                 <label for="train" className="label_train">N° de train :
                     <input type="number" className="input_train" />
                 </label>
-            </div> 
+            </div>
 
             <div className="submit">
-               <p>✔ </p>
+                <p>✔ </p>
             </div>
 
 
