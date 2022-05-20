@@ -7,12 +7,9 @@ import ProfilClient from './pages/ProfilClient';
 import Resultat from './pages/Resultat';
 import Recherche from './pages/Recherche';
 import Footer from './components/Footer';
-<<<<<<< HEAD
 import Messenger from './pages/Messenger';
-=======
 import UserContext from './context/UserContext';
 import axios from 'axios';
->>>>>>> b0dec46f4acdc2da9d38f2d51a2d6d2e57226dc6
 
 
 
@@ -81,8 +78,11 @@ const App = () => {
 
 
   return (
+     //utilisation du provider(context) pour l'utilisation des variables/fonctions utiles aux pages.
+    < UserContext.Provider value={{ completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer, token, setToken }
+    }>
+      <div className="App"></div>
 
-<<<<<<< HEAD
       <Router>
         <Routes>
           <Route path="/" element={<AccueilClient />} />
@@ -94,25 +94,8 @@ const App = () => {
         </Routes>
         <Footer />
       </Router>
-=======
-    //utilisation du provider(context) pour l'utilisation des variables/fonctions utiles aux pages.
-    < UserContext.Provider value={{ completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer, token, setToken }
-    }>
-      <div className="App">
-        <Router>
-          <Routes>
-            <Route path="/" element={<AccueilClient />} />
-            <Route path="/formulaire" element={<Formulaire />} />
-            <Route path="/profil" element={<ProfilClient />} />
-            <Route path="/resultat" element={<Resultat />} />
-            <Route path="/recherche" element={<Recherche />} />
-          </Routes>
-          <Footer />
-        </Router>
->>>>>>> b0dec46f4acdc2da9d38f2d51a2d6d2e57226dc6
-
-      </div>
-    </UserContext.Provider >
+      </UserContext.Provider >
+   
   );
 }
 

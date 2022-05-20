@@ -1,3 +1,20 @@
-.contact__box{
-    background-color:#fff;
+.contact__box {
+    background: #fff;
+    border: 1px solid black;
+    width: 30%;
+    height: 500px;
+    display: flex;
+
+
+
+    .contact__box1 {
+        p {
+            display: flex;
+            align-items: center;
+            border: 1px solid black;
+            margin-top: 2%;
+            width: 100%;
+
+        }
+    }
 }

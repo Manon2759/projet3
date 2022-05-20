@@ -70,13 +70,7 @@ const Connection = () => {
                     <p>{errorMailPassword}</p>
 
                     <div>
-<<<<<<< HEAD
                         <button className="fleche" onClick={postConnectUser} > <NavLink to="/recherche">✔</NavLink></button>
-=======
-                        <button className="fleche" onClick={postConnectUser}>
-                            <NavLink to="/recherche">✔</NavLink>
-                        </button>
->>>>>>> b0dec46f4acdc2da9d38f2d51a2d6d2e57226dc6
                     </div>
 
                 </div>}
