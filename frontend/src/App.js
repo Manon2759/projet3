@@ -27,6 +27,7 @@ const App = () => {
   // reducer pour l'update de l'utilisateur
   const completeUser = {
     id: token.id,
+    email: token.email,
     pseudonyme: token.pseudonyme,
     content: "",
     picture: "",
@@ -37,16 +38,16 @@ const App = () => {
     sport: false,
     nouvelle_technologie: false
   }
-  const [updateUser, dispatch] = useReducer(handleUserUpdateReducer, completeUser)
+  const [updateUser, userDispatch] = useReducer(handleUserUpdateReducer, completeUser)
 
   function handleUserUpdateReducer(userUpdateState, action) {
     switch (action.type) {
-      case "changePseudonyme":
-        return { ...userUpdateState, pseudonyme: action.payload }
+      case "changeInfoUser":
+        return { ...userUpdateState, ...action.payload }
       case "postPicture":
         return { ...userUpdateState, picture: action.payload }
-      case "postText":
-        return { ...userUpdateState, text: action.payload }
+      case "postContent":
+        return { ...userUpdateState, content: action.payload }
       case "postCinema":
         return { ...userUpdateState, cinema: !userUpdateState.cinema }
       case "postVoyage":
@@ -67,11 +68,7 @@ const App = () => {
 
   //appel à axios.put pour l'update de la bdd user.
   const putUser = () => {
-    axios.put(`http://localhost:5000/users`, updateUser)
-      .then(res => {
-        // setUser(res.data)
-        console.log(res.data, "fdfdf");
-      })
+    axios.put(`http://localhost:5000/users/${token.id}`, updateUser)
       .catch(error => console.error(error))
   }
 
@@ -79,7 +76,7 @@ const App = () => {
   return (
 
     //utilisation du provider(context) pour l'utilisation des variables/fonctions utiles aux pages.
-    < UserContext.Provider value={{ completeUser, updateUser, dispatch, putUser, handleUserUpdateReducer, token, setToken }
+    < UserContext.Provider value={{ completeUser, updateUser, userDispatch, putUser, handleUserUpdateReducer, token, setToken }
     }>
       <div className="App">
         <Router>

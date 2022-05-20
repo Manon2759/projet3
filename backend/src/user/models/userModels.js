@@ -33,7 +33,7 @@ class UserModel {
   async getUserByEmail(email) {
     try {
       const result = await this.connection.promise().query(
-        'SELECT email, id FROM user WHERE email = ?',
+        'SELECT email, id, pseudonyme FROM user WHERE email = ?',
         [email],
       );
       return result[0];
@@ -52,11 +52,11 @@ class UserModel {
       throw error;
     }
   }
-  async updateUser(email, password, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie) {
+  async updateUser(user, id) {
     try {
       const result = await this.connection.promise().query(
-        'UPDATE user SET email = ?, password = ?, picture = ?, content = ?, cinema = ?, voyage = ?, musique = ?, culture = ?, sport = ?, nouvelle_technologie = ? WHERE id = ?',
-        [email, password, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie],
+        'UPDATE user SET ? WHERE id = ?',
+        [user, id]
       );
       return result[0];
     } catch (error) {

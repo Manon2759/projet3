@@ -44,11 +44,11 @@ class UserController {
 
   // Permet de mettre à jour un utilisateur
   async updateUser(req, res) {
-    const { email, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie } = req.body;
     try {
-      const hashedPassword = await argon2.hash(req.body.password);
+      if (req.body.password) { req.body.password = await argon2.hash(req.body.password) };
+      console.log(req.body);
       const user = await userModel.updateUser(
-        email, hashedPassword, picture, id, content, cinema, voyage, musique, culture, sport, nouvelle_technologie
+        req.body, req.body.id
       );
       res.status(200).send(user);
     } catch (error) {

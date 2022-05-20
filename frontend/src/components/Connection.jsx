@@ -6,11 +6,11 @@ import { decodeToken } from 'react-jwt';
 import UserContext from '../context/UserContext';
 
 
-
 const Connection = () => {
-    const { token, setToken } = useContext(UserContext)
+    const { token, setToken, userDispatch } = useContext(UserContext)
     const [showId, setShowId] = useState(false);
     const [errorMailPassword, setErrorMailPassword] = useState("")
+
 
     const handleCLick = () => {
         setShowId(!showId)
@@ -30,9 +30,14 @@ const Connection = () => {
             axios.post(`http://localhost:5000/auth/login`, connectUser, { withCredentials: true })
                 .then(res => {
                     const decodingToken = decodeToken(res.data);
+                    const utilsInfo = {
+                        id: decodingToken.id,
+                        pseudonyme: decodingToken.pseudonyme,
+                        email: decodingToken.email
+                    }
                     setToken(decodingToken)
-                    dispatch({ type: "changePseudonyme", payload: decodingToken.pseudonyme })
-                    console.log(decodeToken(res.data), "drtdt");
+                    console.log(token, "toto");
+                    userDispatch({ type: "changeInfoUser", payload: utilsInfo })
                 })
                 .catch(error => setErrorMailPassword(error.response.data.error))
         }

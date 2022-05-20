@@ -16,7 +16,7 @@ router.post(
   ],
 );
 
-router.put('/:id', userController.updateUser);
+router.put('/:id', userMiddleware.checkPutUserInfo, userController.updateUser);
 
 router.delete('/:id', userController.deleteUser);
 
