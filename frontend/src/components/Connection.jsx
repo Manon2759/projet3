@@ -24,6 +24,7 @@ const Connection = () => {
     }
 
     const [connectUser, dispatch] = useReducer(handleUserReducer, userInfo)
+
     const postConnectUser = () => {
         // Utilisation de ControlPassword une regex qui permet de bloquer les mdp qui ne remplisse pas les critères
         if (controlPassword(connectUser.password)) {
@@ -53,6 +54,9 @@ const Connection = () => {
                 return userState
         }
     }
+
+
+
 
     return (
         <div className='connection'>
