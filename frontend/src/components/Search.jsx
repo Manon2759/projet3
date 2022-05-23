@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 import Interests from './Interests';
 
@@ -39,7 +40,7 @@ const Search = () => {
             </div>
 
             <div className="submit">
-                <p>✔ </p>
+                <NavLink to="/resultat"> <p>✔ </p></NavLink>
             </div>
 
 

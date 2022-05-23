@@ -36,7 +36,10 @@ const CardProfile = () => {
                             <div className='description_cardProfile'>
                                 <label for="description">Décrivez-vous en quelques mots:</label>
                                 <input type="Text" onChange={(event) => userDispatch({ type: "postContent", payload: event.target.value })} id="description" name="description" />
-
+                            </div>
+                            <div className='description_cardProfile'>
+                                <label for="localité">Localité</label>
+                                <input type="Text" onChange={(event) => userDispatch({ type: "postVille", payload: event.target.value })} id="localite" name="localité" />
                             </div>
 
                         </form>
