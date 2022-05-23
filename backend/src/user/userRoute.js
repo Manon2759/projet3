@@ -6,6 +6,11 @@ const router = express.Router();
 
 router.get('/', userController.listUser, userController.getUserByEmail);
 
+router.put('/uploads/:id', userController.storeFile)
+
+
+
+
 router.post(
   '/',
   [
