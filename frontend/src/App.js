@@ -36,7 +36,8 @@ const App = () => {
     musique: false,
     culture: false,
     sport: false,
-    nouvelle_technologie: false
+    nouvelle_technologie: false,
+    ville: ""
   }
   const [updateUser, userDispatch] = useReducer(handleUserUpdateReducer, completeUser)
 
@@ -48,6 +49,8 @@ const App = () => {
         return { ...userUpdateState, picture: action.payload }
       case "postContent":
         return { ...userUpdateState, content: action.payload }
+      case "postVille":
+        return { ...userUpdateState, ville: action.payload }
       case "postCinema":
         return { ...userUpdateState, cinema: !userUpdateState.cinema }
       case "postVoyage":
