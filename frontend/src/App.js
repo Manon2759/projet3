@@ -9,21 +9,26 @@ import Recherche from './pages/Recherche';
 import Footer from './components/Footer';
 import UserContext from './context/UserContext';
 import axios from 'axios';
+import SocketContext from './context/SocketContext';
+import Chat from './components/Chat';
+
 
 
 
 
 const App = () => {
+
   // Connection à socket.io relation front/back
   useEffect(() => {
     const socket = io('http://localhost:5000')
+    setSocketClient(socket)
     socket.on("connect", () => {
-      console.log("connected");
+      return () => { socketClient.on("Disconnect") }
     })
   }, [])
 
   const [token, setToken] = useState("");
-
+  const [socketClient, setSocketClient] = useState(null)
   // reducer pour l'update de l'utilisateur
   const completeUser = {
     id: token.id,
@@ -81,19 +86,25 @@ const App = () => {
     //utilisation du provider(context) pour l'utilisation des variables/fonctions utiles aux pages.
     < UserContext.Provider value={{ completeUser, updateUser, userDispatch, putUser, handleUserUpdateReducer, token, setToken }
     }>
-      <div className="App">
-        <Router>
-          <Routes>
-            <Route path="/" element={<AccueilClient />} />
-            <Route path="/formulaire" element={<Formulaire />} />
-            <Route path="/profil" element={<ProfilClient />} />
-            <Route path="/resultat" element={<Resultat />} />
-            <Route path="/recherche" element={<Recherche />} />
-          </Routes>
-          <Footer />
-        </Router>
 
-      </div>
+      < SocketContext.Provider value={{ socketClient, setSocketClient }
+      }>
+
+        <div className="App">
+          <Router>
+            <Routes>
+              <Route path="/" element={<AccueilClient />} />
+              <Route path="/formulaire" element={<Formulaire />} />
+              <Route path="/profil" element={<ProfilClient />} />
+              <Route path="/resultat" element={<Resultat />} />
+              <Route path="/recherche" element={<Recherche />} />
+              <Route path="/chat" element={<Chat />} />
+            </Routes>
+            <Footer />
+          </Router>
+
+        </div>
+      </SocketContext.Provider>
     </UserContext.Provider >
   );
 }
