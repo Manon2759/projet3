@@ -13,9 +13,6 @@ import SocketContext from './context/SocketContext';
 import Chat from './components/Chat';
 
 
-
-
-
 const App = () => {
 
   // Connection à socket.io relation front/back
@@ -29,6 +26,9 @@ const App = () => {
 
   const [token, setToken] = useState("");
   const [socketClient, setSocketClient] = useState(null)
+  const [input, setInput] = useState("")
+  const [messages, setMessages] = useState([])
+
   // reducer pour l'update de l'utilisateur
   const completeUser = {
     id: token.id,
@@ -87,7 +87,7 @@ const App = () => {
     < UserContext.Provider value={{ completeUser, updateUser, userDispatch, putUser, handleUserUpdateReducer, token, setToken }
     }>
 
-      < SocketContext.Provider value={{ socketClient, setSocketClient }
+      < SocketContext.Provider value={{ socketClient, setSocketClient, input, setInput, messages, setMessages }
       }>
 
         <div className="App">
