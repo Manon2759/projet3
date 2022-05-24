@@ -7,6 +7,7 @@ class AuthController {
   // Création du jeton token lors de la connection
   async signin(req, res) {
     let user;
+    let file;
     try {
       user = await userModels.getUserByEmail(req.body.email);
       const token = jwt.sign({

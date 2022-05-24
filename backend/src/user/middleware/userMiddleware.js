@@ -76,6 +76,7 @@ class UserMiddleware {
       res.status(409).send({ error: 'Pseudonyme already exist' });
     }
   }
+
 }
 
 module.exports = new UserMiddleware();
