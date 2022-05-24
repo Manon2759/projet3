@@ -8,8 +8,9 @@ const Chat = () => {
     return (
         <div>
             <Header />
-            <NewMessage />
             <Messages />
+            <NewMessage />
+
         </div>
     );
 };
