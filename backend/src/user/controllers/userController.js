@@ -6,6 +6,18 @@ const userModel = require('../models/userModels');
 // Communication du controleur avec le model
 
 class UserController {
+
+  storeFile(req, res) {
+    const file = req.files.myImage
+    const uploadPath = `./filesUploaded/${file.name}`
+
+    file.mv(uploadPath, (error) => {
+      return res.status(500).send(error)
+    })
+
+    res.status(200).send('File uploaded !')
+  }
+
   // Permet de lister les utilisateurs.
   async listUser(req, res) {
     try {
