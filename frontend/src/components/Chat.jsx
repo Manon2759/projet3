@@ -26,9 +26,13 @@ const Chat = () => {
 =======
         <div>
             <Header />
-            <NewMessage />
             <Messages />
+<<<<<<< HEAD
 >>>>>>> 614cf7514661b2f0ee756cb70a386bc492d1dd86
+=======
+            <NewMessage />
+
+>>>>>>> 679dfef3adca7f1f7a6434c2ea7ed87589a2aef4
         </div>
     );
 };

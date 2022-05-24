@@ -1,29 +1,37 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import SocketContext from '../context/SocketContext';
-import Header from './Header';
+
 
 
 const Messages = () => {
 
-    const [messages, setMessages] = useState([])
-    const { socketClient } = useContext(SocketContext)
+    const { socketClient, input, setInput, messages, setMessages } = useContext(SocketContext)
 
     useEffect(() => {
-        socketClient.on("message", (message) => {
-            setMessages(prevMessages => prevMessages.push(message))
-        })
-    }, [])
+        if (socketClient) {
+            socketClient.on("message", (message) => {
+                setMessages(...prevMessages => prevMessages.push(message))
+            })
+        }
+    }, [socketClient, setMessages])
+
+
+
 
     return (
         <div>
-            < Header />
-            {messages.map((message, index) => {
-                return <li key={index}>
-                    {message}
-                </li>
-            }
-            )}
-
+            <ul>
+                {messages.map(
+                    (message, index) => {
+                        return <li key={index}>
+                            {message}
+                        </li>
+                    }
+                )}
+            </ul>
+            <div>
+                <p>{input}</p>
+            </div>
         </div >
     );
 };
