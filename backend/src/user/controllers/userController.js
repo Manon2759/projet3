@@ -8,15 +8,34 @@ const userModel = require('../models/userModels');
 class UserController {
 
   storeFile(req, res) {
-    const file = req.files.myImage
-    const uploadPath = `./filesUploaded/${file.name}`
+    try {
+      if (!req.files) {
+        res.send({
+          status: false,
+          message: 'No file uploaded'
+        });
+      } else {
+        //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+        let file = req.files.myImage;
 
-    file.mv(uploadPath, (error) => {
-      return res.status(500).send(error)
-    })
+        //Use the mv() method to place the file in upload directory (i.e. "uploads")
+        file.mv('./filesUploaded/' + file.name);
 
-    res.status(200).send('File uploaded !')
-  }
+        //send response
+        res.send({
+          status: true,
+          message: 'File is uploaded',
+          data: {
+            name: `http://localhost:5000/${file.name}`,
+            mimetype: file.mimetype,
+            size: file.size
+          }
+        });
+      }
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
 
   // Permet de lister les utilisateurs.
   async listUser(req, res) {

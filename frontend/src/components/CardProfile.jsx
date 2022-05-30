@@ -1,13 +1,18 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import UserContext from '../context/UserContext';
 import Interests from './Interests';
 
+
 const CardProfile = () => {
 
-    const { putUser, token, userDispatch } = useContext(UserContext);
+    const { putUser, token, userDispatch, updateUser } = useContext(UserContext);
 
-    const [file, setFile] = useState(null)
+    const [file, setFile] = useState("")
+
+    useEffect(() => {
+        localStorage.setItem('updateUser', JSON.stringify(updateUser))
+    }, [updateUser])
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
@@ -19,8 +24,10 @@ const CardProfile = () => {
             }
         }
         axios.put(`http://localhost:5000/users/uploads/${token.id}`, formData, config)
-            .then(response => {
+            .then(res => {
                 alert("The file is successfully uploaded")
+                userDispatch({ type: "postPicture", payload: res.data.data.name })
+
             })
             .catch(error => { console.log(error) })
     }
@@ -44,11 +51,11 @@ const CardProfile = () => {
                         </div>
                         <div className='img_pseudo_cardProfile'>
                             <div className='img_pseudo'>
-                                <img src="../assets/profil.png" alt="Avatar profil" />
+                                <img src={updateUser.picture} alt="Avatar profil" />
                                 <h1>File Upload</h1>
                                 <form onSubmit={formSubmitHandler}>
-                                    <input type="file" name="myImage" onChange={changeImageHandler} accept='.jpg, .jpeg, .png' />
-                                    <button type="submit">Upload</button>
+                                    <input type="file" name="myImage" onChange={changeImageHandler} accept='.jpg, .jpeg, .png ' />
+                                    <button type="submit" >Upload</button>
                                 </form>
                             </div>
 

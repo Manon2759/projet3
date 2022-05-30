@@ -1,58 +1,40 @@
-.box {
-    background: #fff;
-    border: 1px solid black;
-    width: 70%;
-    height: 500px;
+.joinChatContainer {
     display: flex;
-
-
-
-    .box__chat {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-       .box__message{
-           border: 1px solid black;
-         
-       }
-
-
-
-
-
-
-        .box__send {
-            width: 100%;
-
-            .box__text {
-                width: 87.5%;
-                height: 35px;
-                margin: 1%;
-                border-radius: 30px;
-            }
-
-            .box__heart {
-
-                font-size: 30px;
-                border: none;
-                margin: 2%;
-                background: none;
-                cursor: pointer;
-
-
-
-
-
-            }
-        }
-    }
-
-
-
-
-
-
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  
+  
+  h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $blue-sayan;
+  }
+  input {
+    width: 210px;
+    height: 40px;
+    margin: 7px;
+    border: 2px solid #43a047;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+   button {
+    width: 225px;
+    height: 50px;
+    margin: 7px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    background: #43a047;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #2e7d32;
+  }
 }
+  

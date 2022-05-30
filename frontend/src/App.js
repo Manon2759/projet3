@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
-import React, { useEffect, useReducer, useState } from 'react';
+import React, {  useReducer, useState } from 'react';
 import Formulaire from './pages/Formulaire';
 import AccueilClient from './pages/AccueilClient';
 import ProfilClient from './pages/ProfilClient';
@@ -10,15 +10,25 @@ import Footer from './components/Footer';
 import UserContext from './context/UserContext';
 import axios from 'axios';
 import SocketContext from './context/SocketContext';
-import Chat from './components/Chat';
+import Chat from './pages/Chat';
+import ChatContext from './context/ChatContext';
 
+const socket = io.connect('http://localhost:5000')
 
 const App = () => {
+
+  // Connection à socket.io relation front/back
+
 
   const [token, setToken] = useState("");
   const [socketClient, setSocketClient] = useState(null)
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState([])
+  const [user, setUser] = useState([])
+
+  const [username, setUsername] = useState("")
+  const [room, setRoom] = useState("");
+  const [showChat, setShowChat] = useState(false)
 
   // Connection à socket.io relation front/back
   
@@ -46,7 +56,12 @@ const App = () => {
     nouvelle_technologie: false,
     ville: ""
   }
-  const [updateUser, userDispatch] = useReducer(handleUserUpdateReducer, completeUser)
+  const [updateUser, userDispatch] = useReducer(handleUserUpdateReducer, completeUser, () => {
+    const localData = localStorage.getItem('updateUser');
+    return localData ? JSON.parse(localData) : completeUser
+  })
+
+
 
   function handleUserUpdateReducer(userUpdateState, action) {
     switch (action.type) {
@@ -86,26 +101,55 @@ const App = () => {
   return (
 
     //utilisation du provider(context) pour l'utilisation des variables/fonctions utiles aux pages.
-    < UserContext.Provider value={{ completeUser, updateUser, userDispatch, putUser, handleUserUpdateReducer, token, setToken }
+    < UserContext.Provider value={{
+      completeUser,
+      updateUser,
+      userDispatch,
+      putUser,
+      handleUserUpdateReducer,
+      token,
+      setToken,
+      user,
+      setUser
+    }
     }>
+      < SocketContext.Provider
+        value={{
+          socketClient,
+          setSocketClient,
+          input,
+          setInput,
+          messages,
+          setMessages,
+          socket
+        }
+        }>
+        <ChatContext.Provider
+          value={{
+            username,
+            setUsername,
+            room,
+            setRoom,
+            showChat,
+            setShowChat
+          }
+          }>
 
-      < SocketContext.Provider value={{ socketClient, setSocketClient, input, setInput, messages, setMessages }
-      }>
+          <div className="App">
+            <Router>
+              <Routes>
+                <Route path="/" element={<AccueilClient />} />
+                <Route path="/formulaire" element={<Formulaire />} />
+                <Route path="/profil" element={<ProfilClient />} />
+                <Route path="/resultat" element={<Resultat />} />
+                <Route path="/recherche" element={<Recherche />} />
+                <Route path="/chat" element={<Chat />} />
+              </Routes>
+              <Footer />
+            </Router>
 
-        <div className="App">
-          <Router>
-            <Routes>
-              <Route path="/" element={<AccueilClient />} />
-              <Route path="/formulaire" element={<Formulaire />} />
-              <Route path="/profil" element={<ProfilClient />} />
-              <Route path="/resultat" element={<Resultat />} />
-              <Route path="/recherche" element={<Recherche />} />
-              <Route path="/chat" element={<Chat />} />
-            </Routes>
-            <Footer />
-          </Router>
-
-        </div>
+          </div>
+        </ChatContext.Provider>
       </SocketContext.Provider>
     </UserContext.Provider >
   );
