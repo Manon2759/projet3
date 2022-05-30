@@ -7,7 +7,6 @@ import ProfilClient from './pages/ProfilClient';
 import Resultat from './pages/Resultat';
 import Recherche from './pages/Recherche';
 import Footer from './components/Footer';
-import Messenger from './pages/Messenger';
 import UserContext from './context/UserContext';
 import axios from 'axios';
 import SocketContext from './context/SocketContext';
@@ -16,19 +15,21 @@ import Chat from './components/Chat';
 
 const App = () => {
 
-  // Connection à socket.io relation front/back
-  useEffect(() => {
-    const socket = io('http://localhost:5000')
-    setSocketClient(socket)
-    socket.on("connect", () => {
-      return () => { socketClient.on("Disconnect") }
-    })
-  }, [])
-
   const [token, setToken] = useState("");
   const [socketClient, setSocketClient] = useState(null)
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState([])
+
+  // Connection à socket.io relation front/back
+  
+      const connectionOptions = {
+        "force new connection": true,
+        "reconnectionAttempts": "Infinity",
+        "timeout": 10000,
+        "transports": ["websocket"]
+    };
+
+    const socket = io.connect('https://localhost:5000/', connectionOptions);
 
   // reducer pour l'update de l'utilisateur
   const completeUser = {
@@ -87,23 +88,6 @@ const App = () => {
     //utilisation du provider(context) pour l'utilisation des variables/fonctions utiles aux pages.
     < UserContext.Provider value={{ completeUser, updateUser, userDispatch, putUser, handleUserUpdateReducer, token, setToken }
     }>
-<<<<<<< HEAD
-      <div className="App"></div>
-
-      <Router>
-        <Routes>
-          <Route path="/" element={<AccueilClient />} />
-          <Route path ="/formulaire" element = {<Formulaire />} />
-          <Route path ="/profil" element = {<ProfilClient />} />
-          <Route path ="/resultat" element = {<Resultat />} />
-          <Route path ="/recherche" element = {<Recherche/>} />
-          <Route path ="/messenger" element = {<Messenger />} />
-        </Routes>
-        <Footer />
-      </Router>
-      </UserContext.Provider >
-   
-=======
 
       < SocketContext.Provider value={{ socketClient, setSocketClient, input, setInput, messages, setMessages }
       }>
@@ -124,7 +108,6 @@ const App = () => {
         </div>
       </SocketContext.Provider>
     </UserContext.Provider >
->>>>>>> 614cf7514661b2f0ee756cb70a386bc492d1dd86
   );
 }
 

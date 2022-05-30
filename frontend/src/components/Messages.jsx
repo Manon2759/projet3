@@ -9,8 +9,8 @@ const Messages = () => {
 
     useEffect(() => {
         if (socketClient) {
-            socketClient.on("message", (message) => {
-                setMessages(...prevMessages => prevMessages.push(message))
+            socketClient.on("message", (messages) => {
+                setMessages(...prevMessages => prevMessages.push(messages))
             })
         }
     }, [socketClient, setMessages])
@@ -20,15 +20,13 @@ const Messages = () => {
 
     return (
         <div>
-            <ul>
-                {messages.map(
-                    (message, index) => {
-                        return <li key={index}>
-                            {message}
-                        </li>
-                    }
-                )}
-            </ul>
+            {messages.map((message, index)=>{
+                return <ul key = {index}>
+                    <li>
+                     {message}   
+                    </li>
+                </ul>
+            })}
             <div>
                 <p>{input}</p>
             </div>
