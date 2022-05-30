@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FcLike } from 'react-icons/fc';
+import UserContext from '../context/UserContext';
 
 
 const Passport = () => {
     const [description, setDescription] = useState(false)
-    const [user, setUser] = useState([])
+    const { user, setUser } = useContext(UserContext)
 
     const changeTrue = () => {
         setDescription(true)
@@ -18,7 +19,6 @@ const Passport = () => {
         axios.get(`http://localhost:5000/users`)
             .then(res => {
                 setUser(res.data)
-                console.log(res.data, "Sokok")
             })
             .catch(error => {
                 console.error(error)

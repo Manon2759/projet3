@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import UserContext from '../context/UserContext';
 import Interests from './Interests';
@@ -9,6 +9,10 @@ const CardProfile = () => {
     const { putUser, token, userDispatch, updateUser } = useContext(UserContext);
 
     const [file, setFile] = useState("")
+
+    useEffect(() => {
+        localStorage.setItem('updateUser', JSON.stringify(updateUser))
+    }, [updateUser])
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
