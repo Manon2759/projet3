@@ -8,7 +8,7 @@ const Footer = () => {
         <footer>
             <div className='footer'>
 
-                <div> <LogoTrainder height='3rem' /> </div>
+                <div> <LogoTrainder height='2rem' /> </div>
 
                 <div className='footer__links'>
                     <NavLink to='/formulaire' className={({ isActive }) => 'nav-link' + (isActive ? '--active__footer' : '')} > Contact <span>|</span></NavLink>

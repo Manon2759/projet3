@@ -48,6 +48,7 @@
         display: flex;
         align-items: center;
         order: 2;
+        
 
         ul {
             display: flex;
@@ -90,13 +91,17 @@
         justify-content: center;
         width: 25%;
 
+        ul {
+            list-style: none;
+        }
+
         button {
             border: none;
             background: none;
             color: #fff;
             font-size: 13px;
             cursor: pointer;
-           
+
 
             @media screen and (max-width: 490px) {
                 font-size: 10px;
@@ -112,11 +117,11 @@
         }
 
         a {
-           
+
             margin-right: 15px;
             color: #fff;
             font-size: 13px;
-            
+
 
             @media screen and (max-width: 490px) {
                 font-size: 10px;
