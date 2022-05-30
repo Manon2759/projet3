@@ -30,6 +30,7 @@ class UserModel {
     }
   }
   // Ajout d'un utilisateur
+
   async getUserByEmail(email) {
     try {
       const result = await this.connection.promise().query(
