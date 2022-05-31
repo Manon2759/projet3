@@ -4,7 +4,7 @@
 
 }
 
-.bg_video {
+.bg__video {
     position: absolute;
     height: 80vh;
     width: 100%;
@@ -14,6 +14,7 @@
         object-fit: cover;
     }
 }
+
 .inscription {
     height: 100vh;
     width: 100%;
@@ -23,7 +24,18 @@
     padding: 5% 5%;
     background-color: rgba(0, 0, 0, 0.425);
 
-    .inscription_main {
+    ::placeholder {
+        color: rgba(255, 255, 255, 0.73);
+
+    }
+
+    @media screen and (max-width: 705px) {
+        h1 {
+            margin-top: 30%;
+        }
+    }
+
+    &__main {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -61,6 +73,11 @@
         border-style: none;
         margin-top: -50px;
         cursor: pointer;
+
+        @media screen and (max-width: 705px) {
+            margin-top: 5%;
+        }
+
     }
 
     .inscription_button {
@@ -89,28 +106,49 @@
         margin-top: 45px;
     }
 
-    label {
-        margin-top: 4px;
-        font-size: 1.2rem;
-        text-align: left;
-        width: 170px;
-    }
 
-    .inscription_password button {
+    &__password button {
         background-color: rgba(255, 235, 205, 0);
         border-style: none;
         color: white;
         font-size: 1.5rem;
         cursor: pointer;
+        width: 50%;
+
     }
 
-    input,
-    #pseudo,
-    #date,
-    #mail,
-    #password {
-        text-align: center;
-        margin: auto;
-        width: 80%;
+    .inscription__pseudo,
+    .inscription__date,
+    .inscription__mail,
+    .inscription__password {
+        text-align: start;
+        display: flex;
+        margin-bottom: 6%;
+        border-bottom: 1px solid #fff;
+        width: 35%;
+
+        @media screen and (max-width: 630px) {
+            width: 40%;
+
+        }
+
+        input {
+            color: rgba(255, 255, 255, 0.73);
+            border-style: none;
+            background-color: rgba(255, 235, 205, 0);
+            font-size: 18px;
+
+            &:focus {
+                outline: none;
+                border: none;
+
+            }
+
+            &__date {
+                input {
+                    margin-right: 10%;
+                }
+            }
+        }
     }
 }

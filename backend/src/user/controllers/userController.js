@@ -1,8 +1,10 @@
 /* eslint-disable class-methods-use-this */
 const argon2 = require('argon2');
+
 // Communication du controleur avec le model
 const userModel = require('../models/userModels');
 // Communication du controleur avec le model
+
 class UserController {
 
   storeFile(req, res) {
@@ -63,9 +65,11 @@ class UserController {
     const {
       pseudonyme, email, date, id_train,
     } = req.body;
+
     try {
       const hashedPassword = await argon2.hash(req.body.password);
-      const user = await userModel.addUser(pseudonyme, date, email, hashedPassword, id_train);
+      const user = await userModel.addUser(pseudonyme, date, email, hashedPassword, picture, id_train);
+
       res.status(200).send(user);
     } catch (error) {
       res.status(500).send(error.message);
@@ -91,6 +95,7 @@ class UserController {
   async deleteUser(req, res) {
     try {
       const deleteUser = await userModel.deleteUser(req.params.id);
+
       res.status(200).send(deleteUser);
     } catch (error) {
       res.status(500).send({ error: error.message });
@@ -100,4 +105,5 @@ class UserController {
 
 
 }
+
 module.exports = new UserController();

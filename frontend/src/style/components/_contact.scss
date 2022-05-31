@@ -1,17 +1,10 @@
 .box_principal {
     display: flex;
     justify-content: center;
-
-
-    .maps {
-        width: 100%;
-        max-height: 100%;
-        position: relative;
-
-
-
-    }
-
+    background-image: url(/assets/connexion.png);
+    box-sizing: border-box;
+    background-size: cover;
+    background-attachment: fixed;
 
     .container {
         width: 500px;
@@ -21,9 +14,15 @@
         border-radius: px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
         padding: 30px 50px;
-        z-index: 1;
-        position: absolute;
         margin-top: 50px;
+        margin-bottom: 10%;
+
+        @media screen and (max-width: 550px) {
+            width: 400px;
+        }
+        @media screen and (max-width: 380px) {
+            width: 350px;
+        }
 
         .title-1 {
             background-image: linear-gradient(to bottom,

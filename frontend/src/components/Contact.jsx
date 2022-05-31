@@ -4,7 +4,6 @@ const Contact = () => {
     return (
         <div className='box_principal'>
 
-            <img className='maps' src='/assets/connexion.png' alt='' />
             <div className="container">
                 <h1 className="title title-1">Contact</h1>
 

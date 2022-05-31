@@ -1,92 +1,147 @@
-
-
 .header2 {
     display: flex;
     justify-content: space-between;
     height: 90px;
     background-color: $blue-bg;
+    width: 100%;
 
-    .button__burger {
-        display: flex;
-        justify-content: center;
-     
-    
-        .button {
-            background: none;
-            color: white;
-            border: none;
-        }
-    
-        @media screen and (min-width: 704px) {
-            display: none;
-        }
-    }
+    // LOGO + BOUTON BURGER
 
-    &__logo {
+    .header2__logo {
         order: 1;
         display: flex;
+        justify-content: flex-start;
         align-items: center;
         margin-left: 15px;
-    }
-
-    &__links__burger {
-        display: flex;
-        flex-direction: column;
-        order: 3;
-        text-align: center;
-
-
-        a {
-            text-decoration: none;
-            margin-right: 15px;
-
-
-        }
-    }
-
-    &__links {
-        display: flex;
-        margin-right: 2%;
-        justify-content: space-between;
-        margin-top: 20px;
-        order: 2;
 
         &__logo__connection {
             display: flex;
             margin-left: 3%;
+            justify-content: flex-end;
         }
+    }
 
-        @media screen and (max-width: 705px) {
-            display: none;
+    .button__burger {
+        display: flex;
+        order: 3;
+
+        button {
+            font-size: 30px;
+            background: none;
+            border-style: none;
+            color: #fff;
+            margin: -9px 11px -4px 0;
+
+            @media screen and (max-width: 490px) {
+                font-size: 20px;
+            }
+
+            @media screen and (min-width: 705px) {
+                display: none;
+            }
         }
+    }
 
-        ul{
+    //  LINKS GRAND ECRAN
+
+    &__links {
+        display: flex;
+        align-items: center;
+        order: 2;
+        
+
+        ul {
             display: flex;
             flex-direction: row;
             list-style: none;
-        
 
-        a {
-            margin: 10px;
-            padding: 20px;
-            border-radius: 4px;
-            font-size: 16px;
-            text-decoration: none;
-            color: #fff;
-            cursor: pointer;
+            a {
+                margin: 10px;
+                padding: 20px;
+                border-radius: 4px;
+                font-size: 16px;
+                text-decoration: none;
+                color: #fff;
+                cursor: pointer;
+
+                @media screen and (max-width: 705px) {
+                    display: none;
+                }
+            }
+
+            button {
+                border: none;
+                background: none;
+                color: #fff;
+                font-size: 16px;
+                cursor: pointer;
+
+                @media screen and (max-width: 705px) {
+                    display: none;
+                }
+            }
         }
-        button{
+    }
+
+    // LINKS PETIT ECRAN 
+    &__links__burger {
+        display: flex;
+        flex-direction: column;
+        order: 2;
+        justify-content: center;
+        width: 25%;
+
+        ul {
+            list-style: none;
+        }
+
+        button {
             border: none;
             background: none;
             color: #fff;
-            font-size: 16px;
-            cursor:pointer;
-            ;
+            font-size: 13px;
+            cursor: pointer;
+
+
+            @media screen and (max-width: 490px) {
+                font-size: 10px;
+            }
+
+            @media screen and (max-width: 315px) {
+                font-size: 8px;
+            }
+
+            @media screen and (max-width: 265px) {
+                font-size: 7px;
+            }
+        }
+
+        a {
+
+            margin-right: 15px;
+            color: #fff;
+            font-size: 13px;
+
+
+            @media screen and (max-width: 490px) {
+                font-size: 10px;
+            }
+
+            @media screen and (max-width: 315px) {
+                font-size: 8px;
+            }
+
+            @media screen and (max-width: 265px) {
+                font-size: 7px;
+            }
+
+
         }
     }
-    }
 
-    .nav-link  {
+    // BORDER SOUS LINKS GRAND ECRAN 
+
+    .nav-link {
         &--active {
             border-bottom: 6px solid #8de8fe;
 

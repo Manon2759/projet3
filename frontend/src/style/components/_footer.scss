@@ -1,42 +1,50 @@
 .footer {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    margin: 0;
+    justify-content: space-between;
+    margin: 1% 1%;
     padding: 0;
     background-color: $blue_bg;
+    height: 80px;
 
     img {
         width: 349px;
         height: 160px;
     }
-    p {
-        font-size: 20px;
-        color: #fff;
-        font-family: "Avenir", "sans-serif" ;
 
+    &__links {
+        span {
+            margin-left: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-family: $police_avenir;
+            font-size: 20px;
+            padding: 9px;
+
+            @media screen and (max-width: 705px) {
+                font-size: 15px;
+            }
+            
+            @media screen and (max-width: 550px) {
+               display: flex;
+               flex-wrap: wrap;
+            }
+        }
     }
-    .links_footer {
-    
-        display: flex;
-        justify-content: space-between;
-        width: 240px;
-        text-decoration: none;
+
+    &__logos__sociaux {
+        a {
+            color: #fff;
+            font-size: 30px;
+            padding: 10px;
+
+            @media screen and (max-width: 705px) {
+                font-size: 19px;
+                padding: 7px;
+            }
+        }
     }
-   span {
-       margin-left: 8px;
-   }
-  .link {
-      text-decoration: none;
-      color: #fff;
-      font-family:$police_avenir;
-      font-size: 17px;
-  } 
-  
-  a {
-    text-decoration: none;
-    color:#fff;
-    font-family:$police_avenir;
-    font-size: 20px;
-  }
 }

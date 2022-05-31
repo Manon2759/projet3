@@ -18,30 +18,21 @@ const Header = () => {
         <header>
 
             <div className='header2'>
-                {menuBurger &&
-                    <div className='header2__links__burger'>
-                        <div>
-                            <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')} > Mon profil </NavLink>
-                        </div>
-                        <div>
-                            <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')} > Ma recherche </NavLink>
-                        </div>
-                        <div>
-                            <NavLink to='/' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')}> Paramétres</NavLink>
-                        </div>
+
+                {/* LOGO TRAINDER  */}
+                <div className='header2__logo'>
+                    <div className='header2__logo__connection'> <LogoTrainder height='2rem' />
                     </div>
-                }
+                </div>
+
+                {/* ICON BOUTON BURGER */}
+                {!menuBurger &&
                 <div className='button__burger'>
                     <button onClick={handleClick} > <GiHamburgerMenu /></button>
-                </div>
+                </div>}
 
-                <div className='header2__logo'>
-                    <div className='header2__logo__after__connection'> <LogoTrainder height='3rem' /> </div>
-                </div>
-
-
-                <div className='logo_connection'> <LogoTrainder height='3rem' /> </div>
-                <div className='links'>
+                {/* LINKS GRAND ECRAN */}
+                <div className='header2__links'>
                     <ul>
                         <li>
                             <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Mon profil </NavLink>
@@ -54,6 +45,23 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
+
+                {/*LINKS PETIT ECRAN AVEC BURGER */}
+                {menuBurger &&
+                    <div className='header2__links__burger'>
+                        <ul>
+                            <li>
+                                <NavLink to='/profil' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')} > Mon profil </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active_burger' : '')} > Ma recherche </NavLink>
+                            </li>
+                            <li>
+                                <button onClick={() => { logout("/") }} >Deconnexion</button>
+                            </li>
+                        </ul>
+                    </div>
+                }
             </div>
         </header>
     );
