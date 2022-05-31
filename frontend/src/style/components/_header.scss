@@ -20,6 +20,7 @@
             justify-content: flex-end;
         }
     }
+   
 
     .button__burger {
         display: flex;
@@ -44,44 +45,18 @@
 
     //  LINKS GRAND ECRAN
 
-    &__links {
+    .links {
         display: flex;
         align-items: center;
         order: 2;
 
-        ul {
-            display: flex;
-            flex-direction: row;
-            list-style: none;
-
-            a {
-                margin: 10px;
-                padding: 20px;
-                border-radius: 4px;
-                font-size: 16px;
-                text-decoration: none;
-                color: #fff;
-                cursor: pointer;
-
-                @media screen and (max-width: 705px) {
-                    display: none;
-                }
-            }
-
-            button {
-                border: none;
-                background: none;
-                color: #fff;
-                font-size: 16px;
-                cursor: pointer;
-
-                @media screen and (max-width: 705px) {
-                    display: none;
-                }
-            }
+        .links_parametre{
+        border-style: none;
+            color: #fff;
         }
-    }
 
+    }
+   
     // LINKS PETIT ECRAN 
     &__links__burger {
         display: flex;

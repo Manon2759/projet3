@@ -52,10 +52,10 @@ const CardProfile = () => {
                         <div className='img_pseudo_cardProfile'>
                             <div className='img_pseudo'>
                                 <img src={updateUser.picture} alt="Avatar profil" />
-                                <h1>File Upload</h1>
+                                <h1>Choississez votre photo ici :</h1>
                                 <form onSubmit={formSubmitHandler}>
                                     <input type="file" name="myImage" onChange={changeImageHandler} accept='.jpg, .jpeg, .png ' />
-                                    <button type="submit" >Upload</button>
+                                    <button type="submit" >Envoyer</button>
                                 </form>
                             </div>
 
@@ -65,27 +65,27 @@ const CardProfile = () => {
 
                         </div>
                     </div>
-                </div>
 
-                <div className='card__interests'>
-                    {/* Composant Chexbox des centres d'interêts */}
-                    <Interests />
-                    <form>
-                        <div className='description_cardProfile'>
-                            <label for="description">Décrivez-vous en quelques mots:</label>
-                            <input type="Text" onChange={(event) => userDispatch({ type: "postContent", payload: event.target.value })} id="description" name="description" />
-                        </div>
-                        <div className='description_cardProfile'>
-                            <label for="localité">Localité</label>
-                            <input type="Text" onChange={(event) => userDispatch({ type: "postVille", payload: event.target.value })} id="localite" name="localité" />
-                        </div>
 
-                    </form>
-                    <div className='button_validation'>
-                        <button onClick={putUser}> ✔</button>
+                    <div className='card__interests'>
+                        {/* Composant Chexbox des centres d'interêts */}
+                        <Interests />
+                        <form>
+                            <div className='description_cardProfile'>
+                                <label for="description">Décrivez-vous en quelques mots:</label>
+                                <input className='describe' type="Text" onChange={(event) => userDispatch({ type: "postContent", payload: event.target.value })} id="description" name="description" />
+                            </div>
+                            <div className='description_cardProfile'>
+                                <label for="localité">Localité</label>
+                                <input type="Text" onChange={(event) => userDispatch({ type: "postVille", payload: event.target.value })} id="localite" name="localité" />
+                            </div>
+
+                        </form>
+                        <div className='button_validation'>
+                            <button onClick={putUser}> ✔</button>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
