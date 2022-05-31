@@ -46,10 +46,18 @@
     //  LINKS GRAND ECRAN
 
     .links {
-        display: flex;
-        align-items: center;
+        
+        width: 70%;
+        color: #fff;
         order: 2;
             margin-right: 2%;
+            ul{
+                list-style: none;
+                padding-top: 3%;
+                display: flex;
+                justify-content: space-around;
+            }
+
 
         .links_parametre{
         border-style: none;
@@ -106,14 +114,15 @@
                 font-size: 7px;
             }
 
-
         }
     }
 
     // BORDER SOUS LINKS GRAND ECRAN 
 
     .nav-link {
+        color: #fff;
         &--active {
+            
             border-bottom: 6px solid #8de8fe;
 
         }

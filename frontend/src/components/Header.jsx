@@ -40,15 +40,12 @@ const Header = () => {
                     </div>
                 </div>
 
-<<<<<<< HEAD
-=======
                 {/* ICON BOUTON BURGER */}
                 {!menuBurger &&
                     <div className='button__burger'>
                         <button onClick={handleClick} > <GiHamburgerMenu /></button>
                     </div>
                 }
->>>>>>> 82ccd356d205c5cd17e1e40f95ef7e6e3df9931c
 
                 <div className='logo_connection'> <LogoTrainder height='3rem' /> </div>
                 <div className='links'>
@@ -60,7 +57,7 @@ const Header = () => {
                             <NavLink to='/recherche' className={({ isActive }) => 'nav-link' + (isActive ? '--active' : '')} > Ma recherche </NavLink>
                         </li>
                         <li>
-                             <button onClick={() => { logout("/") }} >Paramètres</button> 
+                            <button onClick={() => { logout("/") }} >Paramètres</button>
                         </li>
                     </ul>
                 </div>
