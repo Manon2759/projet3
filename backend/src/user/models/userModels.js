@@ -21,11 +21,11 @@ class UserModel {
   // Permet d'afficher la liste d'utilisateur
 
   // Ajout d'un utilisateur
-  async addUser(pseudonyme, email, hashedPassword, picture, id_train) {
+  async addUser(pseudonyme, date, email, hashedPassword, picture, id_train) {
     try {
       const result = await this.connection.promise().query(
-        'INSERT INTO user(pseudonyme, email, password, picture, id_train) VALUES (?, ?, ?, ?, ?)',
-        [pseudonyme, email, hashedPassword, picture, id_train],
+        'INSERT INTO user(pseudonyme, email, date, password, picture, id_train) VALUES (?, ?, ?, ?, ?, ?)',
+        [pseudonyme, email, date, hashedPassword, picture, id_train],
       );
       return result[0];
     } catch (error) {

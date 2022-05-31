@@ -1,14 +1,12 @@
 const Joi = require('joi');
 const { joiPassword } = require('joi-password');
 const userModel = require('../models/userModels');
-
 class UserMiddleware {
   // Controle le password
   checkIdentity(req, res, next) {
     const {
       pseudonyme, email, password, picture,
     } = req.body;
-
     const { error } = Joi.object({
       pseudonyme: Joi.string().max(150).required(),
       email: Joi.string().email().max(255).required(),
@@ -23,14 +21,12 @@ class UserMiddleware {
     }).validate({
       pseudonyme, email, password, picture,
     }, { abortEarly: false });
-
     if (error) {
       res.status(422).json({ validationErrors: error.details });
     } else {
       next();
     }
   }
-
   async checkEmail(req, res, next) {
     const { email } = req.body;
     const result = await userModel.getUserByEmail(email);
@@ -40,7 +36,6 @@ class UserMiddleware {
       res.status(409).send({ error: 'Email already exist' });
     }
   }
-
   async checkPseudonyme(req, res, next) {
     const { pseudonyme } = req.body;
     const result = await userModel.getUserByPseudonyme(pseudonyme);
@@ -52,5 +47,4 @@ class UserMiddleware {
     }
   }
 }
-
 module.exports = new UserMiddleware();
