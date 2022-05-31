@@ -3,6 +3,7 @@ import ChatMessages from '../components/ChatMessages';
 import ChatContext from '../context/ChatContext';
 import SocketContext from '../context/SocketContext';
 import UserContext from '../context/UserContext';
+import Header from '../components/Header'
 
 
 
@@ -23,22 +24,27 @@ const Chat = () => {
             {!showChat ? (
                 <div className="joinChatContainer">
                     <h3>Rejoindre le chat</h3>
-                    <input
-                        type="text"
-                        placeholder="pseudo"
-                        onChange={(event) => {
-                            setUsername(event.target.value)
-                        }} />
-                    <input type="text" placeholder="Room ID..."
-                        onChange={(event) => {
-                            setRoom(event.target.value)
-                        }}
-                    />
-                    <button onClick={joinRoom}>Rejoindre Room</button>
+                    <div className='chatBLoc'>
+                        <input
+                            type="text"
+                            placeholder="pseudo"
+                            onChange={(event) => {
+                                setUsername(event.target.value)
+                            }} />
+                        <input type="text" placeholder="Room ID..."
+                            onChange={(event) => {
+                                setRoom(event.target.value)
+                            }}
+                        />
+                        <button onClick={joinRoom}>Rejoindre Room</button>
+                    </div>
                 </div>
 
             ) : (
+
+
                 <ChatMessages />
+
             )}
         </div>
 
