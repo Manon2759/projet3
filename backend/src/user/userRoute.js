@@ -4,12 +4,8 @@ const userMiddleware = require('./middleware/userMiddleware');
 
 const router = express.Router();
 
-router.get('/', userController.listUser, userController.getUserByEmail);
-
-router.put('/uploads/:id', userController.storeFile)
-
-
-
+router.get('/', userController.listUser);
+router.get('/train/:id_train', userController.getUserByTrain)
 
 router.post(
   '/',
@@ -21,6 +17,7 @@ router.post(
   ],
 );
 
+router.put('/uploads/:id', userController.storeFile)
 router.put('/:id', userMiddleware.checkPutUserInfo, userController.updateUser);
 
 router.delete('/:id', userController.deleteUser);

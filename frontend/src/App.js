@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import Formulaire from './pages/Formulaire';
 import AccueilClient from './pages/AccueilClient';
 import ProfilClient from './pages/ProfilClient';
@@ -12,6 +12,7 @@ import axios from 'axios';
 import SocketContext from './context/SocketContext';
 import Chat from './pages/Chat';
 import ChatContext from './context/ChatContext';
+
 
 const socket = io.connect('http://localhost:5000')
 
@@ -35,6 +36,7 @@ const App = () => {
     id: token.id,
     email: token.email,
     pseudonyme: token.pseudonyme,
+    id_train: "",
     content: "",
     picture: "",
     cinema: false,
@@ -60,6 +62,8 @@ const App = () => {
         return { ...userUpdateState, picture: action.payload }
       case "postContent":
         return { ...userUpdateState, content: action.payload }
+      case "postTrain":
+        return { ...userUpdateState, id_train: action.payload }
       case "postVille":
         return { ...userUpdateState, ville: action.payload }
       case "postCinema":
@@ -82,8 +86,8 @@ const App = () => {
 
   //appel à axios.put pour l'update de la bdd user.
   const putUser = () => {
-    axios.put(`http://localhost:5000/users/${token.id}`, updateUser)
-      .catch(error => console.error(error))
+    return axios.put(`http://localhost:5000/users/${token.id}`, updateUser)
+
   }
 
 

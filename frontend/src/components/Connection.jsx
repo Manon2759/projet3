@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useReducer, useState, useContext } from 'react';
 import controlPassword from '../utils/ControlPassword';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { decodeToken } from 'react-jwt';
 import UserContext from '../context/UserContext';
 
@@ -10,6 +10,7 @@ const Connection = () => {
     const { token, setToken, userDispatch } = useContext(UserContext)
     const [showId, setShowId] = useState(false);
     const [errorMailPassword, setErrorMailPassword] = useState("")
+    const navigate = useNavigate()
 
 
     const handleCLick = () => {
@@ -39,6 +40,7 @@ const Connection = () => {
                     setToken(decodingToken)
                     console.log(token, "toto");
                     userDispatch({ type: "changeInfoUser", payload: utilsInfo })
+                    navigate("/recherche")
                 })
                 .catch(error => setErrorMailPassword(error.response.data.error))
         }
@@ -73,7 +75,9 @@ const Connection = () => {
 
                     <div className="connection_password">
                         <input type="password" placeholder='Password' onChange={(event) =>
-                            dispatch({ type: "postPassword", payload: event.target.value })} />
+                            dispatch({ type: "postPassword", payload: event.target.value })} onKeyPress={(event) => {
+                                event.key === "Enter" && postConnectUser();
+                            }} required />
                     </div>
 
                     <p>{errorMailPassword}</p>

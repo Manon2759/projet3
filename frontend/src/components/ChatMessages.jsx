@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SocketContext from '../context/SocketContext';
 import ChatContext from '../context/ChatContext';
-import axios from 'axios';
 import UserContext from '../context/UserContext';
+import axios from 'axios';
+import Passport from './Passport';
 
 const ChatMessages = () => {
-    const { username, room } = useContext(ChatContext)
+    const { username, setUsername, room } = useContext(ChatContext)
     const { socket } = useContext(SocketContext)
-    const { user, setUser } = useContext(UserContext)
-
+    const { user, setUser, token, updateUser } = useContext(UserContext)
+    console.log(user)
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([])
 
@@ -16,7 +17,7 @@ const ChatMessages = () => {
         if (currentMessage !== "") {
             const messageData = {
                 room: room,
-                author: username,
+                author: token.pseudonyme,
                 message: currentMessage,
                 time:
                     new Date(Date.now()).getHours() +
@@ -38,6 +39,17 @@ const ChatMessages = () => {
         });
     }, [socket]);
 
+    useEffect(() => {
+        axios.get(`http://localhost:5000/users/train/${updateUser.id_train}`)
+            .then(res => {
+                setUser(res.data)
+                console.log(res.data, "okoko")
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }, [])
+
     return (
         <div className="chat-window">
             <div className="chat-header">
@@ -49,7 +61,7 @@ const ChatMessages = () => {
                         return (
                             <div
                                 className="message"
-                                id={username === messageContent.author ? "you" : "other"}
+                                id={token.pseudonyme === messageContent.author ? "you" : "other"}
                             >
                                 <div>
                                     <div className="message-content">
@@ -79,6 +91,7 @@ const ChatMessages = () => {
                 />
                 <button onClick={sendMessage}>&#9658;</button>
             </div>
+
         </div>
     );
 };

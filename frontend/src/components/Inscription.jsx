@@ -4,6 +4,7 @@ import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3
 import { IoIosEye } from 'react-icons/io';
 import axios from 'axios';
 import controlPassword from '../utils/ControlPassword';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,6 +12,7 @@ const Inscription = () => {
 
     const [user, setUser] = useState("")
     const [visibility, setVisibility] = useState(false)
+    const navigate = useNavigate()
     const initialUser = {
         pseudonyme: "",
         email: "",
@@ -25,19 +27,33 @@ const Inscription = () => {
         return Math.abs(age.getUTCFullYear() - 1970);
     }
 
+
     const [newUser, dispatch] = useReducer(handleUserReducer, initialUser)
+
+    const checkInput = () => {
+        let inputBoolean = false
+        for (let obligation in newUser) {
+            if (obligation === "") {
+                inputBoolean = true
+            }
+        }
+        if (inputBoolean) {
+            alert('test')
+        } else { postCreateUser() }
+    }
+
     const postCreateUser = () => {
         if (getAge(new Date(newUser.date)) >= 18) {
             if (controlPassword(newUser.password)) {
                 axios.post(`http://localhost:5000/users`, newUser)
                     .then(res => {
-
+                        navigate("/profil")
                         console.log(res.data);
                     })
                     .catch(error => console.error(error))
-            }
+            } else { alert("Le format du mot de passe est incorrecte (min 8 caractère 1 maj 1 caractère special et 1 chiffre minimum)") }
         }
-        else { alert("Pas content") }
+        else { alert("Tu n'es pas encore majeure") }
     }
 
 
@@ -93,12 +109,14 @@ const Inscription = () => {
                     <div className="inscription_password">
                         <label for="password" id="label_password" >Mot de passe  </label>
 
-                        <input type={visibility ? "text" : "password"} id="password" name="Password" onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} required />
+                        <input type={visibility ? "text" : "password"} id="password" name="Password" onChange={(event) => dispatch({ type: "postPassword", payload: event.target.value })} onKeyPress={(event) => {
+                            event.key === "Enter" && checkInput();
+                        }} required />
 
                         <button onClick={() => setVisibility(!visibility)} href="https://react-icons.github.io/react-icons/search?q=eyes" > <IoIosEye /> </button>
                     </div>
                     <div>
-                        <button className="fleche" onClick={postCreateUser} >✔</button>
+                        <button className="fleche" onClick={checkInput} >✔</button>
                     </div>
 
                 </div>

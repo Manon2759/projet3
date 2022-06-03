@@ -10,9 +10,7 @@ const CardProfile = () => {
 
     const [file, setFile] = useState("")
 
-    useEffect(() => {
-        localStorage.setItem('updateUser', JSON.stringify(updateUser))
-    }, [updateUser])
+
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
