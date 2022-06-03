@@ -6,7 +6,7 @@ import UserContext from '../context/UserContext';
 
 
 const Search = () => {
-    const { userDispatch, putUser } = useContext(UserContext)
+    const { userDispatch, putUser, updateUser } = useContext(UserContext)
     const { setRoom, room } = useContext(ChatContext)
     const { socket } = useContext(SocketContext)
     const navigate = useNavigate()
@@ -14,12 +14,10 @@ const Search = () => {
     // const [max, setMax] = useState(100)
 
     const handleNumberTrain = async () => {
-        if (room !== "") {
-            userDispatch({ type: "postTrain", payload: room })
-            await putUser
-            console.log("putUser", putUser)
-            navigate("/chat")
+        await putUser()
 
+        if (room !== "") {
+            navigate("/chat")
         }
     }
 
@@ -56,7 +54,7 @@ const Search = () => {
             <div className="search_train">
                 <label for="train" className="label_train">N° de train :
                     <input type="number" className="input_train"
-                        onChange={(event) => { setRoom(event.target.value) }} onKeyPress={(event) => { event.key === "Enter" && handleNumberTrain() }} required />
+                        onChange={(event) => { setRoom(event.target.value); userDispatch({ type: "postTrain", payload: event.target.value }) }} onKeyPress={(event) => { event.key === "Enter" && handleNumberTrain() }} required />
                 </label>
             </div>
 
