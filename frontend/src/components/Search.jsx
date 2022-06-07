@@ -1,50 +1,53 @@
-import React, { useState } from 'react';
-import Interests from './Interests';
+/* eslint-disable no-unused-expressions */
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ChatContext from '../context/ChatContext';
+import UserContext from '../context/UserContext';
 
-const Search = () => {
+function Search() {
+  const { userDispatch, putUser } = useContext(UserContext);
+  const { setRoom, room } = useContext(ChatContext);
+  const navigate = useNavigate();
 
-    const [min, setMin] = useState(18)
-    const [max, setMax] = useState(100)
+  const handleNumberTrain = async () => {
+    await putUser();
 
+    if (room !== '') {
+      navigate('/chat');
+    }
+  };
 
-    return (
-        <div className='search'>
+  return (
+    <div className="search">
+      <div className="search_train">
+        <label htmlFor="train" className="label_train">
+          N° de train :
+          <input
+            type="number"
+            className="input_train"
+            onChange={(event) => { setRoom(event.target.value); userDispatch({ type: 'postTrain', payload: event.target.value }); }}
+            onKeyPress={(event) => { event.key === 'Enter' && handleNumberTrain(); }}
+            required
+          />
+        </label>
+      </div>
 
-            <div className="search_preference">
-                <div className='label_preference'>
-                    <h2>Préférence: </h2>
-                    <img src='./assets/avatar_femme.png' alt='avatar' />
-                    <img src='./assets/avatar_homme.png' alt='avatar' />
+      <div className="submit">
+        <button
+          type="button"
+          onKeyPress={(event) => {
+            event.key === 'Enter' && handleNumberTrain();
+          }}
+          onClick={handleNumberTrain}
+        >
+          ✔
+          {' '}
 
+        </button>
+      </div>
 
-                </div>
-            </div>
-
-            <div className="search_age">
-                <label for="age" className="label_age">Âge :
-                    <input type="number" className='input_ageLeft' min="18" max={max} onChange={(e) => { setMin(e.target.value) }} />
-                    à
-                    <input type="number" className='input_ageRight' min={min} max="100" onChange={(e) => { setMax(e.target.value) }} />
-                </label>
-            </div>
-
-            <div className="search_interests">
-                <Interests />
-            </div>
-
-            <div className="search_train">
-                <label for="train" className="label_train">N° de train :
-                    <input type="number" className="input_train" />
-                </label>
-            </div> 
-
-            <div className="submit">
-               <p>✔ </p>
-            </div>
-
-
-        </div>
-    );
-};
+    </div>
+  );
+}
 
 export default Search;
