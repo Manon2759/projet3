@@ -1,6 +1,4 @@
-/* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-expressions */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-empty */
@@ -24,38 +22,23 @@ function Inscription() {
     password: '',
     id_train: '1',
   };
-
   function getAge(date) {
     const diff = Date.now() - date.getTime();
     const age = new Date(diff);
     return Math.abs(age.getUTCFullYear() - 1970);
   }
-
-<<<<<<< HEAD
-const Inscription = () => {
-    const [visibility, setVisibility] = useState(false)
-    const initialUser = {
-        id: "",
-        pseudonyme: "",
-        email: "",
-        date: "",
-        password: "",
-        id_train: "1"
-=======
   const [newUser, dispatch] = useReducer(handleUserReducer, initialUser);
-
   const checkInput = () => {
     let inputBoolean = false;
     for (const obligation in newUser) {
       if (obligation === '') {
         inputBoolean = true;
       }
->>>>>>> 0c5f78c26d321e38914f90525a3695220c24f20b
     }
     if (inputBoolean) {
+      alert('test');
     } else { postCreateUser(); }
   };
-
   const postCreateUser = () => {
     if (getAge(new Date(newUser.date)) >= 18) {
       if (controlPassword(newUser.password)) {
@@ -112,18 +95,21 @@ const Inscription = () => {
           </div>
 
           <div className="inscription_password">
-            <label htmlFor="password" id="label_password">Mot de passe  </label>
+            <label htmlFor="password" id="label_password">
+              Mot de passe
 
-            <input
-              type={visibility ? 'text' : 'password'}
-              id="password"
-              name="Password"
-              onChange={(event) => dispatch({ type: 'postPassword', payload: event.target.value })}
-              onKeyPress={(event) => {
-                event.key === 'Enter' && checkInput();
-              }}
-              required
-            />
+              <input
+                type={visibility ? 'text' : 'password'}
+                id="password"
+                name="Password"
+                onChange={(event) => dispatch({ type: 'postPassword', payload: event.target.value })}
+                onKeyPress={(event) => {
+                  event.key === 'Enter' && checkInput();
+                }}
+                required
+              />
+
+            </label>
 
             <button
               type="button"
