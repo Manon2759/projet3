@@ -14,8 +14,11 @@ const userRoute = require('./src/user/userRoute');
 const authRoute = require('./src/auth/auth.route');
 const socketRoute = require('./src/message/socketRoute');
 
-io.sockets.on('connection', (socket) => {
-  console.log('connected');
+io.sockets.on('Connection', (socket) => {
+  console.log('L\'utilisateur est connecté');
+  // socket.on('Disconnect', () => {
+  //   console.log('l\'utilisateur est déconnecté');
+  // })
   socketMVC.init(io, socket, {
     debug: true,
     filePath: ['./src/message/socketRoute.js'],

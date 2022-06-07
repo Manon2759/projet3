@@ -19,12 +19,12 @@ class UserController {
   // Permet d'ajouter un utilisateur et sécuriser son password via Argon2
   async addUser(req, res) {
     const {
-      pseudonyme, email, picture, id_train,
+      pseudonyme, email, date, picture, id_train,
     } = req.body;
 
     try {
       const hashedPassword = await argon2.hash(req.body.password);
-      const user = await userModel.addUser(pseudonyme, email, hashedPassword, picture, id_train);
+      const user = await userModel.addUser(pseudonyme, date, email, hashedPassword, picture, id_train);
 
       res.status(200).send(user);
     } catch (error) {
