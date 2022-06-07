@@ -12,6 +12,7 @@ import axios from 'axios';
 import SocketContext from './context/SocketContext';
 import Chat from './pages/Chat';
 import ChatContext from './context/ChatContext';
+import Parameter from './pages/Parameter';
 
 
 const socket = io.connect('http://localhost:5000')
@@ -137,6 +138,7 @@ const App = () => {
                 <Route path="/resultat" element={<Resultat />} />
                 <Route path="/recherche" element={<Recherche />} />
                 <Route path="/chat" element={<Chat />} />
+                <Route path="/parametre" element={<Parameter />} />
               </Routes>
               <Footer />
             </Router>

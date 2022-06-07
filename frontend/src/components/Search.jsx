@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ChatContext from '../context/ChatContext';
 import SocketContext from '../context/SocketContext';
 import UserContext from '../context/UserContext';
@@ -18,6 +18,7 @@ const Search = () => {
 
         if (room !== "") {
             navigate("/chat")
+
         }
     }
 
@@ -60,6 +61,7 @@ const Search = () => {
 
             <div className="submit">
                 <button onClick={handleNumberTrain}>✔ </button>
+                <NavLink to='/parametre'><button>supr</button></NavLink>
             </div>
 
 

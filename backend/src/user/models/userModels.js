@@ -43,18 +43,18 @@ class UserModel {
       throw error;
     }
   }
-  // async getUserByPseudonyme(pseudonyme) {
-  //   
-  //   try {
-  //     const result = await this.connection.promise().query(
-  //       'SELECT pseudonyme FROM user WHERE pseudonyme = ?',
-  //       [pseudonyme],
-  //     );
-  //     return result[0];
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // }
+  async getUserByPseudonyme(pseudonyme) {
+
+    try {
+      const result = await this.connection.promise().query(
+        'SELECT pseudonyme FROM user WHERE pseudonyme = ?',
+        [pseudonyme],
+      );
+      return result[0];
+    } catch (error) {
+      throw error;
+    }
+  }
 
   async getUserByTrain(id_train) {
     try {
