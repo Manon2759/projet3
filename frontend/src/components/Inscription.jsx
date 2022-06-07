@@ -8,8 +8,6 @@ import controlPassword from '../utils/ControlPassword';
 
 
 const Inscription = () => {
-
-    const [user, setUser] = useState("")
     const [visibility, setVisibility] = useState(false)
     const initialUser = {
         id: "",
