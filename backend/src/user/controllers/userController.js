@@ -60,6 +60,17 @@ class UserController {
   }
   //Permet la selection d'un user via son Email
 
+  //Permet la selection d'un user via son n° de train
+  async getUserByTrain(req, res) {
+    try {
+      const selectUserTrain = await userModel.getUserByTrain(req.body.id_train)
+      res.status(200).send(selectUserTrain);
+    } catch (error) {
+      res.status(500).send(error.message)
+    }
+  }
+  //Permet la selection d'un user via son n° de train
+
   // Permet d'ajouter un utilisateur et sécuriser son password via Argon2.
   async addUser(req, res) {
     const {
@@ -80,7 +91,9 @@ class UserController {
   // Permet de mettre à jour un utilisateur
   async updateUser(req, res) {
     try {
-      if (req.body.password) { req.body.password = await argon2.hash(req.body.password) };
+      if (req.body.password) {
+        req.body.password = await argon2.hash(req.body.password)
+      };
       const user = await userModel.updateUser(
         req.body, req.body.id
       );

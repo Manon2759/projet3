@@ -1,54 +1,26 @@
 import React, { useContext, useEffect } from 'react';
 import ChatMessages from '../components/ChatMessages';
-import ChatContext from '../context/ChatContext';
+import Passport from '../components/Passport';
 import SocketContext from '../context/SocketContext';
-import UserContext from '../context/UserContext';
 import Header from '../components/Header'
-
-
-
+import ChatContext from '../context/ChatContext';
 
 const Chat = () => {
 
-    const { username, setUsername, room, setRoom, showChat, setShowChat } = useContext(ChatContext)
     const { socket } = useContext(SocketContext)
+    const { room } = useContext(ChatContext)
 
-    const joinRoom = () => {
-        if (username !== "" && room !== "") {
-            socket.emit("join_room", room);
-            setShowChat(true)
-        }
-    }
+    useEffect(() => {
+        socket.emit("join_room", room);
+    }, [])
+    
     return (
-        <div>
-            {!showChat ? (
-                <div className="joinChatContainer">
-                    <h3>Rejoindre le chat</h3>
-                    <div className='chatBLoc'>
-                        <input
-                            type="text"
-                            placeholder="pseudo"
-                            onChange={(event) => {
-                                setUsername(event.target.value)
-                            }} />
-                        <input type="text" placeholder="Room ID..."
-                            onChange={(event) => {
-                                setRoom(event.target.value)
-                            }}
-                        />
-                        <button onClick={joinRoom}>Rejoindre Room</button>
-                    </div>
-                </div>
+        <div className='container__chat'>
 
-            ) : (
-
-
-                <ChatMessages />
-
-            )}
+            <ChatMessages />
+            <Passport />
         </div>
-
-    );
+    )
 };
 
 export default Chat;

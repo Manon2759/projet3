@@ -35,6 +35,7 @@ class UserModel {
   // Ajout d'un utilisateur
 
   async getUserByEmail(email) {
+    console.log(email, "okokok")
     try {
       const result = await this.connection.promise().query(
         'SELECT email, id, pseudonyme FROM user WHERE email = ?',
@@ -47,6 +48,7 @@ class UserModel {
   }
 
   async getUserByPseudonyme(pseudonyme) {
+
     try {
       const result = await this.connection.promise().query(
         'SELECT pseudonyme FROM user WHERE pseudonyme = ?',
@@ -57,6 +59,19 @@ class UserModel {
       throw error;
     }
   }
+
+  async getUserByTrain(id_train) {
+    try {
+      const result = await this.connection.promise().query(
+        'SELECT pseudonyme FROM user WHERE id_train = ?',
+        [id_train]
+      );
+      return result[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async updateUser(user, id) {
     try {
       const result = await this.connection.promise().query(
