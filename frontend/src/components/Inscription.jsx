@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
 
@@ -121,7 +120,6 @@ function Inscription() {
           </div>
 
           <div className="inscription_password">
-
 
             <input
               type={visibility ? 'text' : 'password'}
