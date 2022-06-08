@@ -21,7 +21,14 @@ import ChatContext from './context/ChatContext';
 import Parameter from './pages/Parameter';
 import NotFound from './pages/NotFound';
 
-const socket = io.connect('http://localhost:5000');
+const connectionOptions = {
+  'force new connection': true,
+  reconnectionAttempts: 'Infinity',
+  timeout: 10000,
+  transports: ['websocket'],
+};
+
+const socket = io.connect('http://localhost:5000', connectionOptions);
 
 function App() {
   // Connection à socket.io relation front/back

@@ -8,7 +8,9 @@ import UserContext from '../context/UserContext';
 function ChatMessages() {
   const { room } = useContext(ChatContext);
   const { socket } = useContext(SocketContext);
-  const { setUser, token, updateUser } = useContext(UserContext);
+  const {
+    user, setUser, token, updateUser,
+  } = useContext(UserContext);
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
 
@@ -19,8 +21,8 @@ function ChatMessages() {
         author: token.pseudonyme,
         message: currentMessage,
         time:
-                    `${new Date(Date.now()).getHours()
-                    }h${new Date(Date.now()).getMinutes()}`,
+          `${new Date(Date.now()).getHours()
+          }h${new Date(Date.now()).getMinutes()}`,
       };
 
       await socket.emit('send_message', messageData);
@@ -43,12 +45,16 @@ function ChatMessages() {
       .catch((error) => {
         (error);
       });
-  }, []);
+  }, [user]);
 
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Live Chat</p>
+        <p>
+          Live Chat du Train
+          {' '}
+          {room}
+        </p>
       </div>
       <div className="chat-body">
         <div className="message-container">

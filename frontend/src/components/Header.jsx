@@ -1,21 +1,29 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import axios from 'axios';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
+import UserContext from '../context/UserContext';
 
 function Header() {
   const [menuBurger, setMenuBurger] = useState(false);
-  const logout = useNavigate();
+  const navigate = useNavigate();
+  const { token } = useContext(UserContext);
 
   const handleClick = () => {
     setMenuBurger(!menuBurger);
   };
 
-  // const deconnexion = () =>{
+  const reloadIdTrain = async () => {
+    await axios.put(`http://localhost:5000/users/${token.id}`, { pseudonyme: token.pseudonyme, email: token.email, id_train: '' });
+  };
 
-  //   logout('/');
-  // }
+  const disconnectUser = async () => {
+    await reloadIdTrain();
+    await axios.post('http://localhost:5000/auth/logout', { withCredentials: true });
+    navigate('/');
+  };
 
   return (
     <header>
@@ -65,7 +73,7 @@ function Header() {
               onKeyPress={(event) => {
                 event.key === 'Enter' && '/';
               }}
-              onClick={() => { logout('/'); }}
+              onClick={disconnectUser}
             >
               Deconnexion
 
@@ -91,7 +99,7 @@ function Header() {
                     onKeyPress={(event) => {
                       event.key === 'Enter' && '/';
                     }}
-                    onClick={() => { logout('/'); }}
+                    onClick={disconnectUser}
                   >
                     Deconnexion
 
