@@ -1,10 +1,10 @@
-.container_bg {
+.container__bg {
     background-image: url(/assets/train.jpeg);
     box-sizing: border-box;
     background-size: cover;
     background-attachment: fixed;
 
-    .container_cards {
+    .container__cards {
         padding: 4rem 4rem;
         display: flex;
         justify-content: center;
@@ -32,12 +32,12 @@
                 }
             }
 
-            .img_cardProfile {
+            .img__cardProfile {
                 max-width: 100%;
                 max-height: 100%;
             }
 
-            .img_pseudo_cardProfile {
+            .img__pseudo__cardProfile {
                 display: flex;
                 justify-content: center;
 
@@ -75,7 +75,7 @@
                
             }
 
-            .description_cardProfile {
+            .description__cardProfile {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;

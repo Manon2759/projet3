@@ -12,23 +12,32 @@ const Inscription = () => {
     const [user, setUser] = useState("")
     const [visibility, setVisibility] = useState(false)
     const initialUser = {
-        id: "",
         pseudonyme: "",
         email: "",
         date: "",
         password: "",
         id_train: "1"
     }
+
+    function getAge(date) {
+        let diff = Date.now() - date.getTime();
+        let age = new Date(diff);
+        return Math.abs(age.getUTCFullYear() - 1970);
+    }
+
     const [newUser, dispatch] = useReducer(handleUserReducer, initialUser)
     const postCreateUser = () => {
-        if (controlPassword(newUser.password)) {
-            axios.post(`http://localhost:5000/users`, newUser)
-                .then(res => {
-                    // setUser(res.data)
-                    console.log(res.data);
-                })
-                .catch(error => console.error(error))
+        if (getAge(new Date(newUser.date)) >= 18) {
+            if (controlPassword(newUser.password)) {
+                axios.post(`http://localhost:5000/users`, newUser)
+                    .then(res => {
+
+                        console.log(res.data);
+                    })
+                    .catch(error => console.error(error))
+            }
         }
+        else { alert("Pas content") }
     }
 
 
