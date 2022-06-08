@@ -52,11 +52,10 @@
     .inscription_mail,
     .inscription_password {
         display: flex;
-        justify-content: center;
         margin-bottom: 5%;
         border-bottom: 1px solid #fff;
         color: white;
-        width: 34%;
+        width: 35%;
     }
 
     .inscription_date {
@@ -121,8 +120,6 @@
     .inscription__date,
     .inscription__mail,
     .inscription__password {
-        text-align: start;
-        display: flex;
         margin-bottom: 6%;
         border-bottom: 1px solid #fff;
         width: 35%;

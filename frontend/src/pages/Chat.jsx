@@ -3,6 +3,8 @@ import ChatMessages from '../components/ChatMessages';
 import Passport from '../components/Passport';
 import SocketContext from '../context/SocketContext';
 import ChatContext from '../context/ChatContext';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Chat() {
   const { socket } = useContext(SocketContext);
@@ -14,9 +16,10 @@ function Chat() {
 
   return (
     <div className="container__chat">
-
+      <Header />
       <ChatMessages />
       <Passport />
+      <Footer />
     </div>
   );
 }
