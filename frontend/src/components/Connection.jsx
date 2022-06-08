@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 import axios from 'axios';
 import React, { useReducer, useState, useContext } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { decodeToken } from 'react-jwt';
 import controlPassword from '../utils/ControlPassword';
 import UserContext from '../context/UserContext';
@@ -45,7 +45,7 @@ function Connection() {
         .catch((error) => setErrorMailPassword(error.response.data.error));
     }
   };
-    // handleUserReducer permet la saisie des infos email/password via les dispatch dans la page connection.
+  // handleUserReducer permet la saisie des infos email/password via les dispatch dans la page connection.
   function handleUserReducer(userState, action) {
     switch (action.type) {
       case 'postEmail':
@@ -73,46 +73,46 @@ function Connection() {
       </button>
 
       {showId
-                && (
-                <div className="burger">
+        && (
+          <div className="burger">
 
-                  <div className="connection_pseudo">
-                    <input
-                      type="text"
-                      placeholder="Email"
-                      onChange={(event) => dispatch({ type: 'postEmail', payload: event.target.value })}
-                    />
-                  </div>
+            <div className="connection_pseudo">
+              <input
+                type="text"
+                placeholder="Email"
+                onChange={(event) => dispatch({ type: 'postEmail', payload: event.target.value })}
+              />
+            </div>
 
-                  <div className="connection_password">
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      onChange={(event) => dispatch({ type: 'postPassword', payload: event.target.value })}
-                      onKeyPress={(event) => {
-                        event.key === 'Enter' && postConnectUser();
-                      }}
-                      required
-                    />
-                  </div>
+            <div className="connection_password">
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(event) => dispatch({ type: 'postPassword', payload: event.target.value })}
+                onKeyPress={(event) => {
+                  event.key === 'Enter' && postConnectUser();
+                }}
+                required
+              />
+            </div>
 
-                  <p>{errorMailPassword}</p>
+            <p>{errorMailPassword}</p>
 
-                  <div>
-                    <button
-                      type="button"
-                      className="fleche"
-                      onKeyPress={(event) => {
-                        event.key === 'Enter' && postConnectUser();
-                      }}
-                      onClick={postConnectUser}
-                    >
-                      <NavLink to="/recherche">✔</NavLink>
-                    </button>
-                  </div>
+            <div>
+              <button
+                type="button"
+                className="fleche"
+                onKeyPress={(event) => {
+                  event.key === 'Enter' && postConnectUser();
+                }}
+                onClick={postConnectUser}
+              >
+                ✔
+              </button>
+            </div>
 
-                </div>
-                )}
+          </div>
+        )}
 
     </div>
   );

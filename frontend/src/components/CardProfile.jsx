@@ -3,6 +3,7 @@
 /* eslint-disable no-alert */
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 import Interests from './Interests';
 
@@ -49,7 +50,12 @@ function CardProfile() {
                 <img src={updateUser.picture} alt="Avatar profil" />
                 <h1>File Upload</h1>
                 <form onSubmit={formSubmitHandler}>
-                  <input type="file" name="myImage" onChange={changeImageHandler} accept=".jpg, .jpeg, .png " />
+                  <input
+                    type="file"
+                    name="myImage"
+                    onChange={changeImageHandler}
+                    accept=".jpg, .jpeg, .png "
+                  />
                   <button type="submit">Upload</button>
                 </form>
               </div>
@@ -61,36 +67,42 @@ function CardProfile() {
         <div className="card__interests">
           {/* Composant Chexbox des centres d'interêts */}
           <Interests />
-          <form>
-            <div className="description_cardProfile">
-              <label htmlFor="description">Décrivez-vous en quelques mots:</label>
-              <input type="Text" onChange={(event) => userDispatch({ type: 'postContent', payload: event.target.value })} id="description" name="description" />
-            </div>
-            <div className="description_cardProfile">
-              <label htmlFor="localité">Localité</label>
-              <input
-                type="Text"
-                onChange={(event) => userDispatch({ type: 'postVille', payload: event.target.value })}
-                id="localite"
-                name="localité"
-                onKeyPress={(event) => {
-                  event.key === 'Enter' && putUser();
-                }}
-              />
-            </div>
 
-          </form>
-          <div className="button_validation">
-            <button
-              onClick={putUser}
-              type="button"
+          <div className="description_cardProfile">
+            <label htmlFor="description">Décrivez-vous en quelques mots:</label>
+            <input
+              type="Text"
+              onChange={(event) => userDispatch({ type: 'postContent', payload: event.target.value })}
+              id="description"
+              name="description"
+            />
+          </div>
+          <div className="description_cardProfile">
+            <label htmlFor="localité">Localité</label>
+            <input
+              type="Text"
+              onChange={(event) => userDispatch({ type: 'postVille', payload: event.target.value })}
+              id="localite"
+              name="localité"
               onKeyPress={(event) => {
                 event.key === 'Enter' && putUser();
               }}
-            >
-              ✔
+            />
+          </div>
 
-            </button>
+          <div className="button_validation">
+            <NavLink to="/recherche">
+              <button
+                onClick={putUser}
+                type="button"
+                onKeyPress={(event) => {
+                  event.key === 'Enter' && putUser();
+                }}
+              >
+                ✔
+
+              </button>
+            </NavLink>
           </div>
         </div>
 

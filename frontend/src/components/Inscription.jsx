@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -6,16 +7,19 @@
 /* eslint-disable no-empty */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useContext } from 'react';
 import { IoIosEye } from 'react-icons/io';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { decodeToken } from 'react-jwt';
 import backgroundVideo from '../video/background_video.mp4';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
 import controlPassword from '../utils/ControlPassword';
+import UserContext from '../context/UserContext';
 
 function Inscription() {
   const [visibility, setVisibility] = useState(false);
+  const { setToken, userDispatch } = useContext(UserContext);
   const navigate = useNavigate();
   const initialUser = {
     pseudonyme: '',
@@ -49,7 +53,7 @@ function Inscription() {
       if (controlPassword(newUser.password)) {
         axios.post('http://localhost:5000/users', newUser)
           .then((res) => {
-            navigate('/profil');
+            postConnectUser();
           })
           .catch((error) => (error));
       } else { alert('Le format du mot de passe est incorrecte (min 8 caractère 1 maj 1 caractère special et 1 chiffre minimum)'); }
@@ -71,6 +75,25 @@ function Inscription() {
         return userState;
     }
   }
+
+  const postConnectUser = () => {
+    // Utilisation de ControlPassword une regex qui permet de bloquer les mdp qui ne remplisse pas les critères
+    if (controlPassword(newUser.password)) {
+      axios.post('http://localhost:5000/auth/login', newUser, { withCredentials: true })
+        .then((res) => {
+          const decodingToken = decodeToken(res.data);
+          const utilsInfo = {
+            id: decodingToken.id,
+            pseudonyme: decodingToken.pseudonyme,
+            email: decodingToken.email,
+          };
+          setToken(decodingToken);
+          userDispatch({ type: 'changeInfoUser', payload: utilsInfo });
+          navigate('/profil');
+        })
+        .catch((error) => error);
+    }
+  };
 
   return (
     <div className="body">
@@ -100,12 +123,12 @@ function Inscription() {
           </div>
 
           <div className="inscription_password">
-            <label htmlFor="password" id="label_password">Mot de passe  </label>
 
             <input
               type={visibility ? 'text' : 'password'}
               id="password"
               name="Password"
+              placeholder="Mot de passe"
               onChange={(event) => dispatch({ type: 'postPassword', payload: event.target.value })}
               onKeyPress={(event) => {
                 event.key === 'Enter' && checkInput();

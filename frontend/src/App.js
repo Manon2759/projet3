@@ -1,8 +1,11 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-use-before-define */
 import { io } from 'socket.io-client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Routes,
+} from 'react-router-dom';
 import React, { useReducer, useState } from 'react';
 import axios from 'axios';
 import Formulaire from './pages/Formulaire';
@@ -16,6 +19,7 @@ import SocketContext from './context/SocketContext';
 import Chat from './pages/Chat';
 import ChatContext from './context/ChatContext';
 import Parameter from './pages/Parameter';
+import NotFound from './pages/NotFound';
 
 const socket = io.connect('http://localhost:5000');
 
@@ -48,10 +52,7 @@ function App() {
     nouvelle_technologie: false,
     ville: '',
   };
-  const [updateUser, userDispatch] = useReducer(handleUserUpdateReducer, completeUser, () => {
-    const localData = localStorage.getItem('updateUser');
-    return localData ? JSON.parse(localData) : completeUser;
-  });
+  const [updateUser, userDispatch] = useReducer(handleUserUpdateReducer, completeUser);
 
   function handleUserUpdateReducer(userUpdateState, action) {
     switch (action.type) {
@@ -61,8 +62,6 @@ function App() {
         return { ...userUpdateState, picture: action.payload };
       case 'postContent':
         return { ...userUpdateState, content: action.payload };
-      case 'postTrain':
-        return { ...userUpdateState, id_train: action.payload };
       case 'postVille':
         return { ...userUpdateState, ville: action.payload };
       case 'postCinema':
@@ -85,8 +84,11 @@ function App() {
 
   // appel à axios.put pour l'update de la bdd user.
   const putUser = async () => {
-    console.log(updateUser);
-    await axios.put(`http://localhost:5000/users/${token.id}`, updateUser);
+    await axios.put(`http://localhost:5000/users/${token.id}`, updateUser)
+      // eslint-disable-next-line no-unused-vars
+      .then((res) => {
+        alert('Votre profil est à jour');
+      });
   };
 
   return (
@@ -127,15 +129,17 @@ function App() {
         >
 
           <div className="App">
+
             <Router>
               <Routes>
                 <Route path="/" element={<AccueilClient />} />
-                <Route path="/formulaire" element={<Formulaire />} />
-                <Route path="/profil" element={<ProfilClient />} />
-                <Route path="/resultat" element={<Resultat />} />
-                <Route path="/recherche" element={<Recherche />} />
-                <Route path="/chat" element={<Chat />} />
-                <Route path="/parametre" element={<Parameter />} />
+                {token && <Route path="/formulaire" element={<Formulaire />} />}
+                {token && <Route path="/profil" element={<ProfilClient />} />}
+                {token && <Route path="/resultat" element={<Resultat />} />}
+                {token && <Route path="/recherche" element={<Recherche />} />}
+                {token && <Route path="/chat" element={<Chat />} />}
+                {token && <Route path="/parametre" element={<Parameter />} />}
+                <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
             </Router>

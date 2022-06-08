@@ -1,16 +1,40 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-expressions */
-import React, { useContext } from 'react';
+import axios from 'axios';
+import React, { useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ChatContext from '../context/ChatContext';
 import UserContext from '../context/UserContext';
 
 function Search() {
-  const { userDispatch, putUser } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const { setRoom, room } = useContext(ChatContext);
   const navigate = useNavigate();
 
+  const trainNumber = {
+    id: token.id,
+    email: token.email,
+    pseudonyme: token.pseudonyme,
+    id_train: '',
+  };
+
+  const [newNumberTrain, trainDispatch] = useReducer(handleNumberTrainReducer, trainNumber);
+
+  function handleNumberTrainReducer(trainNumberState, action) {
+    switch (action.type) {
+      case 'postTrain':
+        return { ...trainNumberState, id_train: action.payload };
+      default:
+        return trainNumberState;
+    }
+  }
+
+  const putNumberTrain = async () => {
+    await axios.put(`http://localhost:5000/users/${token.id}`, newNumberTrain);
+  };
+
   const handleNumberTrain = async () => {
-    await putUser();
+    await putNumberTrain();
 
     if (room !== '') {
       navigate('/chat');
@@ -25,7 +49,7 @@ function Search() {
           <input
             type="number"
             className="input_train"
-            onChange={(event) => { setRoom(event.target.value); userDispatch({ type: 'postTrain', payload: event.target.value }); }}
+            onChange={(event) => { setRoom(event.target.value); trainDispatch({ type: 'postTrain', payload: event.target.value }); }}
             onKeyPress={(event) => { event.key === 'Enter' && handleNumberTrain(); }}
             required
           />

@@ -50,23 +50,23 @@ function Passport() {
                     {profil.picture ? <img src={profil.picture} alt="profile one" onMouseOver={changeTrue} onMouseLeave={changeFalse} /> : <img src="./assets/Photo_non_disponible.webp" alt="photo non disponible" />}
                   </div>
                   {description
-                                    && (
-                                    <div className="card_description">
-                                      <h1>Description :</h1>
-                                      <p>{profil.content}</p>
-                                      <h1>Centres d'intérêt :</h1>
-                                      <div className="list">
-                                        <ul>
-                                          <li>{profil.cinema === 1 ? 'Cinéma' : ''}</li>
-                                          <li>{profil.voyage === 1 ? 'Voyage 🌍' : ''}</li>
-                                          <li>{profil.musique === 1 ? 'Musique' : ''}</li>
-                                          <li>{profil.culture === 1 ? 'Culture' : ''}</li>
-                                          <li>{profil.sport === 1 ? 'Sport 🏆' : ''}</li>
-                                          <li>{profil.nouvelle_technologie === 1 ? 'Nouvelle technologie 💻' : ''}</li>
-                                        </ul>
-                                      </div>
-                                    </div>
-                                    )}
+                    && (
+                      <div className="card_description">
+                        <h1>Description :</h1>
+                        <p>{profil.content}</p>
+                        <h1>Centres d'intérêt :</h1>
+                        <div className="list">
+                          <ul>
+                            <li>{profil.cinema === 1 ? 'Cinéma' : ''}</li>
+                            <li>{profil.voyage === 1 ? 'Voyage 🌍' : ''}</li>
+                            <li>{profil.musique === 1 ? 'Musique' : ''}</li>
+                            <li>{profil.culture === 1 ? 'Culture' : ''}</li>
+                            <li>{profil.sport === 1 ? 'Sport 🏆' : ''}</li>
+                            <li>{profil.nouvelle_technologie === 1 ? 'Nouvelle technologie 💻' : ''}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    )}
                   <div className="details">
                     <div className="name">
                       <h1>{profil.pseudonyme}</h1>

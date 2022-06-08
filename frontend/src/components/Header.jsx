@@ -6,12 +6,17 @@ import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3
 
 function Header() {
   const [menuBurger, setMenuBurger] = useState(false);
+  const logout = useNavigate();
 
   const handleClick = () => {
     setMenuBurger(!menuBurger);
   };
 
-  const logout = useNavigate();
+  // const deconnexion = () =>{
+
+  //   logout('/');
+  // }
+
   return (
     <header>
 
@@ -27,20 +32,20 @@ function Header() {
 
         {/* ICON BOUTON BURGER */}
         {!menuBurger
-                && (
-                <div className="button__burger">
-                  <button
-                    type="button"
-                    onKeyPress={(event) => {
-                      event.key === 'Enter' && handleClick();
-                    }}
-                    onClick={handleClick}
-                  >
-                    {' '}
-                    <GiHamburgerMenu />
-                  </button>
-                </div>
-                )}
+          && (
+            <div className="button__burger">
+              <button
+                type="button"
+                onKeyPress={(event) => {
+                  event.key === 'Enter' && handleClick();
+                }}
+                onClick={handleClick}
+              >
+                {' '}
+                <GiHamburgerMenu />
+              </button>
+            </div>
+          )}
 
         {/* LINKS GRAND ECRAN */}
         <div className="header2__links">
@@ -52,46 +57,49 @@ function Header() {
               <NavLink to="/recherche" className={({ isActive }) => `nav-link${isActive ? '--active' : ''}`}> Ma recherche </NavLink>
             </li>
             <li>
-              <button
-                type="button"
-                onKeyPress={(event) => {
-                  event.key === 'Enter' && '/';
-                }}
-                onClick={() => { logout('/'); }}
-              >
-                Deconnexion
-
-              </button>
+              <NavLink to="/parametre" className={({ isActive }) => `nav-link${isActive ? '--active' : ''}`}> Paramètres </NavLink>
             </li>
+
+            <button
+              type="button"
+              onKeyPress={(event) => {
+                event.key === 'Enter' && '/';
+              }}
+              onClick={() => { logout('/'); }}
+            >
+              Deconnexion
+
+            </button>
+
           </ul>
         </div>
 
         {/* LINKS PETIT ECRAN AVEC BURGER */}
         {menuBurger
-                    && (
-                    <div className="header2__links__burger">
-                      <ul>
-                        <li>
-                          <NavLink to="/profil" className={({ isActive }) => `nav-link${isActive ? '--active_burger' : ''}`}> Mon profil </NavLink>
-                        </li>
-                        <li>
-                          <NavLink to="/recherche" className={({ isActive }) => `nav-link${isActive ? '--active_burger' : ''}`}> Ma recherche </NavLink>
-                        </li>
-                        <li>
-                          <button
-                            type="button"
-                            onKeyPress={(event) => {
-                              event.key === 'Enter' && '/';
-                            }}
-                            onClick={() => { logout('/'); }}
-                          >
-                            Deconnexion
+          && (
+            <div className="header2__links__burger">
+              <ul>
+                <li>
+                  <NavLink to="/profil" className={({ isActive }) => `nav-link${isActive ? '--active_burger' : ''}`}> Mon profil </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/recherche" className={({ isActive }) => `nav-link${isActive ? '--active_burger' : ''}`}> Ma recherche </NavLink>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onKeyPress={(event) => {
+                      event.key === 'Enter' && '/';
+                    }}
+                    onClick={() => { logout('/'); }}
+                  >
+                    Deconnexion
 
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                    )}
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
       </div>
     </header>
   );
