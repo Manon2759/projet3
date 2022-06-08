@@ -84,11 +84,13 @@ function App() {
 
   // appel à axios.put pour l'update de la bdd user.
   const putUser = async () => {
+
     await axios.put(`http://localhost:5000/users/${token.id}`, updateUser)
       // eslint-disable-next-line no-unused-vars
       .then((res) => {
         alert('Votre profil est à jour');
       });
+
   };
 
   return (
