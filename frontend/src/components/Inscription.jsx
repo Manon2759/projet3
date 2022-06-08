@@ -1,7 +1,8 @@
+
 /* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
+
 /* eslint-disable no-unused-expressions */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-empty */
@@ -28,15 +29,12 @@ function Inscription() {
     password: '',
     id_train: '1',
   };
-
   function getAge(date) {
     const diff = Date.now() - date.getTime();
     const age = new Date(diff);
     return Math.abs(age.getUTCFullYear() - 1970);
   }
-
   const [newUser, dispatch] = useReducer(handleUserReducer, initialUser);
-
   const checkInput = () => {
     let inputBoolean = false;
     for (const obligation in newUser) {
@@ -45,9 +43,9 @@ function Inscription() {
       }
     }
     if (inputBoolean) {
+      alert('test');
     } else { postCreateUser(); }
   };
-
   const postCreateUser = () => {
     if (getAge(new Date(newUser.date)) >= 18) {
       if (controlPassword(newUser.password)) {
@@ -123,6 +121,7 @@ function Inscription() {
           </div>
 
           <div className="inscription_password">
+
 
             <input
               type={visibility ? 'text' : 'password'}
