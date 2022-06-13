@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
 import SocketContext from '../context/SocketContext';
 import ChatContext from '../context/ChatContext';
 import UserContext from '../context/UserContext';
@@ -9,11 +8,10 @@ function ChatMessages() {
   const { room } = useContext(ChatContext);
   const { socket } = useContext(SocketContext);
   const {
-    user, setUser, token, updateUser,
+    token,
   } = useContext(UserContext);
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
-
   const sendMessage = async () => {
     if (currentMessage !== '') {
       const messageData = {
@@ -24,29 +22,16 @@ function ChatMessages() {
           `${new Date(Date.now()).getHours()
           }h${new Date(Date.now()).getMinutes()}`,
       };
-
       await socket.emit('send_message', messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage('');
     }
   };
-
   useEffect(() => {
     socket.on('receive_message', (data) => {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
-
-  useEffect(() => {
-    axios.get(`http://localhost:5000/users/train/${updateUser.id_train}`)
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((error) => {
-        (error);
-      });
-  }, [user]);
-
   return (
     <div className="chat-window">
       <div className="chat-header">
@@ -90,7 +75,6 @@ function ChatMessages() {
         />
         <button type="button" onClick={sendMessage}>&#9658;</button>
       </div>
-
     </div>
   );
 }

@@ -74,17 +74,11 @@
         border-bottom: 1px solid #fff;
         width: 25%;
 
-         @media screen and (max-width: 650px) {
-             width: 70%;
-             font-size: 50px;
-             
-         }
-
         input {
             color: rgba(255, 255, 255, 0.73);
             border-style: none;
             background-color: rgba(255, 235, 205, 0);
-            font-size: 28px;
+            font-size: 25px;
 
             &:focus {
                 outline: none;

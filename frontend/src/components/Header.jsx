@@ -5,11 +5,13 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import axios from 'axios';
 import { ReactComponent as LogoTrainder } from '../assets/trainder_line-heart_v3_red+transparent_back.svg';
 import UserContext from '../context/UserContext';
+// import SocketContext from '../context/SocketContext';
 
 function Header() {
   const [menuBurger, setMenuBurger] = useState(false);
   const navigate = useNavigate();
   const { token } = useContext(UserContext);
+  // const { socket } = useContext(SocketContext);
 
   const handleClick = () => {
     setMenuBurger(!menuBurger);
