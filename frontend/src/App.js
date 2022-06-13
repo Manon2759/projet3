@@ -144,7 +144,7 @@ function App() {
                 {token && <Route path="/profil" element={<ProfilClient />} />}
                 {token && <Route path="/resultat" element={<Resultat />} />}
                 {token && <Route path="/recherche" element={<Recherche />} />}
-                {token && <Route path="/chat" element={<Chat />} />}
+                <Route path="/chat" element={<Chat />} />
                 {token && <Route path="/parametre" element={<Parameter />} />}
                 <Route path="*" element={<NotFound />} />
               </Routes>
