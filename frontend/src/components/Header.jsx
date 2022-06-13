@@ -64,9 +64,6 @@ function Header() {
             <li>
               <NavLink to="/recherche" className={({ isActive }) => `nav-link${isActive ? '--active' : ''}`}> Ma recherche </NavLink>
             </li>
-            <li>
-              <NavLink to="/parametre" className={({ isActive }) => `nav-link${isActive ? '--active' : ''}`}> Paramètres </NavLink>
-            </li>
 
             <button
               type="button"

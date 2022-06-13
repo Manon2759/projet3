@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-alert */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-no-constructed-context-values */
@@ -18,8 +20,8 @@ import UserContext from './context/UserContext';
 import SocketContext from './context/SocketContext';
 import Chat from './pages/Chat';
 import ChatContext from './context/ChatContext';
-import Parameter from './pages/Parameter';
 import NotFound from './pages/NotFound';
+import Reglementation from './pages/Reglementation';
 
 const connectionOptions = {
   'force new connection': true,
@@ -145,7 +147,7 @@ function App() {
                 {token && <Route path="/resultat" element={<Resultat />} />}
                 {token && <Route path="/recherche" element={<Recherche />} />}
                 {token && <Route path="/chat" element={<Chat />} />}
-                {token && <Route path="/parametre" element={<Parameter />} />}
+                <Route path="/reglementation" element={<Reglementation />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />

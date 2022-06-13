@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-expressions */
 import axios from 'axios';
@@ -43,31 +44,42 @@ function Search() {
 
   return (
     <div className="search">
-      <div className="search_train">
-        <label htmlFor="train" className="label_train">
-          N° de train :
-          <input
-            type="number"
-            className="input_train"
-            onChange={(event) => { setRoom(event.target.value); trainDispatch({ type: 'postTrain', payload: event.target.value }); }}
-            onKeyPress={(event) => { event.key === 'Enter' && handleNumberTrain(); }}
-            required
-          />
-        </label>
-      </div>
+      <div className="search_card">
+        <div className="search_title">
+          <h1>
+            {`Bienvenue ${token.pseudonyme} 💙`}
+          </h1>
+        </div>
+        <div className="search_text">
+          <h2>Ton trajet te semble long, nous avons la solution :</h2>
+        </div>
+        <div className="search_train">
+          <label htmlFor="train" className="label_train">
+            Entrez votre N° de train :
+            <input
+              type="number"
+              className="input_train"
+              onChange={(event) => { setRoom(event.target.value); trainDispatch({ type: 'postTrain', payload: event.target.value }); }}
+              onKeyPress={(event) => { event.key === 'Enter' && handleNumberTrain(); }}
+              required
+            />
+          </label>
+        </div>
 
-      <div className="submit">
-        <button
-          type="button"
-          onKeyPress={(event) => {
-            event.key === 'Enter' && handleNumberTrain();
-          }}
-          onClick={handleNumberTrain}
-        >
-          ✔
-          {' '}
+        <div className="submit">
+          <button
+            className="button_fleche"
+            type="button"
+            onKeyPress={(event) => {
+              event.key === 'Enter' && handleNumberTrain();
+            }}
+            onClick={handleNumberTrain}
+          >
+            ✔
+            {' '}
 
-        </button>
+          </button>
+        </div>
       </div>
 
     </div>
