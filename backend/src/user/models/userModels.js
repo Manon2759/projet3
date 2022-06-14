@@ -63,7 +63,7 @@ class UserModel {
   async getUserByTrain(id_train) {
     try {
       const result = await this.connection.promise().query(
-        'SELECT pseudonyme FROM user WHERE id_train = ?',
+        'SELECT * FROM user WHERE id_train = ?',
         [id_train]
       );
       return result[0];
