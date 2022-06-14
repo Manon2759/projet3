@@ -21,7 +21,14 @@ import ChatContext from './context/ChatContext';
 import Parameter from './pages/Parameter';
 import NotFound from './pages/NotFound';
 
-const socket = io.connect('http://localhost:5000');
+const connectionOptions = {
+  'force new connection': true,
+  reconnectionAttempts: 'Infinity',
+  timeout: 10000,
+  transports: ['websocket'],
+};
+
+const socket = io.connect('http://localhost:5000', connectionOptions);
 
 function App() {
   // Connection à socket.io relation front/back
@@ -84,13 +91,11 @@ function App() {
 
   // appel à axios.put pour l'update de la bdd user.
   const putUser = async () => {
-
     await axios.put(`http://localhost:5000/users/${token.id}`, updateUser)
       // eslint-disable-next-line no-unused-vars
       .then((res) => {
         alert('Votre profil est à jour');
       });
-
   };
 
   return (
@@ -139,7 +144,7 @@ function App() {
                 {token && <Route path="/profil" element={<ProfilClient />} />}
                 {token && <Route path="/resultat" element={<Resultat />} />}
                 {token && <Route path="/recherche" element={<Recherche />} />}
-                {token && <Route path="/chat" element={<Chat />} />}
+                <Route path="/chat" element={<Chat />} />
                 {token && <Route path="/parametre" element={<Parameter />} />}
                 <Route path="*" element={<NotFound />} />
               </Routes>

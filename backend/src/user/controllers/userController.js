@@ -79,7 +79,7 @@ class UserController {
 
     try {
       const hashedPassword = await argon2.hash(req.body.password);
-      const user = await userModel.addUser(pseudonyme, date, email, hashedPassword, picture, id_train);
+      const user = await userModel.addUser(pseudonyme, date, email, hashedPassword, id_train);
 
       res.status(200).send(user);
     } catch (error) {
