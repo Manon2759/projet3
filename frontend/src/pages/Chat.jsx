@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-no-undef */
 import React, { useContext, useEffect, useState } from 'react';
 import ChatMessages from '../components/ChatMessages';
 import Passport from '../components/Passport';
 import SocketContext from '../context/SocketContext';
 import ChatContext from '../context/ChatContext';
-import Header from '../components/Header';
 import UserContext from '../context/UserContext';
+import Header from '../components/Header';
 
 function Chat() {
   const { socket } = useContext(SocketContext);

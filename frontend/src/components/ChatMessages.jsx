@@ -20,7 +20,7 @@ function ChatMessages() {
         message: currentMessage,
         time:
           `${new Date(Date.now()).getHours()
-          }h${new Date(Date.now()).getMinutes()}`,
+          }h${new Date(Date.now()).getMinutes() < 10 ? '0' : ''}`,
       };
       await socket.emit('send_message', messageData);
       setMessageList((list) => [...list, messageData]);

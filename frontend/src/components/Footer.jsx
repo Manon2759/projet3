@@ -20,20 +20,15 @@ function Footer() {
           <NavLink
             to="/formulaire"
             className={({ isActive }) => `nav-link${isActive ? '--active__footer' : ''}`}
-            onKeyPress={(event) => {
-              event.key === 'Enter' && '/formulaire';
-            }}
           >
             {' '}
             Contact
             <span>|</span>
           </NavLink>
           <NavLink
-            to=""
+            to="/reglementation"
             className={({ isActive }) => `nav-link${isActive ? '--active__footer' : ''}`}
-            onKeyPress={(event) => {
-              event.key === 'Enter' && '';
-            }}
+
           >
             {' '}
             Réglementation

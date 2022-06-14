@@ -1,12 +1,11 @@
-/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/extensions */
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-alert */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-use-before-define */
 import { io } from 'socket.io-client';
-import {
-  BrowserRouter as Router, Route, Routes,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useReducer, useState } from 'react';
 import axios from 'axios';
 import Formulaire from './pages/Formulaire';
@@ -19,8 +18,8 @@ import UserContext from './context/UserContext';
 import SocketContext from './context/SocketContext';
 import Chat from './pages/Chat';
 import ChatContext from './context/ChatContext';
-import Parameter from './pages/Parameter';
 import NotFound from './pages/NotFound';
+import Reglementation from './pages/Reglementation';
 
 const connectionOptions = {
   'force new connection': true,
@@ -146,8 +145,8 @@ function App() {
                 {token && <Route path="/resultat" element={<Resultat />} />}
                 {token && <Route path="/recherche" element={<Recherche />} />}
                 <Route path="/chat" element={<Chat />} />
-                {token && <Route path="/parametre" element={<Parameter />} />}
                 <Route path="*" element={<NotFound />} />
+                <Route path="/reglementation" element={<Reglementation />} />
               </Routes>
               <Footer />
             </Router>

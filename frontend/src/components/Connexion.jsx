@@ -40,7 +40,7 @@ function Connection() {
           };
           setToken(decodingToken);
           userDispatch({ type: 'changeInfoUser', payload: utilsInfo });
-          navigate('/recherche');
+          navigate('recherche');
         })
         .catch((error) => setErrorMailPassword(error.response.data.error));
     }

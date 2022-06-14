@@ -6,14 +6,17 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useContext, useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import ChatContext from '../context/ChatContext';
+import UserContext from '../context/UserContext';
 // import SocketContext from '../context/SocketContext';
 // import UserContext from '../context/UserContext';
 
 function Passport({ userCard }) {
   const [description, setDescription] = useState(false);
   const { room } = useContext(ChatContext);
+  const { setUser } = useContext(UserContext);
   // const { user, setUser } = useContext(UserContext);
   // const { socket } = useContext(SocketContext);
   const changeTrue = () => {
@@ -22,6 +25,16 @@ function Passport({ userCard }) {
   const changeFalse = () => {
     setDescription(false);
   };
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/users')
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((error) => {
+        (error);
+      });
+  }, []);
 
   function getAge(date) {
     const diff = Date.now() - date.getTime();
