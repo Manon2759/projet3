@@ -9,13 +9,16 @@
     border-radius: 16px;
     background-color: #fff;
     display: flex;
-    @media screen and (max-width: 650px) {
-        min-width: 550px;
-        margin-top: -15%;
+    @media screen and (max-width: 1185px) {
+        min-width: 450px;
         display: flex;
         align-items: center;
         }
-    
+        @media screen and (max-width: 521px) {
+            min-width: 350px;
+            display: flex;
+            align-items: center;
+            }
 
 
 
@@ -26,9 +29,14 @@
         align-items: center;
         margin: auto;
         @media screen and (max-width: 650px) {
-        min-width: 550px;
+        min-width: 450px;
         }
-
+        @media screen and (max-width: 550px) {
+            min-width: 350px;
+            display: flex;
+            align-items: center;
+            margin:auto;
+            }
     }
 
     .search_title {
