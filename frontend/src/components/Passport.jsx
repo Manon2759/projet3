@@ -10,15 +10,14 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import ChatContext from '../context/ChatContext';
 import UserContext from '../context/UserContext';
-// import SocketContext from '../context/SocketContext';
-// import UserContext from '../context/UserContext';
+import SocketContext from '../context/SocketContext';
 
-function Passport({ userCard }) {
+function Passport() {
   const [description, setDescription] = useState(false);
   const { room } = useContext(ChatContext);
-  const { setUser } = useContext(UserContext);
-  // const { user, setUser } = useContext(UserContext);
-  // const { socket } = useContext(SocketContext);
+  const { user, setUser } = useContext(UserContext);
+  const { socket } = useContext(SocketContext);
+
   const changeTrue = () => {
     setDescription(true);
   };
@@ -34,7 +33,7 @@ function Passport({ userCard }) {
       .catch((error) => {
         (error);
       });
-  }, []);
+  }, [socket]);
 
   function getAge(date) {
     const diff = Date.now() - date.getTime();
@@ -43,7 +42,7 @@ function Passport({ userCard }) {
   }
   return (
     <div className="container__card__wrapper">
-      {userCard.map((profil, index) => {
+      {user.map((profil, index) => {
         if (profil.id_train === room) {
           return (
             <div className="card">
