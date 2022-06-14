@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-alert */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-no-constructed-context-values */
@@ -21,7 +22,14 @@ import ChatContext from './context/ChatContext';
 import Parameter from './pages/Parameter';
 import NotFound from './pages/NotFound';
 
-const socket = io.connect('http://localhost:5000');
+const connectionOptions = {
+  'force new connection': true,
+  reconnectionAttempts: 'Infinity',
+  timeout: 10000,
+  transports: ['websocket'],
+};
+
+const socket = io.connect('http://localhost:5000', connectionOptions);
 
 function App() {
   // Connection à socket.io relation front/back
@@ -137,7 +145,7 @@ function App() {
                 {token && <Route path="/profil" element={<ProfilClient />} />}
                 {token && <Route path="/resultat" element={<Resultat />} />}
                 {token && <Route path="/recherche" element={<Recherche />} />}
-                {token && <Route path="/chat" element={<Chat />} />}
+                <Route path="/chat" element={<Chat />} />
                 {token && <Route path="/parametre" element={<Parameter />} />}
                 <Route path="*" element={<NotFound />} />
               </Routes>

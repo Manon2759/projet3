@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
-
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
@@ -101,7 +100,7 @@ function Inscription() {
       </div>
       <div className="inscription">
 
-        <div className="inscription__titre">
+        <div className="inscription__title">
           <h1><LogoTrainder height="4rem" /></h1>
         </div>
 
@@ -119,7 +118,7 @@ function Inscription() {
             <input type="email" id="mail" name="Mail" placeholder="Email" onChange={(event) => dispatch({ type: 'postMail', payload: event.target.value })} required />
           </div>
 
-          <div className="inscription_password">
+          <div className="inscription__password">
 
             <input
               type={visibility ? 'text' : 'password'}
@@ -142,7 +141,7 @@ function Inscription() {
               href="https://react-icons.github.io/react-icons/search?q=eyes"
             >
               {' '}
-              <IoIosEye />
+              <IoIosEye className="eye__password" />
               {' '}
             </button>
           </div>
