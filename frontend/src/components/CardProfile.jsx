@@ -63,7 +63,7 @@ function CardProfile() {
                 {updateUser.picture ? <img src={updateUser.picture} alt="profil" /> : <img src="./assets/profil.png" alt="photo profil" />}
                 <h1>Choississez votre photo ici :</h1>
                 <form onSubmit={formSubmitHandler}>
-                  <input type="file" name="myImage" onChange={changeImageHandler} accept=".jpg, .jpeg, .png " />
+                  <input type="file" name="myImage" className="input__file" onChange={changeImageHandler} accept=".jpg, .jpeg, .png " />
                   <button classeName="img_button" type="submit">Envoyer</button>
                 </form>
                 <div className="delete__card">
