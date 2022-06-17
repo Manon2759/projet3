@@ -63,6 +63,7 @@
                         margin: auto;
                         margin-bottom: 15px;
                         margin-top: 20px;
+                        background-size: contain;
                     }
 
                     h1 {
@@ -71,12 +72,15 @@
                         margin: 0;
                         text-align: center;
                     }
+                    
+                        
+                        
+                        .input__file {
+                        display: block;
+                        text-align: center;
+                        }
+                    
 
-                    input {
-                        // margin-top: 8%;
-                        // font-size: medium;
-                        display: none;
-                    }
 
                     button {
                         font-size: medium;

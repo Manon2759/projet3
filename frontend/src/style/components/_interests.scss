@@ -23,9 +23,10 @@
     .title_interets {
         display: flex;
         justify-content: center;
-        margin-top: 3%;
+        
         p {
             font-size: 40px;
+            margin-top: 15%;
             @media screen and (max-width: 930px) {
                 font-size: 30px;
             }

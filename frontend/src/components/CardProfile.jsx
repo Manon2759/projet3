@@ -60,7 +60,7 @@ function CardProfile() {
             </div>
             <div className="img__pseudo__cardProfile">
               <div className="img__pseudo">
-                {updateUser.picture ? <img src={updateUser.picture} alt="profil" /> : <img src="./assets/profil.png" alt="photo profil" />}
+                {updateUser.picture ? <img src={updateUser.picture} alt="profil" className="block__photo" /> : <img src="./assets/profil.png" alt="photo profil" />}
                 <h1>Choississez votre photo ici :</h1>
                 <form onSubmit={formSubmitHandler}>
                   <input type="file" name="myImage" className="input__file" onChange={changeImageHandler} accept=".jpg, .jpeg, .png " />

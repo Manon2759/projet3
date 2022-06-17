@@ -64,7 +64,7 @@ function App() {
   function handleUserUpdateReducer(userUpdateState, action) {
     switch (action.type) {
       case 'changeInfoUser':
-        return { ...userUpdateState, ...action.payload };
+        return { ...completeUser, ...action.payload };
       case 'postPicture':
         return { ...userUpdateState, picture: action.payload };
       case 'postContent':
