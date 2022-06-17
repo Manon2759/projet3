@@ -95,7 +95,7 @@ class UserController {
         req.body.password = await argon2.hash(req.body.password)
       };
       const user = await userModel.updateUser(
-        req.body, req.body.id
+        req.body, req.params.id
       );
       res.status(200).send(user);
     } catch (error) {
