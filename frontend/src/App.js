@@ -11,7 +11,6 @@ import axios from 'axios';
 import Formulaire from './pages/Formulaire';
 import AccueilClient from './pages/AccueilClient';
 import ProfilClient from './pages/ProfilClient';
-import Resultat from './pages/Resultat';
 import Recherche from './pages/Recherche';
 import Footer from './components/Footer';
 import UserContext from './context/UserContext';
@@ -21,14 +20,7 @@ import ChatContext from './context/ChatContext';
 import NotFound from './pages/NotFound';
 import Reglementation from './pages/Reglementation';
 
-const connectionOptions = {
-  'force new connection': true,
-  reconnectionAttempts: 'Infinity',
-  timeout: 10000,
-  transports: ['websocket'],
-};
-
-const socket = io.connect('http://localhost:5000', connectionOptions);
+const socket = io.connect('http://localhost:5000');
 
 function App() {
   // Connection à socket.io relation front/back
@@ -142,7 +134,6 @@ function App() {
                 <Route path="/" element={<AccueilClient />} />
                 {token && <Route path="/formulaire" element={<Formulaire />} />}
                 {token && <Route path="/profil" element={<ProfilClient />} />}
-                {token && <Route path="/resultat" element={<Resultat />} />}
                 {token && <Route path="/recherche" element={<Recherche />} />}
                 <Route path="/chat" element={<Chat />} />
                 <Route path="*" element={<NotFound />} />

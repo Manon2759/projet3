@@ -51,7 +51,13 @@ function Search() {
           </h1>
         </div>
         <div className="search_text">
-          <h2>Ton trajet te semble long, nous avons la solution :</h2>
+          <h2>
+            Ton trajet te semble long,
+            {' '}
+            <br />
+            nous avons la solution :
+
+          </h2>
         </div>
         <div className="search_train">
           <label htmlFor="train" className="label_train">

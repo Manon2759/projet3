@@ -1,17 +1,26 @@
 .body {
     height: 100vh;
     width: 100%;
+    @media screen and (max-width: 450px) {
+        height: 75vh;
+    }
 }
 
 .bg__video {
     position: absolute;
     height: 80vh;
     width: 100%;
-
+    @media screen and (max-width: 450px) {
+        height: 75vh;
+    }
+ 
     video {
         width: 100%;
         height: 100vh;
         object-fit: cover;
+        @media screen and (max-width: 450px) {
+            height: 75vh;
+        }
     }
 }
 
@@ -72,7 +81,7 @@
         display: flex;
         margin-bottom: 5%;
         border-bottom: 1px solid #fff;
-        width: 25%;
+        width: 37%;
 
         input {
             color: rgba(255, 255, 255, 0.73);
@@ -92,10 +101,10 @@
                 font-size: 16px;
             }
             @media screen and (max-width: 540px) {
-                font-size: 13px;
+                font-size: 15px;
             }
             @media screen and (max-width: 483px) {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
 
